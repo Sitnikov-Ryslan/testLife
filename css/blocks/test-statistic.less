@@ -1,0 +1,29 @@
+// main: ../style.less
+
+.test-statistic {
+    width: 63px;
+    height: 18px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.test-statistic__quantity {
+    font-size: 15px;
+    line-height: 18px;
+    color: @gray-dark;
+}
+
+.test-statistic__btn {
+    width: 20px;
+    height: 18px;
+    margin-left: 8px;
+    border: 0;
+    background: url('../img/heart.svg');
+    cursor: pointer;
+    outline: 0;
+
+    &.pressed {
+        background: url("../img/heartDark.svg");
+    }
+}

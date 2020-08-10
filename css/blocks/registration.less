@@ -1,0 +1,84 @@
+// main: ../style.less
+
+.registration {
+    height: 520px;
+    width: 100%;
+    background: @white;
+    padding: 51px 42px 47px;
+}
+
+.registration__input {
+    width: 100%;
+    height: 70px;
+    background: #f1f1f1;
+    border: 3px solid @black;
+    padding-left: 34px;
+    margin-bottom: 23px;
+    font-size: 18px;
+    line-height: 21px;
+    font-family: 'Roboto', sans-serif;
+    outline: 0;
+
+    &:focus {
+        border-radius: 50px;
+
+        & + .registration__label {
+            transform: scale(0);
+        }
+    }
+}
+
+.registration__label {
+    position: absolute;
+	font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: @black;
+    left: 77px;
+    transition: transform .2s linear;
+
+    &.email-label {
+        top: 155px;
+    }
+
+    &.pass-label {
+        top: 250px;
+    }
+}
+
+.registration__account {
+    width: 100%;
+    height: 70px;
+    background: @red;
+    border: 0;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: @black;
+    margin-bottom: 23px;
+
+    &:hover {
+        background: darken(@red, 5%);
+    }
+}
+
+.registration__login {
+    width: 100%;
+    height: 70px;
+    background: @gray-light;
+    border: 0;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: @black;
+    margin-bottom: 23px;
+
+    &:hover {
+        background: darken(@gray-light, 5%);
+    }
+}

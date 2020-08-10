@@ -1,0 +1,21 @@
+// main: ../style.less
+
+.header-btn {
+    width: 80px;
+    height: 80px;
+    padding: 20px;
+    background: @red;
+    border: 0;
+    cursor: pointer;
+
+    &:hover .header-btn__logo {
+        transform: scale(1.2);
+    }
+}
+
+.header-btn__logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: transform .2s linear;
+}
