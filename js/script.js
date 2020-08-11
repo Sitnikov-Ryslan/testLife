@@ -28,7 +28,7 @@ let fixedHeader = function() {
 document.addEventListener("DOMContentLoaded", fixedHeader);
 window.addEventListener('scroll', fixedHeader)
 
-// Modal form
+// Show modal
 
 regBtn.addEventListener('click', (evt) => {
     evt.preventDefault();
@@ -42,6 +42,12 @@ regBtn.addEventListener('click', (evt) => {
     modalForm.addEventListener('click', (evt) => {
         evt.stopPropagation();
     })
+    const closeModalBtn = document.querySelector('.modal__close');
+    closeModalBtn.addEventListener('click', (evt) => {
+        evt.preventDefault();
+        body.classList.remove('no-scroll');
+        modal.classList.remove('show');
+    })
 })
 
 // Toggle hearts
@@ -51,3 +57,50 @@ likes.forEach(elem => {
         elem.classList.toggle('pressed');
     })
 })
+
+// Slider
+
+// let position = 0;
+// const slidesToShow = 3;
+// const slidesToScroll = 1;
+// const container = document.querySelector('.tests-item');
+// const track = document.querySelector('.tests-list');
+// const btnPrev = document.querySelector('.btn-prev');
+// const btnNext = document.querySelector('.btn-next');
+// const items = document.querySelectorAll('.test')
+// const itemsCount = items.length;
+// const itemWidth = container.clientWidth / slidesToShow;
+// const movePosition = slidesToScroll * itemWidth;
+
+// items.forEach((item) => {
+//     item.style.minWidth = `${itemWidth}px`
+// });
+
+// btnNext.addEventListener('click', () => {
+//     const itemsLeft = itemsCount - (Math.abs(position) + slidesToShow * itemWidth) / itemWidth;
+
+//     position -= itemsLeft >= slidesToScroll ? movePosition : itemsLeft * itemWidth;
+
+//     setPosition();
+//     checkBtns();
+// });
+
+// btnPrev.addEventListener('click', () => {
+//     const itemsLeft = Math.abs(position) / itemWidth;
+
+//     position += itemsLeft >= slidesToScroll ? movePosition : itemsLeft * itemWidth;
+
+//     setPosition();
+//     checkBtns();
+// });
+
+// const setPosition = () => {
+//     track.style.transform = `translateX(${position}px)`
+// };
+
+// const checkBtns = () => {
+//     btnPrev.disabled = position === 0;
+//     btnNext.disabled = position <= -(itemsCount - slidesToShow) * itemWidth;
+// };
+
+// checkBtns();
