@@ -7,6 +7,52 @@
 
     &.fixed {
         position: fixed;
-        z-index: 1;
+        z-index:500;
     }
+}
+
+.header__logo {
+    width: 80px;
+    height: 80px;
+    background: @red;
+    text-align: center;
+    padding: 18px 16px;
+}
+
+.header__link {
+    font-weight: bold;
+    line-height: 21px;
+    color: @white;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color .1s linear;
+
+    &:hover {
+        color: @black;
+    }
+}
+
+.header__btn {
+    width: 80px;
+    height: 80px;
+    padding: 20px;
+    background: @red;
+    border: 0;
+    cursor: pointer;
+    position: relative;
+
+    &:hover:after {
+        transform: scale(1.2);
+    }
+}
+
+.header__btn:after {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    content: "";
+    width: 40px;
+    height: 40px;
+    background: url('../img/accountLogo.svg') no-repeat;
+    transition: transform .1s linear;
 }

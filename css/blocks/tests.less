@@ -6,7 +6,10 @@
     background: @white;
     padding-top: 49px;
     padding-bottom: 92px;
-    position: relative;
+    
+    & .center {
+        position: relative;
+    }
 }
 
 .tests__title {
@@ -15,4 +18,121 @@
     line-height: 70px;
     color: @black;
     margin-bottom: 54px;
+    max-width: 100%;
+    max-height: 140px;
+    overflow: hidden;
+	text-overflow: ellipsis
+}
+
+.tests__item {
+    width: 100%;
+    height: 318px;
+    margin-bottom: 55px;
+    overflow: hidden;
+}
+
+.tests__subtitle {
+    width: 360px;
+    height: 80px;
+    background: @gray-light;
+    font-size: 30px;
+    line-height: 35px;
+    color: @white;
+    padding: 23px 40px;
+    margin-bottom: 38px;
+    white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis
+}
+
+.tests__list {
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.swiper-button-prev {
+    position: absolute;
+    left: -90px;
+    font-size: 0;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    background: url('../img/left_arrow.svg') no-repeat center center;
+    
+    &:after {
+        content: '';
+    }
+
+    &.swiper-button-disabled {
+        opacity: 0;
+    }
+
+    &_first {
+        top: 340px;
+    }
+
+    &_second {
+        top: 720px;
+    }
+
+    &_third {
+        top: 1090px;
+    }
+
+    &_fourth {
+        top: 1460px;
+    }
+
+    &_fifth {
+        top: 1840px;
+    }
+
+    &_sixth {
+        top: 2210px;
+    }
+}
+
+.swiper-button-next {
+    position: absolute;
+    right: -90px;
+    font-size: 0;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    background: url('../img/right_arrow.svg') no-repeat center center;
+    
+    &:after {
+        content: '';
+    }
+
+    &.swiper-button-disabled {
+        opacity: 0;
+    }
+
+    &_first {
+        top: 340px;
+    }
+
+    &_second {
+        top: 720px;
+    }
+
+    &_third {
+        top: 1090px;
+    }
+
+    &_fourth {
+        top: 1460px;
+    }
+
+    &_fifth {
+        top: 1840px;
+    }
+
+    &_sixth {
+        top: 2210px;
+    }
 }

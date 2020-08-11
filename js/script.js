@@ -4,11 +4,11 @@ const nav = document.querySelector('.nav');
 const btnsBlocks = document.querySelectorAll('.btns');
 
 const body = document.querySelector('body');
-const regBtn = document.querySelector('.header-btn');
+const regBtn = document.querySelector('.header__btn');
 const modal = document.querySelector('.modal');
-const modalForm = document.querySelector('.modal-window');
+const modalForm = document.querySelector('.modal__window');
 
-const likes = document.querySelectorAll('.test-statistic__btn');
+const likes = document.querySelectorAll('.test-preview__btn');
 
 // Fixed Header
 
@@ -17,16 +17,14 @@ let fixedHeader = function() {
     if (scrollOffset >= testsHeight) {
         nav.classList.add('show');
         header.classList.add('fixed');
-        btnsBlocks.forEach(elem => elem.classList.add('hidden'));
     } else {
         nav.classList.remove('show');
         header.classList.remove('fixed');
-        btnsBlocks.forEach(elem => elem.classList.remove('hidden'));
     }
 } 
 
-document.addEventListener("DOMContentLoaded", fixedHeader);
-window.addEventListener('scroll', fixedHeader)
+fixedHeader();
+window.addEventListener('scroll', fixedHeader);
 
 // Show modal
 
@@ -34,20 +32,21 @@ regBtn.addEventListener('click', (evt) => {
     evt.preventDefault();
     body.classList.add('no-scroll');
     modal.classList.add('show');
-    modal.addEventListener('click', (evt) => {
-        evt.preventDefault();
-        body.classList.remove('no-scroll');
-        modal.classList.remove('show');
-    })
-    modalForm.addEventListener('click', (evt) => {
+
+    let stopProp = function(evt) {
         evt.stopPropagation();
-    })
-    const closeModalBtn = document.querySelector('.modal__close');
-    closeModalBtn.addEventListener('click', (evt) => {
+    }
+
+    let closeModal = function(evt) {
         evt.preventDefault();
         body.classList.remove('no-scroll');
         modal.classList.remove('show');
-    })
+        modal.removeEventListener('click', closeModal);
+        modalForm.removeEventListener('click', stopProp)
+    }
+
+    modal.addEventListener('click', closeModal)
+    modalForm.addEventListener('click', stopProp)
 })
 
 // Toggle hearts
@@ -58,49 +57,76 @@ likes.forEach(elem => {
     })
 })
 
-// Slider
+// Swiper
 
-// let position = 0;
-// const slidesToShow = 3;
-// const slidesToScroll = 1;
-// const container = document.querySelector('.tests-item');
-// const track = document.querySelector('.tests-list');
-// const btnPrev = document.querySelector('.btn-prev');
-// const btnNext = document.querySelector('.btn-next');
-// const items = document.querySelectorAll('.test')
-// const itemsCount = items.length;
-// const itemWidth = container.clientWidth / slidesToShow;
-// const movePosition = slidesToScroll * itemWidth;
+let myFirstSwiper = new Swiper('.swiper-container_first', {
+    speed: 400,
+    spaceBetween: 30,
+    slidesPerView: 3,
+    autoHeight: true,
 
-// items.forEach((item) => {
-//     item.style.minWidth = `${itemWidth}px`
-// });
+    navigation: {
+        nextEl: '.swiper-button-next_first',
+        prevEl: '.swiper-button-prev_first',
+      },
+})
 
-// btnNext.addEventListener('click', () => {
-//     const itemsLeft = itemsCount - (Math.abs(position) + slidesToShow * itemWidth) / itemWidth;
+let mySecondSwiper = new Swiper('.swiper-container_second', {
+    speed: 400,
+    spaceBetween: 30,
+    slidesPerView: 3,
+    autoHeight: true,
 
-//     position -= itemsLeft >= slidesToScroll ? movePosition : itemsLeft * itemWidth;
+    navigation: {
+        nextEl: '.swiper-button-next_second',
+        prevEl: '.swiper-button-prev_second',
+      },
+})
 
-//     setPosition();
-//     checkBtns();
-// });
+let myThirdSwiper = new Swiper('.swiper-container_third', {
+    speed: 400,
+    spaceBetween: 30,
+    slidesPerView: 3,
+    autoHeight: true,
 
-// btnPrev.addEventListener('click', () => {
-//     const itemsLeft = Math.abs(position) / itemWidth;
+    navigation: {
+        nextEl: '.swiper-button-next_third',
+        prevEl: '.swiper-button-prev_third',
+      },
+})
 
-//     position += itemsLeft >= slidesToScroll ? movePosition : itemsLeft * itemWidth;
+let myFourthSwiper = new Swiper('.swiper-container_fourth', {
+    speed: 400,
+    spaceBetween: 30,
+    slidesPerView: 3,
+    autoHeight: true,
 
-//     setPosition();
-//     checkBtns();
-// });
+    navigation: {
+        nextEl: '.swiper-button-next_fourth',
+        prevEl: '.swiper-button-prev_fourth',
+      },
+})
 
-// const setPosition = () => {
-//     track.style.transform = `translateX(${position}px)`
-// };
+let myFifthSwiper = new Swiper('.swiper-container_fifth', {
+    speed: 400,
+    spaceBetween: 30,
+    slidesPerView: 3,
+    autoHeight: true,
 
-// const checkBtns = () => {
-//     btnPrev.disabled = position === 0;
-//     btnNext.disabled = position <= -(itemsCount - slidesToShow) * itemWidth;
-// };
+    navigation: {
+        nextEl: '.swiper-button-next_fifth',
+        prevEl: '.swiper-button-prev_fifth',
+      },
+})
 
-// checkBtns();
+let mySixthSwiper = new Swiper('.swiper-container_sixth', {
+    speed: 400,
+    spaceBetween: 30,
+    slidesPerView: 3,
+    autoHeight: true,
+
+    navigation: {
+        nextEl: '.swiper-button-next_sixth',
+        prevEl: '.swiper-button-prev_sixth',
+      },
+})

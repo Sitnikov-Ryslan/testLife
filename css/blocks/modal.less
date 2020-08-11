@@ -16,6 +16,27 @@
     }
 }
 
+.modal__window {
+    display: block;
+    width: 555px;
+    height: 600px;
+    background: @white;
+    position: relative;
+    margin: auto;
+}
+
+.modal__title {
+    width: 100%;
+    height: 80px;
+    background: @black;
+    text-align: center;
+    padding: 22px 0;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 35px;
+    color: @white;
+}
+
 .modal__close {
     position: absolute;
 	top: 20px;
@@ -23,7 +44,7 @@
 	width: 34px;
 	height: 34px;
 	padding: 0;
-	background: none;
+	background: url('../img/close.svg');
 	border: 0;
 	outline: none;
 	cursor: pointer;

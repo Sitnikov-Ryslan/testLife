@@ -1,0 +1,73 @@
+// main: ../style.less
+
+.test-preview {
+    width: 360px;
+    height: 200px;
+    margin-right: 30px;
+    list-style: none;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.test-preview__logo {
+    width: 100%;
+    max-width: 360px;
+    height: 160px;
+    display: block;
+    background: @gray-light;
+}
+
+.test-preview__content {
+    display: flex;
+    width: 360px;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 14px 0 22px;
+    background: @red;
+}
+
+.test-preview__name {
+    max-width: 225px;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: @black;
+    display: inline-block;
+    white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis
+}
+
+.test-preview__stat {
+    max-width: 100px;
+    height: 18px;
+    display: inline-block;
+    clear: both;
+}
+
+.test-preview__quantity {
+    float: left;
+    max-width: 70%;
+    font-size: 15px;
+    line-height: 18px;
+    color: @gray-dark;
+    overflow: hidden;
+}
+
+.test-preview__btn {
+    float: right;
+    width: 20px;
+    height: 18px;
+    margin-left: 8px;
+    border: 0;
+    background: url('../img/heart.svg');
+    cursor: pointer;
+    outline: 0;
+
+    &.pressed {
+        background: url("../img/heartDark.svg");
+    }
+}
