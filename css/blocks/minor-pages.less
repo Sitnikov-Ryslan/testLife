@@ -1,0 +1,40 @@
+// main: ../style.less
+
+.minor-pages {
+    width: 100%;
+    height: 200px;
+    background: @gray;
+
+    &.hidden {
+        display: none;
+    }
+}
+
+.minor-pages__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 200px;
+}
+
+.minor-pages__link {
+    width: 360px;
+    height: 80px;
+    background: @red;
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+    line-height: 35px;
+    color: @white;
+    text-decoration: none;
+    padding: 22px 0;
+    transition: color .1s linear;
+
+    &:hover {
+        color: @black;
+    }
+
+    &:active {
+        background: darken(@red, 5%);
+    }
+}

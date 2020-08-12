@@ -1,10 +1,9 @@
 const header = document.querySelector('.header');
 const testsHeight =  document.querySelector('.tests').offsetTop;
 const nav = document.querySelector('.nav');
-const btnsBlocks = document.querySelectorAll('.btns');
 
 const body = document.querySelector('body');
-const regBtn = document.querySelector('.header__btn');
+const regBtn = document.querySelector('.header__user');
 const modal = document.querySelector('.modal');
 const modalForm = document.querySelector('.modal__window');
 
@@ -59,74 +58,14 @@ likes.forEach(elem => {
 
 // Swiper
 
-let myFirstSwiper = new Swiper('.swiper-container_first', {
+let mySwiper = new Swiper('.swiper-container', {
     speed: 400,
     spaceBetween: 30,
     slidesPerView: 3,
     autoHeight: true,
 
     navigation: {
-        nextEl: '.swiper-button-next_first',
-        prevEl: '.swiper-button-prev_first',
-      },
-})
-
-let mySecondSwiper = new Swiper('.swiper-container_second', {
-    speed: 400,
-    spaceBetween: 30,
-    slidesPerView: 3,
-    autoHeight: true,
-
-    navigation: {
-        nextEl: '.swiper-button-next_second',
-        prevEl: '.swiper-button-prev_second',
-      },
-})
-
-let myThirdSwiper = new Swiper('.swiper-container_third', {
-    speed: 400,
-    spaceBetween: 30,
-    slidesPerView: 3,
-    autoHeight: true,
-
-    navigation: {
-        nextEl: '.swiper-button-next_third',
-        prevEl: '.swiper-button-prev_third',
-      },
-})
-
-let myFourthSwiper = new Swiper('.swiper-container_fourth', {
-    speed: 400,
-    spaceBetween: 30,
-    slidesPerView: 3,
-    autoHeight: true,
-
-    navigation: {
-        nextEl: '.swiper-button-next_fourth',
-        prevEl: '.swiper-button-prev_fourth',
-      },
-})
-
-let myFifthSwiper = new Swiper('.swiper-container_fifth', {
-    speed: 400,
-    spaceBetween: 30,
-    slidesPerView: 3,
-    autoHeight: true,
-
-    navigation: {
-        nextEl: '.swiper-button-next_fifth',
-        prevEl: '.swiper-button-prev_fifth',
-      },
-})
-
-let mySixthSwiper = new Swiper('.swiper-container_sixth', {
-    speed: 400,
-    spaceBetween: 30,
-    slidesPerView: 3,
-    autoHeight: true,
-
-    navigation: {
-        nextEl: '.swiper-button-next_sixth',
-        prevEl: '.swiper-button-prev_sixth',
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
       },
 })
