@@ -6,10 +6,6 @@
     background: @white;
     padding-top: 49px;
     padding-bottom: 92px;
-    
-    // & .center {
-    //     position: relative;
-    // }
 }
 
 .tests__title {
@@ -21,20 +17,20 @@
     max-width: 100%;
     max-height: 140px;
     overflow: hidden;
-	text-overflow: ellipsis
+	text-overflow: ellipsis;
 }
 
-.tests__captions {
+.tests__group-list {
     margin: 0;
     padding: 0;
 }
 
-.tests__item {
+.tests__group {
     width: 100%;
     height: 318px;
     margin-bottom: 55px;
     list-style: none;
-    overflow: hidden;
+    position: relative;
 }
 
 .tests__subtitle {
@@ -51,10 +47,6 @@
 	text-overflow: ellipsis
 }
 
-.tests__arrows-container {
-    position: relative;
-}
-
 .tests__list {
     display: flex;
     justify-content: left;
@@ -65,7 +57,7 @@
 
 .swiper-button-prev {
     position: absolute;
-    top: 30px;
+    top: 210px;
     left: -90px;
     font-size: 0;
     border: 0;
@@ -80,35 +72,11 @@
     &.swiper-button-disabled {
         opacity: 0;
     }
-
-    // &_first {
-    //     top: 340px;
-    // }
-
-    // &_second {
-    //     top: 720px;
-    // }
-
-    // &_third {
-    //     top: 1090px;
-    // }
-
-    // &_fourth {
-    //     top: 1460px;
-    // }
-
-    // &_fifth {
-    //     top: 1840px;
-    // }
-
-    // &_sixth {
-    //     top: 2210px;
-    // }
 }
 
 .swiper-button-next {
     position: absolute;
-    top: 30px;
+    top: 210px;
     right: -90px;
     font-size: 0;
     border: 0;
@@ -123,28 +91,4 @@
     &.swiper-button-disabled {
         opacity: 0;
     }
-
-    // &_first {
-    //     top: 340px;
-    // }
-
-    // &_second {
-    //     top: 720px;
-    // }
-
-    // &_third {
-    //     top: 1090px;
-    // }
-
-    // &_fourth {
-    //     top: 1460px;
-    // }
-
-    // &_fifth {
-    //     top: 1840px;
-    // }
-
-    // &_sixth {
-    //     top: 2210px;
-    // }
 }

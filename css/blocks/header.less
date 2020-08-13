@@ -40,9 +40,14 @@
     border: 0;
     cursor: pointer;
     position: relative;
+    overflow: hidden;
 
     &:hover:after {
         transform: scale(1.2);
+    }
+
+    & .hidden {
+        visibility: hidden;
     }
 }
 

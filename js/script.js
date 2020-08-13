@@ -58,14 +58,19 @@ likes.forEach(elem => {
 
 // Swiper
 
-let mySwiper = new Swiper('.swiper-container', {
-    speed: 400,
-    spaceBetween: 30,
-    slidesPerView: 3,
-    autoHeight: true,
+let swipers = document.querySelectorAll('.swiper-container');
 
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
+swipers.forEach(function(elem) {
+    let mySwiper = new Swiper(elem, {
+        
+        speed: 400,
+        spaceBetween: 30,
+        slidesPerView: 3,
+        autoHeight: true,
+    
+        navigation: {
+            nextEl: elem.parentNode.querySelector('.swiper-button-next'),
+            prevEl: elem.parentNode.querySelector('.swiper-button-prev'),
+          },
+    })
 })

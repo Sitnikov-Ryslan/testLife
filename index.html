@@ -20,7 +20,9 @@
                     <a href="#" class="nav__link">Мини-игры</a>
                 </nav>
             </div>
-            <button class="header__user"></button>
+            <button class="header__user" type="button">
+                <span class="hidden">Вход пользователя</span>
+            </button>
         </div>
     </header>
 
@@ -37,10 +39,10 @@
     <section class="tests">
         <div class="center">
             <h1 class="tests__title">Самые популярные тесты</h1>
-            <ul class="tests__captions">
-                <li class="tests__item swiper-container">
+            <ul class="tests__group-list">
+                <li class="tests__group">
                     <h2 class="tests__subtitle">Интеллектуальные</h2>
-                    <div class="tests__arrows-container">
+                    <div class="swiper-container">
                         <ul class="tests__list swiper-wrapper">
                             <li class="test-preview swiper-slide">
                                 <a class="test-preview__logo" href="#"></a>
@@ -93,13 +95,13 @@
                                 </div>
                             </li>
                         </ul>
-                        <button class="swiper-button-prev">Prev</button>
-                        <button class="swiper-button-next">Next</button>
                     </div>
+                    <button class="swiper-button-prev">Prev</button>
+                    <button class="swiper-button-next">Next</button>
                 </li>
-                <li class="tests__item swiper-container">
+                <li class="tests__group">
                     <h2 class="tests__subtitle">Психология</h2>
-                    <div class="tests__arrows-container">
+                    <div class="swiper-container">
                         <ul class="tests__list swiper-wrapper">
                             <li class="test-preview swiper-slide">
                                 <a class="test-preview__logo" href="#"></a>
@@ -152,13 +154,13 @@
                                 </div>
                             </li>
                         </ul>
-                        <button class="swiper-button-prev">Prev</button>
-                        <button class="swiper-button-next">Next</button>
                     </div>
+                    <button class="swiper-button-prev">Prev</button>
+                    <button class="swiper-button-next">Next</button>
                 </li>
-                <li class="tests__item swiper-container">
+                <li class="tests__group">
                     <h2 class="tests__subtitle">Романтика</h2>
-                    <div class="tests__arrows-container">
+                    <div class="swiper-container">
                         <ul class="tests__list swiper-wrapper">
                             <li class="test-preview swiper-slide">
                                 <a class="test-preview__logo" href="#"></a>
@@ -211,13 +213,13 @@
                                 </div>
                             </li>
                         </ul>
-                        <button class="swiper-button-prev">Prev</button>
-                        <button class="swiper-button-next">Next</button>
                     </div>
+                    <button class="swiper-button-prev">Prev</button>
+                    <button class="swiper-button-next">Next</button>
                 </li>
-                <li class="tests__item swiper-container">
+                <li class="tests__group">
                     <h2 class="tests__subtitle">Развлекательные</h2>
-                    <div class="tests__arrows-container">
+                    <div class="swiper-container">
                         <ul class="tests__list swiper-wrapper">
                             <li class="test-preview swiper-slide">
                                 <a class="test-preview__logo" href="#"></a>
@@ -270,13 +272,13 @@
                                 </div>
                             </li>
                         </ul>
-                        <button class="swiper-button-prev">Prev</button>
-                        <button class="swiper-button-next">Next</button>
                     </div>
+                    <button class="swiper-button-prev">Prev</button>
+                    <button class="swiper-button-next">Next</button>
                 </li>
-                <li class="tests__item swiper-container">
+                <li class="tests__group">
                     <h2 class="tests__subtitle">Хоррор</h2>
-                    <div class="tests__arrows-container">
+                    <div class="swiper-container">
                         <ul class="tests__list swiper-wrapper">
                             <li class="test-preview swiper-slide">
                                 <a class="test-preview__logo" href="#"></a>
@@ -329,13 +331,13 @@
                                 </div>
                             </li>
                         </ul>
-                        <button class="swiper-button-prev">Prev</button>
-                        <button class="swiper-button-next">Next</button>
                     </div>
+                    <button class="swiper-button-prev">Prev</button>
+                    <button class="swiper-button-next">Next</button>
                 </li>
-                <li class="tests__item swiper-container">
+                <li class="tests__group">
                     <h2 class="tests__subtitle">Развлекательные</h2>
-                    <div class="tests__arrows-container">
+                    <div class="swiper-container">
                         <ul class="tests__list swiper-wrapper">
                             <li class="test-preview swiper-slide">
                                 <a class="test-preview__logo" href="#"></a>
@@ -388,9 +390,9 @@
                                 </div>
                             </li>
                         </ul>
-                        <button class="swiper-button-prev">Prev</button>
-                        <button class="swiper-button-next">Next</button>
                     </div>
+                    <button class="swiper-button-prev">Prev</button>
+                    <button class="swiper-button-next">Next</button>
                 </li>
             </ul>
         </div>
@@ -427,7 +429,7 @@
                 <input class="registration__input registration__input_pass" id="reg-pass" type="password">
                 <label class="registration__label pass-label" for="reg-pass">Пароль</label>
                 <button class="registration__account">Регистрация</button>
-                <button class="registration__login">Авторизация</button>
+                <a href="#" class="registration__login">Авторизация</a>
                 <div class="registration__social">
                     <a class="registration__link" href="#"></a>
                     <a class="registration__link" href="#"></a>

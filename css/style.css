@@ -80,9 +80,13 @@ h6 {
   border: 0;
   cursor: pointer;
   position: relative;
+  overflow: hidden;
 }
 .header__user:hover:after {
   transform: scale(1.2);
+}
+.header__user .hidden {
+  visibility: hidden;
 }
 .header__user:after {
   position: absolute;
@@ -184,16 +188,16 @@ h6 {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.tests__captions {
+.tests__group-list {
   margin: 0;
   padding: 0;
 }
-.tests__item {
+.tests__group {
   width: 100%;
   height: 318px;
   margin-bottom: 55px;
   list-style: none;
-  overflow: hidden;
+  position: relative;
 }
 .tests__subtitle {
   width: 360px;
@@ -208,9 +212,6 @@ h6 {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.tests__arrows-container {
-  position: relative;
-}
 .tests__list {
   display: flex;
   justify-content: left;
@@ -220,7 +221,7 @@ h6 {
 }
 .swiper-button-prev {
   position: absolute;
-  top: 30px;
+  top: 210px;
   left: -90px;
   font-size: 0;
   border: 0;
@@ -236,7 +237,7 @@ h6 {
 }
 .swiper-button-next {
   position: absolute;
-  top: 30px;
+  top: 210px;
   right: -90px;
   font-size: 0;
   border: 0;
@@ -325,27 +326,33 @@ h6 {
   align-items: flex-start;
 }
 .footer__text {
-  width: 260px;
+  max-width: 260px;
   height: 80px;
   background: #c4c4c4;
   color: #fff;
   line-height: 21px;
   text-align: right;
   overflow: hidden;
+  word-wrap: normal;
+  text-overflow: ellipsis;
 }
 .footer__content {
   display: flex;
   justify-content: space-between;
   width: 360px;
-  height: 40px;
+  min-height: 40px;
+  max-height: 80px;
 }
 .footer__column {
-  width: 165px;
-  height: 40px;
+  min-width: 165px;
+  max-width: 49%;
+  min-height: 40px;
   background: #c4c4c4;
   color: #fff;
   line-height: 21px;
   overflow: hidden;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
 }
 .modal {
   display: none;
@@ -448,11 +455,13 @@ h6 {
   line-height: 28px;
   color: #000;
   margin-bottom: 23px;
+  cursor: pointer;
 }
 .registration__account:hover {
   background: #ff5b5b;
 }
 .registration__login {
+  display: block;
   width: 100%;
   height: 70px;
   background: #c4c4c4;
@@ -464,6 +473,9 @@ h6 {
   line-height: 28px;
   color: #000;
   margin-bottom: 23px;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 22px;
 }
 .registration__login:hover {
   background: #b7b7b7;

@@ -14,27 +14,33 @@
 }
 
 .footer__text {
-    width: 260px;
+    max-width: 260px;
     height: 80px;
     background: @gray-light;
     color: @white;
     line-height: 21px;
     text-align: right;
     overflow: hidden;
+    word-wrap: normal;
+    text-overflow: ellipsis;
 }
 
 .footer__content {
     display: flex;
     justify-content: space-between;
     width: 360px;
-    height: 40px;
+    min-height: 40px;
+    max-height: 80px;
 }
 
 .footer__column {
-    width: 165px;
-    height: 40px;
+    min-width: 165px;
+    max-width: 49%;
+    min-height: 40px;
     background: @gray-light;
     color: @white;
     line-height: 21px;
     overflow: hidden;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
 }
