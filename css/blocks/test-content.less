@@ -1,23 +1,90 @@
 // main: ../style.less
 
 .test-content {
-    display: flex;
-    width: 360px;
-    height: 40px;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 14px 0 22px;
-    background: @red;
+    width: 100%;
+    height: 100%;
+    background: @white;
+
+    & .container {
+        position: relative;
+        padding-top: 49px;
+        padding-bottom: 96px;
+        display: block;
+    }
 }
 
-.test__name {
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 21px;
-    color: @black;
-    display: inline-block;
-    width: 230px;
-    white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis
+.test-content__info {
+    max-width: 1192px;
+    margin-left: 65px;
+    padding-top: 224px;
+    font-size: 24px;
+    line-height: 28px;
+    background: url("../img/testLogo.svg") no-repeat 0 0;
+    word-wrap: break-word;
+}
+
+.test-content__text {
+    max-width: 900px;
+}
+
+.test-content__author {
+    margin-top: 100px;
+    
+    & cite {
+        font-style: normal;
+    }
+}
+
+.test-content__icons {
+    width: 106px;
+    height: 38px;
+    position: absolute;
+    top: 38px;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.test-content__like {
+    width: 41px;
+    height: 38px;
+    padding: 0;
+    background: url("../img/likeIcon.svg") no-repeat center center;
+    border: 0;
+    cursor: pointer;
+
+    &.pressed {
+        // здесь будет темное сердечко
+    }
+
+    & .visually-hidden {
+        visibility: hidden;
+    }
+}
+
+.test-content__close {
+    width: 38px;
+    height: 38px;
+    background: url("../img/closeIcon.svg") no-repeat center center;
+    transition: transform .2s linear;
+
+    &:hover {
+        transform: rotate(90deg);
+    }
+}
+
+.test-content__begin {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    border: 0;
+    background: url("../img/arrowNext.svg") no-repeat center center;
+    cursor: pointer;
+
+    & .visually-hidden {
+        visibility: hidden;
+    }
 }
