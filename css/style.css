@@ -90,9 +90,6 @@ p {
 .header__user:hover:after {
   transform: scale(1.2);
 }
-.header__user .hidden {
-  visibility: hidden;
-}
 .header__user:after {
   position: absolute;
   top: 25%;
@@ -236,6 +233,7 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 10;
 }
 .test-content__like {
   width: 41px;
@@ -244,6 +242,9 @@ p {
   background: url("../img/likeIcon.svg") no-repeat center center;
   border: 0;
   cursor: pointer;
+}
+.test-content__like.pressed {
+  background: url("../img/pressedLikeIcon.svg") no-repeat center center;
 }
 .test-content__like .visually-hidden {
   visibility: hidden;
@@ -269,6 +270,55 @@ p {
 }
 .test-content__begin .visually-hidden {
   visibility: hidden;
+}
+.swiper-button-next {
+  width: 80px;
+  height: 80px;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+.swiper-button-next:after {
+  content: '';
+  width: 80px;
+  height: 80px;
+  background: url('../img/arrowNext.svg') no-repeat center center;
+}
+.swiper-button-prev {
+  width: 80px;
+  height: 80px;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+.swiper-button-prev:after {
+  content: '';
+  width: 80px;
+  height: 80px;
+  background: url('../img/arrowPrev.svg') no-repeat center center;
+}
+.test-content__forms-submit-btn {
+  position: absolute;
+  left: 40%;
+  bottom: 10px;
+  width: 360px;
+  height: 80px;
+  background: #FF7575;
+  border: 0;
+  font-weight: bold;
+  text-align: center;
+  font-size: 30px;
+  line-height: 35px;
+  color: #fff;
+  text-decoration: none;
+  padding: 22px 0;
+  transition: color 0.1s linear;
+}
+.test-content__forms-submit-btn:hover {
+  color: #000;
+}
+.test-content__forms-submit-btn:active {
+  background: #ff5b5b;
 }
 .questions-list {
   display: flex;
@@ -325,4 +375,10 @@ p {
 }
 .questions-list__answer:checked + label:before {
   background: #565656;
+}
+.hidden {
+  display: none;
+}
+.visually-hidden {
+  visibility: hidden;
 }

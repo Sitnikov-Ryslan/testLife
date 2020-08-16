@@ -21,9 +21,10 @@
                         <a href="#" class="nav__link">Мини-игры</a>
                     </nav>
                 </div>
+                <!-- тут будет ссылка на личный кабинет -->
                 <form action="../MainPage/index.html">
                     <button class="header__user">
-                        <span class="hidden">Вход пользователя</span>
+                        <span class="visually-hidden">Вход пользователя</span>
                     </button>
                 </form>
             </div>
@@ -37,7 +38,7 @@
                         <button type="button" class="test__continue">Продолжить</button>
                         <button type="button" class="test__start">Начать заново</button>
                     </div>
-                    <div class="test__counter-questions"  style="display: none">
+                    <div class="test__counter-questions hidden">
                         Вопрос
                         <span class="test__actual-question">3</span>
                         из
@@ -47,7 +48,7 @@
             </div>
             <div class="test-content">
                 <div class="container swiper-container">
-                    <div class="test-content__info" style="display: none">
+                    <div class="test-content__info">
                         <p class="test-content__text">Темперамент в одной и той же ситуации проявляется по-разному у каждого индивида,
                         вне зависимости от его мотивов, целей и содержания, и остается неизменным уже в 
                         зрелом возрасте. Для выявления ведущего типа темперамента, мы предлагаем вам пройти
@@ -63,65 +64,88 @@
                             <span class="visually-hidden">Начать тест</span>
                         </button>
                     </div>
-                    <ul class="questions-list swiper-wrapper">
+                    
+                    <ul class="questions-list swiper-wrapper hidden">
                         <li class="questions-list__item swiper-slide">
-                            <form action="#">
+                            <form class="question" action="#">
                                 <h3>Упорство и настойчивость в достижении целей</h3>
                                 <p>
-                                    <input name="answer" id="1" type="radio" class="questions-list__answer">
+                                    <input name="answer1" id="1" type="radio" class="questions-list__answer">
                                     <label for="1">Да</label>
                                 </p>
                                 <p>
-                                    <input name="answer" id="2" type="radio" class="questions-list__answer">
+                                    <input name="answer1" id="2" type="radio" class="questions-list__answer">
                                     <label for="2">Скорее Да, чем нет</label>
                                 </p>
                                 <p>
-                                    <input name="answer" id="3" type="radio" class="questions-list__answer">
+                                    <input name="answer1" id="3" type="radio" class="questions-list__answer">
                                     <label for="3">Скорее Нет, чем Да</label>
                                 </p>
                                 <p>
-                                    <input name="answer" id="4" type="radio" class="questions-list__answer">
+                                    <input name="answer1" id="4" type="radio" class="questions-list__answer">
                                     <label for="4">Нет</label>
                                 </p>
                             </form>
                         </li>
-                        <!-- <li class="questions-list__item">
-                            <form action="#">
-                                <h3>Упорство и настойчивость в достижении целей</h3>
-                                <p><input type="radio">Да</p>
-                                <p><input type="radio">Скорее Да, чем нет</p>
-                                <p><input type="radio">Скорее Нет, чем Да</p>
-                                <p><input type="radio">Нет</p>
+                        <li class="questions-list__item swiper-slide">
+                            <form class="question" action="#">
+                                <h3>Упорство в достижении целей</h3>
+                                <p>
+                                    <input name="answer2" id="1" type="radio" class="questions-list__answer">
+                                    <label for="1">Да</label>
+                                </p>
+                                <p>
+                                    <input name="answer2" id="2" type="radio" class="questions-list__answer">
+                                    <label for="2">Скорее Да, чем нет</label>
+                                </p>
+                                <p>
+                                    <input name="answer2" id="3" type="radio" class="questions-list__answer">
+                                    <label for="3">Скорее Нет, чем Да</label>
+                                </p>
+                                <p>
+                                    <input name="answer2" id="4" type="radio" class="questions-list__answer">
+                                    <label for="4">Нет</label>
+                                </p>
                             </form>
                         </li>
-                        <li class="questions-list__item">
-                            <form action="#">
-                                <h3>Упорство и настойчивость в достижении целей</h3>
-                                <p><input type="radio">Да</p>
-                                <p><input type="radio">Скорее Да, чем нет</p>
-                                <p><input type="radio">Скорее Нет, чем Да</p>
-                                <p><input type="radio">Нет</p>
+                        <li class="questions-list__item swiper-slide">
+                            <form class="question" action="#">
+                                <h3>Настойчивость в достижении целей</h3>
+                                <p>
+                                    <input name="answer3" id="1" type="radio" class="questions-list__answer">
+                                    <label for="1">Да</label>
+                                </p>
+                                <p>
+                                    <input name="answer3" id="2" type="radio" class="questions-list__answer">
+                                    <label for="2">Скорее Да, чем нет</label>
+                                </p>
+                                <p>
+                                    <input name="answer3" id="3" type="radio" class="questions-list__answer">
+                                    <label for="3">Скорее Нет, чем Да</label>
+                                </p>
+                                <p>
+                                    <input name="answer3" id="4" type="radio" class="questions-list__answer">
+                                    <label for="4">Нет</label>
+                                </p>
                             </form>
                         </li>
-                        <li class="questions-list__item">
-                            <form action="#">
-                                <h3>Упорство и настойчивость в достижении целей</h3>
-                                <p><input type="radio">Да</p>
-                                <p><input type="radio">Скорее Да, чем нет</p>
-                                <p><input type="radio">Скорее Нет, чем Да</p>
-                                <p><input type="radio">Нет</p>
-                            </form>
-                        </li> -->
                     </ul>
+                    
                     <div class="test-content__icons">
                         <button class="test-content__like" type="button">
                             <span class="visually-hidden">In my heart</span>
                         </button>
                         <a href="#" class="test-content__close"></a>
                     </div>
+                    <button class="swiper-button-next hidden"></button>
+                    <button class="swiper-button-prev hidden"></button>
+                    <button class="test-content__forms-submit-btn hidden">Результат</button>
                 </div>
             </div>
         </section>
     </div>
+
+<script src="js/swiper.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

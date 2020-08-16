@@ -44,6 +44,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 10;
 }
 
 .test-content__like {
@@ -55,7 +56,7 @@
     cursor: pointer;
 
     &.pressed {
-        // здесь будет темное сердечко
+        background: url("../img/pressedLikeIcon.svg") no-repeat center center;
     }
 
     & .visually-hidden {
@@ -86,5 +87,61 @@
 
     & .visually-hidden {
         visibility: hidden;
+    }
+}
+
+.swiper-button-next {
+    width: 80px;
+    height: 80px;
+    padding: 0;
+    border: 0;
+    background: none;
+
+    &:after {
+        content: '';
+        width: 80px;
+        height: 80px;
+        background: url('../img/arrowNext.svg') no-repeat center center;
+    }
+}
+
+.swiper-button-prev {
+    width: 80px;
+    height: 80px;
+    padding: 0;
+    border: 0;
+    background: none;
+
+    &:after {
+        content: '';
+        width: 80px;
+        height: 80px;
+        background: url('../img/arrowPrev.svg') no-repeat center center;
+    }
+}
+
+.test-content__forms-submit-btn {
+    position: absolute;
+    left: 40%;
+    bottom: 10px;
+    width: 360px;
+    height: 80px;
+    background: @red;
+    border: 0;
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+    line-height: 35px;
+    color: @white;
+    text-decoration: none;
+    padding: 22px 0;
+    transition: color .1s linear;
+
+    &:hover {
+        color: @black;
+    }
+
+    &:active {
+        background: darken(@red, 5%);
     }
 }
