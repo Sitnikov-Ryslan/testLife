@@ -1,17 +1,17 @@
 // Swiper
 
-    let mySwiper = new Swiper('.swiper-container', {
-        
-        speed: 400,
-        spaceBetween: 0,
-        slidesPerView: 1,
-        autoHeight: true,
+let mySwiper = new Swiper('.swiper-container', {
     
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          },
-    })
+    speed: 400,
+    spaceBetween: 0,
+    slidesPerView: 1,
+    autoHeight: true,
+
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+        },
+})
 
 // Like press
 const like = document.querySelector('.test-content__like');
@@ -74,17 +74,40 @@ const forms = document.querySelectorAll('.question');
 const answers = document.querySelectorAll('.questions-list__answer');
 const resultTestBtn = document.querySelector('.test-content__forms-submit-btn');
 
+let foundCheckedAnswers = function() {
+    let checkedAnswers = document.querySelectorAll('input[type=radio]:checked');
+    
+    if (checkedAnswers.length === forms.length) {
+        resultTestBtn.classList.remove('hidden');
+    } else {
+        resultTestBtn.classList.add('hidden');
+    }    
+}
+
 answers.forEach(function(elem) {
-    elem.addEventListener('change', function() {
-        let checkedAnswers = document.querySelectorAll('input[type=radio]:checked');
-        
-        if (checkedAnswers.length === forms.length) {
-            resultTestBtn.classList.remove('hidden');
-        } else {
-            resultTestBtn.classList.add('hidden');
-        }    
-    })
+    elem.addEventListener('change', foundCheckedAnswers)
 })
 
-// Send all forms
+// Show result of test
 
+const resultPage = document.querySelector('.test-content__result');
+
+let showResultTest = function(event) {
+    event.preventDefault();
+    resultPage.classList.remove('hidden');
+    questionsList.classList.add('hidden');
+    nextQuestBtn.classList.add('hidden');
+    prevQuestBtn.classList.add('hidden');
+    counterQuestions.classList.add('hidden');
+
+    nextQuestBtn.removeEventListener('click', findActiveQuest);
+    prevQuestBtn.removeEventListener('click', findActiveQuest);
+
+    answers.forEach(function(elem) {
+        elem.removeEventListener('change', foundCheckedAnswers)
+    })
+
+    resultTestBtn.classList.add('hidden');
+}
+
+resultTestBtn.addEventListener('click', showResultTest);
