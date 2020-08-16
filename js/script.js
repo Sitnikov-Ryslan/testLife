@@ -46,7 +46,7 @@ window.addEventListener('scroll', fixedHeader);
 
 // Show modal
 
-regBtn.addEventListener('click', (evt) => {
+regBtn.addEventListener('click', function(evt) {
     evt.preventDefault();
     body.classList.add('no-scroll');
     modal.classList.add('show');
@@ -69,8 +69,8 @@ regBtn.addEventListener('click', (evt) => {
 
 // Toggle hearts
 
-likes.forEach(elem => {
-    elem.addEventListener('click', () => {
+likes.forEach(function(elem) {
+    elem.addEventListener('click', function() {
         elem.classList.toggle('pressed');
     })
 })

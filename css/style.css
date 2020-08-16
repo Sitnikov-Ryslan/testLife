@@ -302,14 +302,14 @@ h6 {
   float: right;
   width: 20px;
   height: 18px;
-  margin-left: 8px;
+  margin: 0 0 0 8px;
+  padding: 0;
   border: 0;
-  background: url('../img/heart.svg');
+  background: url('../img/heart.svg') no-repeat center center;
   cursor: pointer;
-  outline: 0;
 }
 .test-preview__btn.pressed {
-  background: url("../img/heartDark.svg");
+  background: url("../img/heartDark.svg") no-repeat center center;
 }
 .footer {
   width: 100%;
