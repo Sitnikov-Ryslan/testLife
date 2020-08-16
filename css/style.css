@@ -85,9 +85,6 @@ h6 {
 .header__user:hover:after {
   transform: scale(1.2);
 }
-.header__user .hidden {
-  visibility: hidden;
-}
 .header__user:after {
   position: absolute;
   top: 25%;
@@ -172,7 +169,7 @@ h6 {
 }
 .tests {
   width: 100%;
-  height: 2448px;
+  height: auto;
   background: #fff;
   padding-top: 49px;
   padding-bottom: 92px;
@@ -427,6 +424,12 @@ h6 {
 .registration__input:focus + .registration__label {
   transform: scale(0);
 }
+.registration__input.filled {
+  border-radius: 50px;
+}
+.registration__input.filled + .registration__label {
+  transform: scale(0);
+}
 .registration__label {
   position: absolute;
   font-family: 'Roboto', sans-serif;
@@ -443,7 +446,7 @@ h6 {
 .registration__label.pass-label {
   top: 250px;
 }
-.registration__account {
+.registration__submit {
   width: 100%;
   height: 70px;
   background: #FF7575;
@@ -457,11 +460,10 @@ h6 {
   margin-bottom: 23px;
   cursor: pointer;
 }
-.registration__account:hover {
+.registration__submit:hover {
   background: #ff5b5b;
 }
 .registration__login {
-  display: block;
   width: 100%;
   height: 70px;
   background: #c4c4c4;
@@ -473,9 +475,7 @@ h6 {
   line-height: 28px;
   color: #000;
   margin-bottom: 23px;
-  text-decoration: none;
-  text-align: center;
-  padding-top: 22px;
+  cursor: pointer;
 }
 .registration__login:hover {
   background: #b7b7b7;
@@ -492,4 +492,103 @@ h6 {
   height: 50px;
   border-radius: 50%;
   background: #c4c4c4;
+}
+.authorization {
+  height: 520px;
+  width: 100%;
+  background: #fff;
+  padding: 51px 42px 47px;
+}
+.authorization__input {
+  width: 100%;
+  height: 70px;
+  background: #f1f1f1;
+  border: 3px solid #000;
+  padding-left: 34px;
+  margin-bottom: 23px;
+  font-size: 18px;
+  line-height: 21px;
+  font-family: 'Roboto', sans-serif;
+  outline: 0;
+}
+.authorization__input:focus {
+  border-radius: 50px;
+}
+.authorization__input:focus + .authorization__label {
+  transform: scale(0);
+}
+.authorization__input.filled {
+  border-radius: 50px;
+}
+.authorization__input.filled + .authorization__label {
+  transform: scale(0);
+}
+.authorization__label {
+  position: absolute;
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #000;
+  left: 77px;
+  transition: transform 0.2s linear;
+}
+.authorization__label.email-label {
+  top: 155px;
+}
+.authorization__label.pass-label {
+  top: 250px;
+}
+.authorization__submit {
+  width: 100%;
+  height: 70px;
+  background: #c4c4c4;
+  border: 0;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000;
+  margin-bottom: 23px;
+  cursor: pointer;
+}
+.authorization__submit:hover {
+  background: #b7b7b7;
+}
+.authorization__account {
+  width: 100%;
+  height: 70px;
+  background: #FF7575;
+  border: 0;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000;
+  margin-bottom: 23px;
+  cursor: pointer;
+}
+.authorization__account:hover {
+  background: #ff5b5b;
+}
+.authorization__social {
+  width: 123px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+.authorization__link {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #c4c4c4;
+}
+.hidden {
+  display: none;
+}
+.visually-hidden {
+  visibility: hidden;
 }

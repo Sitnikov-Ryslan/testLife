@@ -1,13 +1,13 @@
 // main: ../style.less
 
-.registration {
+.authorization {
     height: 520px;
     width: 100%;
     background: @white;
     padding: 51px 42px 47px;
 }
 
-.registration__input {
+.authorization__input {
     width: 100%;
     height: 70px;
     background: #f1f1f1;
@@ -22,7 +22,7 @@
     &:focus {
         border-radius: 50px;
 
-        & + .registration__label {
+        & + .authorization__label {
             transform: scale(0);
         }
     }
@@ -30,13 +30,13 @@
     &.filled {
         border-radius: 50px;
 
-        & + .registration__label {
+        & + .authorization__label {
             transform: scale(0);
         }
     }
 }
 
-.registration__label {
+.authorization__label {
     position: absolute;
 	font-family: 'Roboto', sans-serif;
     font-weight: normal;
@@ -55,26 +55,7 @@
     }
 }
 
-.registration__submit {
-    width: 100%;
-    height: 70px;
-    background: @red;
-    border: 0;
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 28px;
-    color: @black;
-    margin-bottom: 23px;
-    cursor: pointer;
-
-    &:hover {
-        background: darken(@red, 5%);
-    }
-}
-
-.registration__login {
+.authorization__submit {
     width: 100%;
     height: 70px;
     background: @gray-light;
@@ -93,7 +74,26 @@
     }
 }
 
-.registration__social {
+.authorization__account {
+    width: 100%;
+    height: 70px;
+    background: @red;
+    border: 0;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: @black;
+    margin-bottom: 23px;
+    cursor: pointer;
+
+    &:hover {
+        background: darken(@red, 5%);
+    }
+}
+
+.authorization__social {
     width: 123px;
     height: 50px;
     display: flex;
@@ -101,7 +101,7 @@
     margin: 0 auto;
 }
 
-.registration__link {
+.authorization__link {
     width: 50px;
     height: 50px;
     border-radius: 50%;
