@@ -108,23 +108,42 @@ beginBtn.addEventListener('click', testBegin);
 
 // Show resultTestBtn
 
-const forms = document.querySelectorAll('.question');
+
+const fieldsets = document.querySelectorAll('.question');
 const answers = document.querySelectorAll('.questions-list__answer');
 const resultTestBtn = document.querySelector('.test-content__forms-submit-btn');
 
 let foundCheckedAnswers = function() {
     let checkedAnswers = document.querySelectorAll('input[type=radio]:checked');
     
-    if (checkedAnswers.length === forms.length) {
+    if (checkedAnswers.length === fieldsets.length) {
         resultTestBtn.classList.remove('hidden');
     } else {
         resultTestBtn.classList.add('hidden');
     }    
 }
 
+// Style for label
+let checkAnswerLabel = function(label) {
+    let par = label.closest('.question');
+    let radios = par.querySelectorAll('input[type=radio]');
+    
+    for (let radio of radios) {
+        if (!radio.checked) {
+            radio.parentNode.classList.remove('checked');
+        }
+    }
+}
+
 answers.forEach(function(elem) {
-    elem.addEventListener('change', foundCheckedAnswers)
+    elem.addEventListener('change', function() {
+        foundCheckedAnswers();
+        
+        elem.parentNode.classList.add('checked');
+        checkAnswerLabel(elem.parentNode);
+    })
 })
+
 
 // Show result of test
 
@@ -149,3 +168,4 @@ let showResultTest = function(event) {
 }
 
 resultTestBtn.addEventListener('click', showResultTest);
+
