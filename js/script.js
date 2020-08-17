@@ -17,6 +17,27 @@ swipers.forEach(function(elem) {
     })
 })
 
+// Fetch 
+
+const forms = document.querySelectorAll('form');
+
+forms.forEach(function(form) {
+    form.addEventListener('submit', {
+        async function(e) {
+            e.preventDefault();
+        
+            let response = await fetch(URL, {
+              method: 'POST',
+              body: new FormData(form)
+            });
+        
+            let result = await response.json();
+        
+            alert(result.message);
+          }
+    })
+})
+
 // Fixed Header
 
 const header = document.querySelector('.header');
@@ -97,10 +118,39 @@ loginToggleBtn.addEventListener('click', function(evt) {
     modalTitle.textContent = 'Авторизация';
 });
 
+// Validate passwords
+
+let validatePasswords = function(elem) {
+    let form = elem.parentNode;
+    let passwords = form.querySelectorAll('input[type=password]');
+    let submitBtn = form.querySelector('button[type=submit]');
+    let errorMsg = form.querySelector('div');
+
+    if (passwords[0].value !== "" && passwords[1].value !== "") {
+        if (passwords[0].value == passwords[1].value) {
+            submitBtn.disabled = false;
+            errorMsg.classList.add('hidden');
+        } else {
+            submitBtn.disabled = true;
+            errorMsg.classList.remove('hidden');
+        }
+    } 
+}
+
 // Filled forms inputs
 
+const loginNameInput = document.querySelector('.authorization__input_name');
 const loginMailInput = document.querySelector('.authorization__input_email');
 const loginPassInput = document.querySelector('.authorization__input_pass');
+const loginPassRepeatInput = document.querySelector('.authorization__input_pass-repeat');
+
+loginNameInput.addEventListener('change', function() {
+	if (loginNameInput.value !== '') {
+        loginNameInput.classList.add('filled');
+	} else {
+		loginNameInput.classList.remove('filled');
+	};
+});
 
 loginMailInput.addEventListener('change', function() {
 	if (loginMailInput.value !== '') {
@@ -112,14 +162,34 @@ loginMailInput.addEventListener('change', function() {
 
 loginPassInput.addEventListener('change', function() {
 	if (loginPassInput.value !== '') {
-	loginPassInput.classList.add('filled');
+    loginPassInput.classList.add('filled');
+    validatePasswords(loginPassInput);
 	} else {
 		loginPassInput.classList.remove('filled');
 	};
 });
 
+loginPassRepeatInput.addEventListener('change', function() {
+	if (loginPassRepeatInput.value !== '') {
+    loginPassRepeatInput.classList.add('filled');
+    validatePasswords(loginPassRepeatInput);
+	} else {
+		loginPassRepeatInput.classList.remove('filled');
+	};
+});
+
+const accountNameInput = document.querySelector('.registration__input_name');
 const accountMailInput = document.querySelector('.registration__input_email');
 const accountPassInput = document.querySelector('.registration__input_pass');
+const accountPassRepeatInput = document.querySelector('.registration__input_pass-repeat');
+
+accountNameInput.addEventListener('change', function() {
+	if (accountNameInput.value !== '') {
+        accountNameInput.classList.add('filled');
+	} else {
+		accountNameInput.classList.remove('filled');
+	};
+});
 
 accountMailInput.addEventListener('change', function() {
 	if (accountMailInput.value !== '') {
@@ -131,8 +201,18 @@ accountMailInput.addEventListener('change', function() {
 
 accountPassInput.addEventListener('change', function() {
 	if (accountPassInput.value !== '') {
-	accountPassInput.classList.add('filled');
+    accountPassInput.classList.add('filled');
+    validatePasswords(accountPassInput);
 	} else {
 		accountPassInput.classList.remove('filled');
+	};
+});
+
+accountPassRepeatInput.addEventListener('change', function() {
+	if (accountPassRepeatInput.value !== '') {
+    accountPassRepeatInput.classList.add('filled');
+    validatePasswords(accountPassRepeatInput);
+	} else {
+		accountPassRepeatInput.classList.remove('filled');
 	};
 });

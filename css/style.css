@@ -139,9 +139,6 @@ h6 {
   height: 200px;
   background: #777;
 }
-.minor-pages.hidden {
-  display: none;
-}
 .minor-pages__nav {
   display: flex;
   justify-content: space-between;
@@ -195,6 +192,9 @@ h6 {
   margin-bottom: 55px;
   list-style: none;
   position: relative;
+}
+.tests__group:last-child {
+  margin-bottom: 0;
 }
 .tests__subtitle {
   width: 360px;
@@ -368,7 +368,7 @@ h6 {
 .modal__window {
   display: block;
   width: 555px;
-  height: 600px;
+  height: auto;
   background: #fff;
   position: relative;
   margin: auto;
@@ -401,10 +401,10 @@ h6 {
   transform: rotate(90deg);
 }
 .registration {
-  height: 520px;
+  height: 100%;
   width: 100%;
   background: #fff;
-  padding: 51px 42px 47px;
+  padding: 25px 42px 47px;
 }
 .registration__input {
   width: 100%;
@@ -440,11 +440,28 @@ h6 {
   left: 77px;
   transition: transform 0.2s linear;
 }
+.registration__label.name-label {
+  top: 131px;
+}
 .registration__label.email-label {
-  top: 155px;
+  top: 223px;
 }
 .registration__label.pass-label {
-  top: 250px;
+  top: 317px;
+}
+.registration__label.pass-repeat-label {
+  top: 410px;
+}
+.registration__error-msg {
+  display: block;
+  width: 471px;
+  height: 50px;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 20px;
+  font-weight: bold;
+  border: 2px solid #FF7575;
+  margin-bottom: 23px;
 }
 .registration__submit {
   width: 100%;
@@ -463,6 +480,10 @@ h6 {
 .registration__submit:hover {
   background: #ff5b5b;
 }
+.registration__submit:disabled {
+  background: #ffc2c2;
+  color: #262626;
+}
 .registration__login {
   width: 100%;
   height: 70px;
@@ -480,24 +501,19 @@ h6 {
 .registration__login:hover {
   background: #b7b7b7;
 }
-.registration__social {
-  width: 123px;
-  height: 50px;
-  display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-}
 .registration__link {
+  display: block;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   background: #c4c4c4;
+  margin: 0 auto;
 }
 .authorization {
-  height: 520px;
+  height: 100%;
   width: 100%;
   background: #fff;
-  padding: 51px 42px 47px;
+  padding: 25px 42px 47px;
 }
 .authorization__input {
   width: 100%;
@@ -533,11 +549,28 @@ h6 {
   left: 77px;
   transition: transform 0.2s linear;
 }
+.authorization__label.name-label {
+  top: 131px;
+}
 .authorization__label.email-label {
-  top: 155px;
+  top: 223px;
 }
 .authorization__label.pass-label {
-  top: 250px;
+  top: 317px;
+}
+.authorization__label.pass-repeat-label {
+  top: 410px;
+}
+.authorization__error-msg {
+  display: block;
+  width: 471px;
+  height: 50px;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 20px;
+  font-weight: bold;
+  border: 2px solid #FF7575;
+  margin-bottom: 23px;
 }
 .authorization__submit {
   width: 100%;
@@ -556,6 +589,10 @@ h6 {
 .authorization__submit:hover {
   background: #b7b7b7;
 }
+.authorization__submit:disabled {
+  background: #dedede;
+  color: #262626;
+}
 .authorization__account {
   width: 100%;
   height: 70px;
@@ -573,18 +610,13 @@ h6 {
 .authorization__account:hover {
   background: #ff5b5b;
 }
-.authorization__social {
-  width: 123px;
-  height: 50px;
-  display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-}
 .authorization__link {
+  display: block;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   background: #c4c4c4;
+  margin: 0 auto;
 }
 .hidden {
   display: none;
