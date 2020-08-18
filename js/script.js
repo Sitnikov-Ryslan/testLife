@@ -25,15 +25,16 @@ forms.forEach(function(form) {
     form.addEventListener('submit', {
         async function(e) {
             e.preventDefault();
-        
-            let response = await fetch(URL, {
+            let URL = form.action;
+
+            let response = fetch(URL, {
               method: 'POST',
               body: new FormData(form)
-            });
+            })
+                .then(response.json())
+                .catch(error => console.log(error))
         
-            let result = await response.json();
-        
-            alert(result.message);
+            
           }
     })
 })
