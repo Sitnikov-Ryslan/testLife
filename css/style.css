@@ -282,6 +282,7 @@ p {
   width: 80px;
   height: 80px;
   padding: 0;
+  font-size: 0;
   border: 0;
   background: none;
 }
@@ -294,6 +295,7 @@ p {
 .swiper-button-prev {
   width: 80px;
   height: 80px;
+  font-size: 0;
   padding: 0;
   border: 0;
   background: none;
@@ -355,6 +357,8 @@ p {
 }
 .question {
   border: 0;
+  margin: 0;
+  padding: 0;
 }
 .question label {
   display: inline-flex;
@@ -382,9 +386,6 @@ p {
   height: 25px;
   border-radius: 50%;
   margin: 0;
-}
-.questions-list__answer:checked + label:before {
-  background: #565656;
 }
 .hidden {
   display: none;

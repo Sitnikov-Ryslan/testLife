@@ -21,12 +21,7 @@
                         <a href="#" class="nav__link">Мини-игры</a>
                     </nav>
                 </div>
-                <!-- тут будет ссылка на личный кабинет -->
-                <form action="../MainPage/index.html">
-                    <button class="header__user">
-                        <span class="visually-hidden">Вход пользователя</span>
-                    </button>
-                </form>
+                <a class="header__user"></a><!-- Ссылка на личный кабинет -->
             </div>
         </header>
         
@@ -65,96 +60,97 @@
                         </button>
                     </div>
                     
-                    <form name="testAnswers" class="questions-list swiper-wrapper hidden">
+                    <form name="testAnswers" id="test" method="POST" class="questions-list swiper-wrapper hidden">
                         <li class="questions-list__item swiper-slide">
-                            <fieldset form="testAnswers" class="question">
+                            <fieldset form="testAnswers" class="question" data-question="question1">
                                 <h3>Упорство и настойчивость в достижении целей</h3>
                                 <p>
                                     <label>
-                                        <input name="answer1" type="radio" class="questions-list__answer">
+                                        <input name="answer1" type="radio" class="questions-list__answer" data-answer="1">
                                         Да
                                     </label>
                                 </p>
                                 <p>
                                     <label>
-                                        <input name="answer1" type="radio" class="questions-list__answer">
+                                        <input name="answer1" type="radio" class="questions-list__answer" data-answer="2">
                                         Скорее Да, чем нет
                                     </label>
                                 </p>
                                 <p>
                                     <label>
-                                        <input name="answer1" type="radio" class="questions-list__answer">
+                                        <input name="answer1" type="radio" class="questions-list__answer" data-answer="3">
                                         Скорее Нет, чем Да
                                     </label>
                                 </p>
                                 <p>
                                     <label>
-                                        <input name="answer1" type="radio" class="questions-list__answer">
+                                        <input name="answer1" type="radio" class="questions-list__answer" data-answer="4">
                                         Нет
                                     </label>
                                 </p>
                             </fieldset>
                         </li>
                         <li class="questions-list__item swiper-slide">
-                            <fieldset form="testAnswers" class="question">
+                            <fieldset form="testAnswers" class="question" data-question="question2">
                                 <h3>Упорство в достижении целей</h3>
                                 <p>
                                     <label>
-                                        <input name="answer2" type="radio" class="questions-list__answer">
+                                        <input name="answer2" type="radio" class="questions-list__answer" data-answer="1">
                                         Да
                                     </label>
                                 </p>
                                 <p>
                                     <label>
-                                        <input name="answer2" type="radio" class="questions-list__answer">
+                                        <input name="answer2" type="radio" class="questions-list__answer" data-answer="2">
                                         Скорее Да, чем нет
                                     </label>
                                 </p>
                                 <p>
                                     <label>
-                                        <input name="answer2" type="radio" class="questions-list__answer">
+                                        <input name="answer2" type="radio" class="questions-list__answer" data-answer="3">
                                         Скорее Нет, чем Да
                                     </label>
                                 </p>
                                 <p>
                                     <label>
-                                        <input name="answer2" type="radio" class="questions-list__answer">
+                                        <input name="answer2" type="radio" class="questions-list__answer" data-answer="4">
                                         Нет
                                     </label>
                                 </p>
                             </fieldset>
                         </li>
                         <li class="questions-list__item swiper-slide">
-                            <fieldset form="testAnswers" class="question">
+                            <fieldset form="testAnswers" class="question" data-question="question3">
                                 <h3>Настойчивость в достижении целей</h3>
                                 <p>
                                     <label>
-                                        <input name="answer3" type="radio" class="questions-list__answer">
+                                        <input name="answer3" type="radio" class="questions-list__answer" data-answer="1">
                                         Да
                                     </label>
                                 </p>
                                 <p>
                                     <label>
-                                        <input name="answer3" type="radio" class="questions-list__answer">
+                                        <input name="answer3" type="radio" class="questions-list__answer" data-answer="2">
                                         Скорее Да, чем нет
                                     </label>
                                 </p>
                                 <p>
                                     <label>
-                                        <input name="answer3" type="radio" class="questions-list__answer">
+                                        <input name="answer3" type="radio" class="questions-list__answer" data-answer="3">
                                         Скорее Нет, чем Да
                                     </label>
                                 </p>
                                 <p>
                                     <label>
-                                        <input name="answer3" type="radio" class="questions-list__answer">
+                                        <input name="answer3" type="radio" class="questions-list__answer" data-answer="4">
                                         Нет
                                     </label>
                                 </p>
                             </fieldset>
                         </li>
                     </form>
-                    
+                    <button class="test-content__forms-submit-btn hidden" type="submit" form="test">Результат</button>
+
                     <div class="test-content__result hidden">
                         <p class="test-content__result-text">
                             Поздравляем, вы прошли тест!!! Здесь мог бы быть ваш результат, удачи!
@@ -168,11 +164,10 @@
                         <button class="test-content__like" type="button">
                             <span class="visually-hidden">In my heart</span>
                         </button>
-                        <a href="#" class="test-content__close"></a>
+                        <a href="#" class="test-content__close"></a><!-- Ссылка на предыдущую страницу -->
                     </div>
-                    <button class="swiper-button-next hidden"></button>
-                    <button class="swiper-button-prev hidden"></button>
-                    <button class="test-content__forms-submit-btn hidden">Результат</button>
+                    <button class="swiper-button-next hidden" type="button">Next</button>
+                    <button class="swiper-button-prev hidden" type="button">Prev</button>
                 </div>
             </div>
         </section>

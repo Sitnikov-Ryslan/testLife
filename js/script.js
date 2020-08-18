@@ -1,40 +1,86 @@
+const testForm = document.querySelector('.questions-list');
+const fieldsets = document.querySelectorAll('.question');
+const answers = document.querySelectorAll('.questions-list__answer');
+const resultTestBtn = document.querySelector('.test-content__forms-submit-btn');
+const tesultText = document.querySelector('.test-content__result-text');
+
 // Fetch 
 
-// const requestURL = '';
+// Отправка решенного теста для получения результата
+let sendTest = function(e, form) {
+    e.preventDefault();
 
-// function sendRequest(method, url, body = null) {
-//     const headers = {
-//         'Content-Type': "application/json"
-//     }
+    let URL = form.action;
+    let method = form.method;
+    let testArray = [];
+    let formData = new FormData();
+    
+    fieldsets.forEach((fieldset) => {
+        let questionName = fieldset.dataset.question;
+        let answerName = fieldset.querySelector('input[type=radio]:checked').dataset.answer;
+        testArray.push(questionName, answerName);
+    })
 
-//     return fetch(url, {
-//         method: method,
-//         body: JSON.stringify(body),
-//         headers: headers
-//     }).then(response => {
-//         if (response.ok) {
-//             return response.json()
-//         }
-//         return response.json().then(error => {
-//             const e = new Error('Fatal error')
-//             e.data = error
-//             throw e
-//         })
-//     })
-// }
+    formData.append('answers', testArray);
 
-// sendRequest('GET', requestURL)
-//     .then(data => console.log(data))
-//     .catch(err => console.error(err))
+    let response = fetch(URL, {
+        method: method,
+        body: formData
+    })
+        .then(response => {
+            resultText = response.json()
+        })
+        .catch(error => console.log(error))
+}
 
-// const body = {
-//     name: 'Ryslan',
-//     age: 28
-// }
+testForm.addEventListener('submit', (evt) => sendTest(evt, testForm));
 
-// sendRequest('POST', requestURL, body)
-//     .then(data => console.log(data))
-//     .catch(err => console.error(err))
+// По кнопке "продолжить" пользователю должен вылазить вопрос на котором остановился
+const continueBtn = document.querySelector('.test__continue');
+// По кнопке начать заново, тест должен обнулиться и начаться заново
+const startBtn = document.querySelector('.test__start');
+
+let getResponse = function(e, URL) {
+    e.preventDefault();
+
+    let response = fetch(URL, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify()
+    })
+        .then(response => response.json())
+        .catch(error => console.log(error))
+}
+
+continueBtn.addEventListener('click', (evt) => getResponse(evt, 'someURL'));
+startBtn.addEventListener('click', (evt) => getResponse(evt, 'someURL'));
+
+let postResponse = function(URL) {
+    let data = [];
+    
+    fieldsets.forEach((elem) => {
+        let questionName = elem.dataset.question;
+        let reply = elem.querySelector('input[type=radio]:checked');
+        if (reply !== null) {
+            let answerName = reply.dataset.answer;
+            data.push(questionName, answerName);
+        } else {
+        data.push(questionName, 0);
+        }
+    })
+    
+    let response = fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .catch(error => console.log(error))
+}
 
 // Swiper
 
@@ -60,8 +106,6 @@ like.addEventListener('click', function() {
 
 // Test begin
 
-const continueBtn = document.querySelector('.test__continue');
-const startBtn = document.querySelector('.test__start');
 const beginBtn = document.querySelector('.test-content__begin');
 const controlBtns = document.querySelector('.test__control-btns');
 const counterQuestions = document.querySelector('.test__counter-questions');
@@ -108,11 +152,6 @@ beginBtn.addEventListener('click', testBegin);
 
 // Show resultTestBtn
 
-
-const fieldsets = document.querySelectorAll('.question');
-const answers = document.querySelectorAll('.questions-list__answer');
-const resultTestBtn = document.querySelector('.test-content__forms-submit-btn');
-
 let foundCheckedAnswers = function() {
     let checkedAnswers = document.querySelectorAll('input[type=radio]:checked');
     
@@ -124,6 +163,7 @@ let foundCheckedAnswers = function() {
 }
 
 // Style for label
+
 let checkAnswerLabel = function(label) {
     let par = label.closest('.question');
     let radios = par.querySelectorAll('input[type=radio]');
@@ -141,6 +181,8 @@ answers.forEach(function(elem) {
         
         elem.parentNode.classList.add('checked');
         checkAnswerLabel(elem.parentNode);
+
+        postResponse('someURL');
     })
 })
 
@@ -149,8 +191,8 @@ answers.forEach(function(elem) {
 
 const resultPage = document.querySelector('.test-content__result');
 
-let showResultTest = function(event) {
-    event.preventDefault();
+let showResultTest = function() {
+    
     resultPage.classList.remove('hidden');
     questionsList.classList.add('hidden');
     nextQuestBtn.classList.add('hidden');
