@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="page">
+        <header class="header">
+            <div class="container">
+                <div class="header__logo">
+                    <a class="header__main-page-link" href="../MainPage/index.html">test life</a>
+                </div>
+                <div class="center">
+                    <nav class="nav">
+                        <a href="#" class="nav__link">Создать свой тест</a>
+                        <a href="#" class="nav__link">Найти тест</a>
+                        <a href="#" class="nav__link">Мини-игры</a>
+                    </nav>
+                </div>
+                <a class="header__user"></a><!-- Ссылка на личный кабинет -->
+            </div>
+        </header>
+        
+        <section class="test">
+            <div class="test__header">
+                <div class="container">
+                    <h1 class="test__name">Тип вашего темперамента</h1>
+                    <div class="test__control-btns">
+                        <button type="button" class="test__continue">Продолжить</button>
+                        <button type="button" class="test__start">Начать заново</button>
+                    </div>
+                    <div class="test__counter-questions hidden">
+                        Вопрос
+                        <span class="test__actual-question">3</span>
+                        из
+                        <span class="test__total-questions">20</span>
+                    </div>
+                </div>
+            </div>
+            <div class="test-content">
+                <div class="container swiper-container">
+                    <div class="test-content__info">
+                        <p class="test-content__text">Темперамент в одной и той же ситуации проявляется по-разному у каждого индивида,
+                        вне зависимости от его мотивов, целей и содержания, и остается неизменным уже в 
+                        зрелом возрасте. Для выявления ведущего типа темперамента, мы предлагаем вам пройти
+                        наш тест. Он состоит из 20 вопросов, которые описывают индивидуально -
+                        психологические особенности личности. Помните, тут нет «правильных» ответов, 
+                        постарайтесь не задумываться долго над ответом, отмечайте то, что первое пришло
+                        в голову. Внимательно прочитайте все представленные ниже характеристики. 
+                        Если вы полагаете, что какая-то из них относится к вам, отметьте ее галочкой.</p>
+                        <p class="test-content__author">
+                            <cite>Автор теста: GG Team</cite>
+                        </p>
+                        <button class="test-content__begin" type="button">
+                            <span class="visually-hidden">Начать тест</span>
+                        </button>
+                    </div>
+                    
+                    <form name="testAnswers" id="test" method="POST" class="questions-list swiper-wrapper hidden">
+                        <div class="questions-list__item swiper-slide">
+                            <fieldset form="test" class="question" data-question="question1">
+                                <h2>Упорство и настойчивость в достижении целей</h2>
+                                <p>
+                                    <label>
+                                        <input name="answer1" type="radio" class="questions-list__answer" data-answer="1">
+                                        <span>Да</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="answer1" type="radio" class="questions-list__answer" data-answer="2">
+                                        <span>Скорее Да, чем нет</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="answer1" type="radio" class="questions-list__answer" data-answer="3">
+                                        <span>Скорее Нет, чем Да</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="answer1" type="radio" class="questions-list__answer" data-answer="4">
+                                        <span>Нет</span>
+                                    </label>
+                                </p>
+                            </fieldset>
+                        </div>
+                        <div class="questions-list__item swiper-slide">
+                            <fieldset form="test" class="question" data-question="question2">
+                                <h2>Упорство в достижении целей</h2>
+                                <p>
+                                    <label>
+                                        <input name="answer2" type="radio" class="questions-list__answer" data-answer="1">
+                                        <span>Да</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="answer2" type="radio" class="questions-list__answer" data-answer="2">
+                                        <span>Скорее Да, чем нет</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="answer2" type="radio" class="questions-list__answer" data-answer="3">
+                                        <span>Скорее Нет, чем Да</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="answer2" type="radio" class="questions-list__answer" data-answer="4">
+                                        <span>Нет</span>
+                                    </label>
+                                </p>
+                            </fieldset>
+                        </div>>
+                        <div class="questions-list__item swiper-slide">
+                            <fieldset form="test" class="question" data-question="question3">
+                                <h2>Настойчивость в достижении целей</h2>
+                                <p>
+                                    <label>
+                                        <input name="answer3" type="radio" class="questions-list__answer" data-answer="1">
+                                        <span>Да</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="answer3" type="radio" class="questions-list__answer" data-answer="2">
+                                        <span>Скорее Да, чем нет</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="answer3" type="radio" class="questions-list__answer" data-answer="3">
+                                        <span>Скорее Нет, чем Да</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="answer3" type="radio" class="questions-list__answer" data-answer="4">
+                                        <span>Нет</span>
+                                    </label>
+                                </p>
+                            </fieldset>
+                        </div>
+                    </form>
+                    <button class="test-content__forms-submit-btn hidden" type="submit" form="test">Результат</button>
+
+                    <div class="test-content__result hidden">
+                        <p class="test-content__result-text">
+                            Поздравляем, вы прошли тест!!! Здесь мог бы быть ваш результат, удачи!
+                        </p>
+                        <p class="test-content__author">
+                            <cite>Автор теста: GG Team</cite>
+                        </p>
+                    </div>
+
+                    <div class="test-content__icons">
+                        <button class="test-content__like" type="button">
+                            <span class="visually-hidden">In my heart</span>
+                        </button>
+                        <a href="#" class="test-content__close"></a><!-- Ссылка на предыдущую страницу -->
+                    </div>
+                    <button class="swiper-button-next hidden" type="button">Next</button>
+                    <button class="swiper-button-prev hidden" type="button">Prev</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+<script src="js/swiper.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

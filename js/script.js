@@ -7,12 +7,10 @@ const tesultText = document.querySelector('.test-content__result-text');
 // Fetch 
 
 // Отправка решенного теста для получения результата
-let sendTest = function(e, form) {
-    e.preventDefault();
-
+let sendTest = function(form) {
     let URL = form.action;
     let method = form.method;
-    let testArray = [];
+    let testArray = [];/* Это не я креативщик, это бэку так надо:) */
     let formData = new FormData();
     
     fieldsets.forEach((fieldset) => {
@@ -33,16 +31,18 @@ let sendTest = function(e, form) {
         .catch(error => console.log(error))
 }
 
-testForm.addEventListener('submit', (evt) => sendTest(evt, testForm));
+testForm.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    sendTest(testForm)
+});
 
 // По кнопке "продолжить" пользователю должен вылазить вопрос на котором остановился
 const continueBtn = document.querySelector('.test__continue');
-// По кнопке начать заново, тест должен обнулиться и начаться заново
+// По кнопке "начать заново", тест должен обнулиться и начаться заново
 const startBtn = document.querySelector('.test__start');
 
-let getResponse = function(e, URL) {
-    e.preventDefault();
-
+let getResponse = function(URL) {
+    
     let response = fetch(URL, {
         method: 'GET',
         headers: {
@@ -54,8 +54,14 @@ let getResponse = function(e, URL) {
         .catch(error => console.log(error))
 }
 
-continueBtn.addEventListener('click', (evt) => getResponse(evt, 'someURL'));
-startBtn.addEventListener('click', (evt) => getResponse(evt, 'someURL'));
+continueBtn.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    getResponse('someURL')
+});
+startBtn.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    getResponse('someURL');
+});
 
 let postResponse = function(URL) {
     let data = [];
@@ -124,8 +130,6 @@ let findActiveQuest = function() {
         if (questList[i].classList.contains('swiper-slide-active')) {
             actualQuest.textContent = i + 1;
         }
-        // почему то если сюда добавить ветку else то срабатывает и основная и else
-        // else {actualQuest.textContent = totalQuest.textContent}
     }
 }
 
@@ -176,9 +180,9 @@ let checkAnswerLabel = function(label) {
 }
 
 answers.forEach(function(elem) {
-    elem.addEventListener('change', function() {
-        foundCheckedAnswers();
-        
+    elem.addEventListener('change', foundCheckedAnswers);
+
+    elem.addEventListener('change', function() {  
         elem.parentNode.classList.add('checked');
         checkAnswerLabel(elem.parentNode);
 
@@ -203,7 +207,7 @@ let showResultTest = function() {
     prevQuestBtn.removeEventListener('click', findActiveQuest);
 
     answers.forEach(function(elem) {
-        elem.removeEventListener('change', foundCheckedAnswers)
+        elem.removeEventListener('change', foundCheckedAnswers);
     })
 
     resultTestBtn.classList.add('hidden');
