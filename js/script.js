@@ -19,25 +19,33 @@ swipers.forEach(function(elem) {
 
 // Fetch 
 
-const forms = document.querySelectorAll('form');
+let regForm = document.querySelector('.registration');
+let autForm = document.querySelector('.authorization');
 
-forms.forEach(function(form) {
-    form.addEventListener('submit', {
-        async function(e) {
-            e.preventDefault();
-            let URL = form.action;
+let sendRequest = function(e, form) {
+    e.preventDefault();
 
-            let response = fetch(URL, {
-              method: 'POST',
-              body: new FormData(form)
-            })
-                .then(response.json())
-                .catch(error => console.log(error))
-        
-            
-          }
+    let URL = form.action;
+    let method = form.method;
+
+    let response = fetch(URL, {
+        method: method,
+        body: new FormData(form)
     })
-})
+        .then(response => {
+            if (response.status = 201) {
+                location.assign = 'http://l91287uv.beget.tech/home';
+                }
+                if (response.status = 204) {
+                    location.assign = 'http://l91287uv.beget.tech/home';
+                }
+            }  
+        )
+        .catch(error => console.log(error));
+}
+
+regForm.addEventListener('submit', (evt) => sendRequest(evt, regForm));
+autForm.addEventListener('submit', (evt) => sendRequest(evt, autForm));
 
 // Fixed Header
 
@@ -91,9 +99,37 @@ regBtn.addEventListener('click', function(evt) {
 
 // Toggle hearts
 
+let postData = function(URL, item, amount) {
+        let data = {};
+        data = item.closest('.test-preview').dataset.test_id;
+        
+        let response = fetch(URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            mode: 'cors',
+            body: JSON.stringify(
+                {'test_id': data})
+        })
+            .then(response => {
+                amount = response.json()
+            })
+            .catch(error => console.log(error))
+}
+
 likes.forEach(function(elem) {
-    elem.addEventListener('click', function() {
+    elem.addEventListener('click', (event) => {
+        event.preventDefault();
         elem.classList.toggle('pressed');
+        let press = elem.classList.contains('pressed');
+        let quantity = elem.closest('.test-preview__quantity');
+
+        if (press) {
+            postData('http://l91287uv.beget.tech/like/add', elem, quantity);
+        } else {
+            postData('http://l91287uv.beget.tech/like/delete', elem, quantity);
+        }
     })
 })
 
