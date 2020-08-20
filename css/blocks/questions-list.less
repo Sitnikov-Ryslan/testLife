@@ -38,57 +38,35 @@
     & label {
             display: inline-flex;
             align-items: center;
-
-        // &:before {
-        //     display: inline-block;
-        //     content: "";
-        //     width: 25px;
-        //     height: 25px;
-        //     margin-right: 19px;
-        //     border-radius: 50%;
-        //     background: @gray-light;
-        // }
-
-        // &:hover:before {
-        //     background: @gray;
-        // }
-
-        // &.checked {
-        //     &:before {
-        //         background: @gray;
-        //     }
-        // }
+            cursor: pointer;
     }
 
-    span {
-        display: block;
-        position: relative;
-        
-
-        &:before {
-            display: inline-block;
-            content: "";
-            width: 25px;
-            height: 25px;
-            margin-right: 19px;
-            border-radius: 50%;
-            background: @gray-light;
-        }
-
-        input:checked ~ & {
-            &:before {
-                background: @gray; 
-            }
-        }
-    }
+    
 }
 
 .questions-list__answer {
     display: none;
-    // opacity: 0;
-    // position: absolute;
-    // width: 25px;
-    // height: 25px;
-    // border-radius: 50%;
-    // margin: 0;
+}
+
+.questions-list__text {
+    display: block;
+    position: relative;
+    padding: 0 0 0 44px;
+
+    &:before {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        content: "";
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: @gray-light;
+        transform: translateY(-50%);
+    }
+
+    .questions-list__answer:checked ~ &:before {
+            background: @gray; 
+        }
 }

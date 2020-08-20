@@ -10,7 +10,7 @@ const tesultText = document.querySelector('.test-content__result-text');
 let sendTest = function(form) {
     let URL = form.action;
     let method = form.method;
-    let testArray = [];/* Это не я креативщик, это бэку так надо:) */
+    let testArray = [];
     let formData = new FormData();
     
     fieldsets.forEach((fieldset) => {
@@ -104,10 +104,34 @@ let mySwiper = new Swiper('.swiper-container', {
 })
 
 // Like press
+
 const like = document.querySelector('.test-content__like');
 
-like.addEventListener('click', function() {
+let postData = function(URL) {
+    
+    let response = fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        mode: 'cors',
+        body: JSON.stringify()
+    })
+        .then(response => response.json())
+        .catch(error => console.log(error))
+}
+
+like.addEventListener('click', function(evt) {
+    evt.preventDefault();
     like.classList.toggle('pressed');
+
+    let press = like.classList.contains('pressed');
+   
+    if (press) {
+        postData('http://l91287uv.beget.tech/like/add');
+    } else {
+        postData('http://l91287uv.beget.tech/like/delete');
+    }
 });
 
 // Test begin
@@ -166,30 +190,16 @@ let foundCheckedAnswers = function() {
     }    
 }
 
-// Style for label
-
-let checkAnswerLabel = function(label) {
-    let par = label.closest('.question');
-    let radios = par.querySelectorAll('input[type=radio]');
-    
-    for (let radio of radios) {
-        if (!radio.checked) {
-            radio.parentNode.classList.remove('checked');
-        }
-    }
-}
+// When ckeck answer
 
 answers.forEach(function(elem) {
     elem.addEventListener('change', foundCheckedAnswers);
 
-    elem.addEventListener('change', function() {  
-        elem.parentNode.classList.add('checked');
-        checkAnswerLabel(elem.parentNode);
-
-        postResponse('someURL');
-    })
-})
-
+    elem.addEventListener('change', (evt) => {
+        evt.preventDefault();
+        postResponse('http://l91287uv.beget.tech/result');
+    });
+});
 
 // Show result of test
 
@@ -208,6 +218,7 @@ let showResultTest = function() {
 
     answers.forEach(function(elem) {
         elem.removeEventListener('change', foundCheckedAnswers);
+        elem.removeEventListener('change', postResponse);
     })
 
     resultTestBtn.classList.add('hidden');

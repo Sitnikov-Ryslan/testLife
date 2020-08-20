@@ -363,26 +363,30 @@ p {
 .question label {
   display: inline-flex;
   align-items: center;
-}
-.question span {
-  display: block;
-  position: relative;
-  height: 25px;
-}
-.question span:before {
-  display: inline-block;
-  content: "";
-  width: 25px;
-  height: 25px;
-  margin-right: 19px;
-  border-radius: 50%;
-  background: #c4c4c4;
-}
-input:checked ~ .question span:before {
-  background: #777;
+  cursor: pointer;
 }
 .questions-list__answer {
   display: none;
+}
+.questions-list__text {
+  display: block;
+  position: relative;
+  padding: 0 0 0 44px;
+}
+.questions-list__text:before {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  content: "";
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #c4c4c4;
+  transform: translateY(-50%);
+}
+.questions-list__answer:checked ~ .questions-list__text:before {
+  background: #777;
 }
 .hidden {
   display: none;
