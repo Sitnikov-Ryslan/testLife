@@ -459,11 +459,12 @@
     <footer class="footer">
         <div class="center">
             <div class="footer__inner">
+                <div class="footer__text">&#169; test life, 2020</div>
+                <div class="footer__text">создание и прохождение тестов</div>
                 <div class="footer__content">
-                    <div class="footer__column">бла-бла-бла инфа</div>
-                    <div class="footer__column">бла-бла-бла инфа</div>
+                    <a class="footer__column" href="#">О нас</a>
+                    <a class="footer__column" href="#">О сервисе</a>
                 </div>
-                <div class="footer__text">бла-бла-бла инфа бла-бла-бла инфа бла-бла-бла инфа</div>
             </div>
         </div>
     </footer>
@@ -480,7 +481,7 @@
                 <label class="registration__label pass-label" for="reg-pass">Пароль</label>
                 <input name="userPasswordRepeat" class="registration__input registration__input_pass-repeat" id="reg-pass-repeat" type="password" minlength="4" maxlength="255" required>
                 <label class="registration__label pass-repeat-label" for="reg-pass-repeat">Повторите пароль</label>
-                <div class="registration__error-msg hidden">Ошибка: Пароли не совпадают</div>
+                <div class="registration__error-msg hidden"></div>
                 <button class="registration__submit" type="submit">Регистрация</button>
                 <button class="registration__login" type="button">Авторизация</button>
                 <a class="registration__link" href="#"></a>
@@ -494,11 +495,15 @@
                 <label class="authorization__label pass-label" for="aut-pass">Пароль</label>
                 <input name="userPasswordRepeat" class="authorization__input authorization__input_pass-repeat" id="aut-pass-repeat" type="password" required>
                 <label class="authorization__label pass-repeat-label" for="aut-pass-repeat">Повторите пароль</label>
-                <div class="authorization__error-msg hidden">Ошибка: Пароли не совпадают</div>
+                <div class="authorization__error-msg hidden"></div>
                 <button class="authorization__submit" type="submit">Авторизация</button>
                 <button class="authorization__account" type="button">Регистрация</button>
                 <a class="authorization__link" href="#"></a>
             </form>
+            <div class="modal__error hidden">
+                <span class="modal__message"></span>
+                <button class="modal__error-close" type="button">Close</button>
+            </div>
         </div>
         <button class="modal__close"></button>
     </div>

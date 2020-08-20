@@ -39,9 +39,21 @@ let sendRequest = function(e, form) {
                 if (response.status = 204) {
                     location.assign = 'http://l91287uv.beget.tech/home';
                 }
-            }  
+            }
         )
-        .catch(error => console.log(error));
+        .catch(error => {
+            form.classList.add('hidden');
+            let msgBlock = form.querySelector('.modal__error');
+            msgBlock.classList.remove('hidden');
+            let msg = form.querySelector('.modal__message');
+            msg.textContent = error.message;
+            let closeBtn = form.querySelector('.modal__error-close');
+            closeBtn.addEventListener('click', function(evt) {
+                evt.preventDefault();
+                msgBlock.classList.add('hidden');
+                form.classList.remove('hidden');
+            })
+        });
 }
 
 regForm.addEventListener('submit', (evt) => sendRequest(evt, regForm));
@@ -140,6 +152,7 @@ const loginToggleBtn = document.querySelector('.registration__login');
 const accForm = document.querySelector('.registration');
 const logForm = document.querySelector('.authorization');
 const modalTitle = document.querySelector('.modal__title');
+const modalError = document.querySelectorAll('.modal__error');
 
 accountToggleBtn.addEventListener('click', function(evt) {
 	evt.preventDefault();
@@ -155,6 +168,7 @@ loginToggleBtn.addEventListener('click', function(evt) {
     modalTitle.textContent = 'Авторизация';
 });
 
+
 // Validate passwords
 
 let validatePasswords = function(elem) {
@@ -169,6 +183,7 @@ let validatePasswords = function(elem) {
             errorMsg.classList.add('hidden');
         } else {
             submitBtn.disabled = true;
+            errorMsg.textContent = 'Ошибка: Пароли не совпадают';
             errorMsg.classList.remove('hidden');
         }
     } 
@@ -252,4 +267,41 @@ accountPassRepeatInput.addEventListener('change', function() {
 	} else {
 		accountPassRepeatInput.classList.remove('filled');
 	};
+});
+
+// Email fetch
+
+const forms = document.querySelectorAll('form');
+
+let fetchMail = function(elem, message) {
+    let data = {};
+    data = elem.value;
+    
+    let response = fetch('http://l91287uv.beget.tech/email/exist', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        mode: 'cors',
+        body: JSON.stringify(
+            {'email': data})
+    })
+        .then(response => {
+            response.text();
+            message.classList.add('hidden');
+        })
+        .catch(error => {
+            message.classList.remove('hidden');
+            message.textcontent = error.message;
+        })
+}
+
+forms.forEach(function(form) {
+    let input = form.querySelector('input[type = email]');
+    let msg = form.querySelector('div');
+
+    input.addEventListener('change', (evt) => {
+        evt.preventDefault();
+        fetchMail(input, msg);
+    });
 });
