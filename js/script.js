@@ -33,28 +33,28 @@ let sendRequest = function(e, form) {
         body: new FormData(form)
     })
         .then(response => {
-            if (response.status = 201) {
-                location.assign = 'http://l91287uv.beget.tech/home';
-                }
-                if (response.status = 204) {
+            if (response.ok) {
+                if (response.status === 201 || response.status === 204) {
                     location.assign = 'http://l91287uv.beget.tech/home';
                 }
-            }
-        )
-        .catch(error => {
-            form.classList.add('hidden');
-            let msgBlock = form.querySelector('.modal__error');
-            msgBlock.classList.remove('hidden');
-            let msg = form.querySelector('.modal__message');
-            msg.textContent = error.message;
-            let closeBtn = form.querySelector('.modal__error-close');
-            closeBtn.addEventListener('click', function(evt) {
-                evt.preventDefault();
-                msgBlock.classList.add('hidden');
-                form.classList.remove('hidden');
+            }})
+            .then(error => {
+                console.log(error); /* undefined */
+                
+                // form.classList.add('hidden');
+                // let msgBlock = document.querySelector('.modal__error');
+                // msgBlock.classList.remove('hidden');
+                // let msg = document.querySelector('.modal__message');
+                // msg.textContent = error.message;
+                // let closeBtn = document.querySelector('.modal__error-close');
+                // closeBtn.addEventListener('click', function(evt) {
+                //     evt.preventDefault();
+                //     msgBlock.classList.add('hidden');
+                //     form.classList.remove('hidden');
+                // })
             })
-        });
 }
+
 
 regForm.addEventListener('submit', (evt) => sendRequest(evt, regForm));
 autForm.addEventListener('submit', (evt) => sendRequest(evt, autForm));
@@ -273,7 +273,7 @@ accountPassRepeatInput.addEventListener('change', function() {
 
 const forms = document.querySelectorAll('form');
 
-let fetchMail = function(elem, message) {
+let fetchMail = function(elem, message, block) {
     let data = {};
     data = elem.value;
     
@@ -302,6 +302,21 @@ forms.forEach(function(form) {
 
     input.addEventListener('change', (evt) => {
         evt.preventDefault();
-        fetchMail(input, msg);
+        fetchMail(input, msg, form);
     });
+});
+
+// Footer info
+
+let footerInfoAbout = document.querySelector('.footer__info-about');
+let footerInfoService = document.querySelector('.footer__info-service');
+let footerAbout = document.querySelector('.footer__about');
+let footerService = document.querySelector('.footer__service');
+
+footerAbout.addEventListener('click', () => {
+    footerInfoAbout.classList.toggle('hidden');
+});
+
+footerService.addEventListener('click', () => {
+    footerInfoService.classList.toggle('hidden');
 });

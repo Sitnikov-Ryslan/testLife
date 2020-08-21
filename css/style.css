@@ -339,14 +339,41 @@ h6 {
   justify-content: space-between;
   width: 165px;
   max-height: 80px;
+  position: relative;
 }
-.footer__column {
+.footer__info {
+  position: absolute;
+  top: -119px;
+  left: -90px;
+  width: 350px;
+  height: auto;
+  padding: 10px 15px;
+  background: #c4c4c4;
+  border-radius: 10px;
+  text-align: center;
+}
+.footer__info-service {
+  top: -140px;
+}
+.footer__about,
+.footer__service {
   color: #c4c4c4;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
   line-height: 21px;
   text-decoration: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
 }
-.footer__column:hover {
+.footer__about:hover,
+.footer__service:hover {
   text-decoration: underline;
+}
+.footer__about:focus,
+.footer__service:focus {
+  text-decoration: underline;
+  outline: 0;
 }
 .modal {
   display: none;
@@ -632,7 +659,7 @@ h6 {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #c4c4c4;
+  background: url('../img/vk-icon.svg') no-repeat 45% 50%, #c4c4c4;
   margin: 0 auto;
 }
 .hidden {

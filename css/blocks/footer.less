@@ -31,14 +31,42 @@
     justify-content: space-between;
     width: 165px;
     max-height: 80px;
+    position: relative;
 }
 
-.footer__column {
+.footer__info {
+    position: absolute;
+    top: -119px;
+    left: -90px;
+    width: 350px;
+    height: auto;
+    padding: 10px 15px;
+    background: @gray-light;
+    border-radius: 10px;
+    text-align: center;
+
+    &-service {
+        top: -140px;
+    }
+}
+
+.footer__about,
+.footer__service {
     color: @gray-light;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
     line-height: 21px;
     text-decoration: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
 
     &:hover {
         text-decoration: underline;
+    }
+
+    &:focus {
+        text-decoration: underline;
+        outline: 0;
     }
 }
