@@ -162,39 +162,6 @@ p {
   text-overflow: ellipsis;
   word-wrap: normal;
 }
-.test__control-btns {
-  width: 438px;
-  display: flex;
-  justify-content: space-between;
-}
-.test__continue,
-.test__start {
-  font-family: 'Roboto', sans-serif;
-  font-size: 30px;
-  line-height: 35px;
-  color: #fff;
-  background: transparent;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-  position: relative;
-}
-.test__continue:after,
-.test__start:after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 3px;
-  background: #fff;
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  transition: width 0.2s linear;
-}
-.test__continue:hover:after,
-.test__start:hover:after {
-  width: 100%;
-}
 .test__counter-questions {
   font-size: 30px;
   line-height: 35px;
@@ -231,36 +198,17 @@ p {
 .test-content__author cite {
   font-style: normal;
 }
-.test-content__icons {
-  width: 106px;
-  height: 38px;
+.test-content__close {
   position: absolute;
   top: 38px;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 10;
-}
-.test-content__like {
-  width: 41px;
-  height: 38px;
-  padding: 0;
-  background: url("../img/like-icon.svg") no-repeat center center;
-  border: 0;
-  cursor: pointer;
-}
-.test-content__like.pressed {
-  background: url("../img/pressed-like-icon.svg") no-repeat center center;
-}
-.test-content__like .visually-hidden {
-  visibility: hidden;
-}
-.test-content__close {
+  right: 37px;
   width: 38px;
   height: 38px;
+  padding: 0;
+  border: 0;
   background: url("../img/close-icon.svg") no-repeat center center;
   transition: transform 0.2s linear;
+  z-index: 10;
 }
 .test-content__close:hover {
   transform: rotate(90deg);
@@ -279,6 +227,7 @@ p {
   visibility: hidden;
 }
 .swiper-button-next {
+  top: 327px;
   width: 80px;
   height: 80px;
   padding: 0;
@@ -293,6 +242,7 @@ p {
   background: url('../img/arrow-next.svg') no-repeat center center;
 }
 .swiper-button-prev {
+  top: 327px;
   width: 80px;
   height: 80px;
   font-size: 0;
@@ -333,11 +283,13 @@ p {
   display: flex;
   margin: 0;
   padding: 90px 0 0 0;
+  height: auto;
 }
 .questions-list__item {
   list-style: none;
   margin: 0 auto;
   max-width: 100%;
+  height: auto;
   word-wrap: break-word;
   display: flex;
   justify-content: center;
@@ -359,6 +311,8 @@ p {
   border: 0;
   margin: 0;
   padding: 0;
+  max-width: 65%;
+  height: auto;
 }
 .question label {
   display: inline-flex;

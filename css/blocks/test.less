@@ -30,41 +30,6 @@
     word-wrap: normal;
 }
 
-.test__control-btns {
-    width: 438px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.test__continue,
-.test__start {
-    font-family: 'Roboto', sans-serif;
-    font-size: 30px;
-    line-height: 35px;
-    color: @white;
-    background: transparent;
-    border: 0;
-    padding: 0;
-    cursor: pointer;
-    position: relative;
-		
-	&:after {
-		content: "";
-		display: block;
-		width: 0;
-		height: 3px;
-		background: @white;
-		position: absolute;
-		bottom: -4px;
-		left: 0;
-		transition: width 0.2s linear;
-	}
-
-    &:hover:after {
-        width: 100%;
-    }
-}
-
 .test__counter-questions {
     font-size: 30px;
     line-height: 35px;

@@ -37,40 +37,17 @@
     }
 }
 
-.test-content__icons {
-    width: 106px;
-    height: 38px;
+.test-content__close {
     position: absolute;
     top: 38px;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 10;
-}
-
-.test-content__like {
-    width: 41px;
-    height: 38px;
-    padding: 0;
-    background: url("../img/like-icon.svg") no-repeat center center;
-    border: 0;
-    cursor: pointer;
-
-    &.pressed {
-        background: url("../img/pressed-like-icon.svg") no-repeat center center;
-    }
-
-    & .visually-hidden {
-        visibility: hidden;
-    }
-}
-
-.test-content__close {
+    right: 37px;
     width: 38px;
     height: 38px;
+    padding: 0;
+    border: 0;
     background: url("../img/close-icon.svg") no-repeat center center;
     transition: transform .2s linear;
+    z-index: 10;
 
     &:hover {
         transform: rotate(90deg);
@@ -93,6 +70,7 @@
 }
 
 .swiper-button-next {
+    top: 327px;
     width: 80px;
     height: 80px;
     padding: 0;
@@ -109,6 +87,7 @@
 }
 
 .swiper-button-prev {
+    top: 327px;
     width: 80px;
     height: 80px;
     font-size: 0;

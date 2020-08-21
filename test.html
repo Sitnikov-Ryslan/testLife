@@ -21,7 +21,9 @@
                         <a href="#" class="nav__link">Мини-игры</a>
                     </nav>
                 </div>
-                <a class="header__user"></a><!-- Ссылка на личный кабинет -->
+                <button class="header__user"><!-- Переход на личный кабинет -->
+                    <span class="visually-hidden">User</span>
+                </button>
             </div>
         </header>
         
@@ -29,10 +31,6 @@
             <div class="test__header">
                 <div class="container">
                     <h1 class="test__name">Тип вашего темперамента</h1>
-                    <div class="test__control-btns">
-                        <button type="button" class="test__continue">Продолжить</button>
-                        <button type="button" class="test__start">Начать заново</button>
-                    </div>
                     <div class="test__counter-questions hidden">
                         Вопрос
                         <span class="test__actual-question">3</span>
@@ -160,12 +158,9 @@
                         </p>
                     </div>
 
-                    <div class="test-content__icons">
-                        <button class="test-content__like" type="button">
-                            <span class="visually-hidden">In my heart</span>
-                        </button>
-                        <a href="#" class="test-content__close"></a><!-- Ссылка на предыдущую страницу -->
-                    </div>
+                    <button class="test-content__close" type="button"><!-- Переход на предыдущую страницу -->
+                        <span class="visually-hidden">Close</span>
+                    </button>
                     <button class="swiper-button-next hidden" type="button">Next</button>
                     <button class="swiper-button-prev hidden" type="button">Prev</button>
                 </div>

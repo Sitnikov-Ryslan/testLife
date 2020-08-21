@@ -26,7 +26,9 @@ let sendTest = function(form) {
         body: formData
     })
         .then(response => {
+            if (response.ok) {
             resultText = response.json()
+            }
         })
         .catch(error => console.log(error))
 }
@@ -37,9 +39,13 @@ testForm.addEventListener('submit', (evt) => {
 });
 
 // По кнопке "продолжить" пользователю должен вылазить вопрос на котором остановился
-const continueBtn = document.querySelector('.test__continue');
+// const continueBtn = document.querySelector('.test__continue');
 // По кнопке "начать заново", тест должен обнулиться и начаться заново
-const startBtn = document.querySelector('.test__start');
+// const startBtn = document.querySelector('.test__start');
+
+// Должно перейти на предыдущую страницу
+let closeTestBtn = document.querySelector('.test-content__close');
+let userPage = document.querySelector('.header__user');
 
 let getResponse = function(URL) {
     
@@ -50,43 +56,57 @@ let getResponse = function(URL) {
         },
         body: JSON.stringify()
     })
-        .then(response => response.json())
+        .then(response => {
+            if (response.ok) {
+                response.json()
+            }
+        })
         .catch(error => console.log(error))
 }
 
-continueBtn.addEventListener('click', (evt) => {
+closeTestBtn.addEventListener('click', (evt) => {
     evt.preventDefault();
     getResponse('someURL')
 });
-startBtn.addEventListener('click', (evt) => {
+
+userPage.addEventListener('click', (evt) => {
     evt.preventDefault();
-    getResponse('someURL');
+    getResponse('someURL')
 });
 
-let postResponse = function(URL) {
-    let data = [];
+// continueBtn.addEventListener('click', (evt) => {
+//     evt.preventDefault();
+//     getResponse('someURL')
+// });
+// startBtn.addEventListener('click', (evt) => {
+//     evt.preventDefault();
+//     getResponse('someURL');
+// });
+
+// let postResponse = function(URL) {
+//     let data = [];
     
-    fieldsets.forEach((elem) => {
-        let questionName = elem.dataset.question;
-        let reply = elem.querySelector('input[type=radio]:checked');
-        if (reply !== null) {
-            let answerName = reply.dataset.answer;
-            data.push(questionName, answerName);
-        } else {
-        data.push(questionName, 0);
-        }
-    })
+//     fieldsets.forEach((elem) => {
+//         let questionName = elem.dataset.question;
+//         let reply = elem.querySelector('input[type=radio]:checked');
+//         if (reply !== null) {
+//             let answerName = reply.dataset.answer;
+//             data.push(questionName, answerName);
+//         } else {
+//         data.push(questionName, 0);
+//         }
+//     })
     
-    let response = fetch(URL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-        .then(response => response.json())
-        .catch(error => console.log(error))
-}
+//     let response = fetch(URL, {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(data)
+//     })
+//         .then(response => response.json())
+//         .catch(error => console.log(error))
+// }
 
 // Swiper
 
@@ -105,34 +125,34 @@ let mySwiper = new Swiper('.swiper-container', {
 
 // Like press
 
-const like = document.querySelector('.test-content__like');
+// const like = document.querySelector('.test-content__like');
 
-let postData = function(URL) {
+// let postData = function(URL) {
     
-    let response = fetch(URL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        mode: 'cors',
-        body: JSON.stringify()
-    })
-        .then(response => response.json())
-        .catch(error => console.log(error))
-}
+//     let response = fetch(URL, {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         mode: 'cors',
+//         body: JSON.stringify()
+//     })
+//         .then(response => response.json())
+//         .catch(error => console.log(error))
+// }
 
-like.addEventListener('click', function(evt) {
-    evt.preventDefault();
-    like.classList.toggle('pressed');
+// like.addEventListener('click', function(evt) {
+//     evt.preventDefault();
+//     like.classList.toggle('pressed');
 
-    let press = like.classList.contains('pressed');
+//     let press = like.classList.contains('pressed');
    
-    if (press) {
-        postData('http://l91287uv.beget.tech/like/add');
-    } else {
-        postData('http://l91287uv.beget.tech/like/delete');
-    }
-});
+//     if (press) {
+//         postData('http://l91287uv.beget.tech/like/add');
+//     } else {
+//         postData('http://l91287uv.beget.tech/like/delete');
+//     }
+// });
 
 // Test begin
 
@@ -158,15 +178,15 @@ let findActiveQuest = function() {
 }
 
 let testBegin = function() {
-    controlBtns.classList.add('hidden');
+    // controlBtns.classList.add('hidden');
     infoPage.classList.add('hidden');
     questionsList.classList.remove('hidden');
     nextQuestBtn.classList.remove('hidden');
     prevQuestBtn.classList.remove('hidden');
     counterQuestions.classList.remove('hidden');
     
-    continueBtn.removeEventListener('click', testBegin);
-    startBtn.removeEventListener('click', testBegin);
+    // continueBtn.removeEventListener('click', testBegin);
+    // startBtn.removeEventListener('click', testBegin);
     beginBtn.removeEventListener('click', testBegin);
 
     findActiveQuest();
@@ -174,8 +194,8 @@ let testBegin = function() {
     prevQuestBtn.addEventListener('click', findActiveQuest);
 }
 
-continueBtn.addEventListener('click', testBegin);
-startBtn.addEventListener('click', testBegin);
+// continueBtn.addEventListener('click', testBegin);
+// startBtn.addEventListener('click', testBegin);
 beginBtn.addEventListener('click', testBegin);
 
 // Show resultTestBtn
@@ -195,10 +215,10 @@ let foundCheckedAnswers = function() {
 answers.forEach(function(elem) {
     elem.addEventListener('change', foundCheckedAnswers);
 
-    elem.addEventListener('change', (evt) => {
-        evt.preventDefault();
-        postResponse('http://l91287uv.beget.tech/result');
-    });
+    // elem.addEventListener('change', (evt) => {
+    //     evt.preventDefault();
+    //     postResponse('http://l91287uv.beget.tech/result');
+    // });
 });
 
 // Show result of test
@@ -218,7 +238,7 @@ let showResultTest = function() {
 
     answers.forEach(function(elem) {
         elem.removeEventListener('change', foundCheckedAnswers);
-        elem.removeEventListener('change', postResponse);
+        // elem.removeEventListener('change', postResponse);
     })
 
     resultTestBtn.classList.add('hidden');
