@@ -63,14 +63,13 @@
         top: 50%;
         left: 0;
         content: "";
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        background: @gray-light;
+        width: 27px;
+        height: 28px;
+        background: url('../img/answer-marker.svg') no-repeat center center;
         transform: translateY(-50%);
     }
 
     .questions-list__answer:checked ~ &:before {
-            background: @gray; 
+            background: url('../img/checked-answer.svg') no-repeat center center; 
         }
 }
