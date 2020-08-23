@@ -68,7 +68,7 @@ h6 {
   text-transform: uppercase;
   text-decoration: none;
   transition: color 0.1s linear;
-  cursor: url(../img/cursor.svg), pointer;
+  cursor: pointer;
 }
 .header__main-page-link:hover {
   color: #000;
@@ -81,7 +81,7 @@ h6 {
   border: 0;
   position: relative;
   overflow: hidden;
-  cursor: url(../img/cursor.svg), pointer;
+  cursor: pointer;
 }
 .header__user:hover:after {
   transform: scale(1.2);
@@ -128,7 +128,7 @@ h6 {
   text-align: center;
   color: #fff;
   text-decoration: none;
-  cursor: url(../img/cursor.svg), pointer;
+  cursor: pointer;
 }
 .nav__link:hover {
   border: 3px solid #FF7575;
@@ -159,7 +159,7 @@ h6 {
   text-decoration: none;
   padding: 22px 0;
   transition: color 0.1s linear;
-  cursor: url(../img/cursor.svg), pointer;
+  cursor: pointer;
 }
 .minor-pages__link:hover {
   color: #000;
@@ -266,7 +266,7 @@ h6 {
   display: block;
   background: url('../img/test-logo.jpg') no-repeat center center;
   background-size: cover;
-  cursor: url(../img/cursor.svg), pointer;
+  cursor: pointer;
 }
 .test-preview__logo:hover + .test-preview__content {
   background: rgba(229, 229, 229, 0.7);
@@ -374,7 +374,7 @@ h6 {
   text-decoration: none;
   background: transparent;
   border: 0;
-  cursor: url(../img/cursor.svg), pointer;
+  cursor: pointer;
 }
 .footer__about:hover,
 .footer__service:hover {

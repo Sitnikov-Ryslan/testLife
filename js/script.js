@@ -315,8 +315,16 @@ let footerService = document.querySelector('.footer__service');
 
 footerAbout.addEventListener('click', () => {
     footerInfoAbout.classList.toggle('hidden');
+    let showService = footerInfoService.classList.contains('hidden');
+    if (!showService) {
+        footerInfoService.classList.add('hidden');
+    };
 });
 
 footerService.addEventListener('click', () => {
     footerInfoService.classList.toggle('hidden');
+    let showService = footerInfoAbout.classList.contains('hidden');
+    if (!showService) {
+        footerInfoAbout.classList.add('hidden');
+    };
 });
