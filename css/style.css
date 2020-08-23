@@ -68,6 +68,7 @@ h6 {
   text-transform: uppercase;
   text-decoration: none;
   transition: color 0.1s linear;
+  cursor: url(../img/cursor.svg), pointer;
 }
 .header__main-page-link:hover {
   color: #000;
@@ -78,9 +79,9 @@ h6 {
   padding: 20px;
   background: #FF7575;
   border: 0;
-  cursor: pointer;
   position: relative;
   overflow: hidden;
+  cursor: url(../img/cursor.svg), pointer;
 }
 .header__user:hover:after {
   transform: scale(1.2);
@@ -127,6 +128,7 @@ h6 {
   text-align: center;
   color: #fff;
   text-decoration: none;
+  cursor: url(../img/cursor.svg), pointer;
 }
 .nav__link:hover {
   border: 3px solid #FF7575;
@@ -157,6 +159,7 @@ h6 {
   text-decoration: none;
   padding: 22px 0;
   transition: color 0.1s linear;
+  cursor: url(../img/cursor.svg), pointer;
 }
 .minor-pages__link:hover {
   color: #000;
@@ -176,7 +179,7 @@ h6 {
   font-size: 60px;
   line-height: 70px;
   color: #000;
-  margin-bottom: 54px;
+  margin-bottom: 97px;
   max-width: 100%;
   max-height: 140px;
   overflow: hidden;
@@ -188,8 +191,8 @@ h6 {
 }
 .tests__group {
   width: 100%;
-  height: 318px;
-  margin-bottom: 55px;
+  height: 266px;
+  margin-bottom: 106px;
   list-style: none;
   position: relative;
 }
@@ -197,14 +200,11 @@ h6 {
   margin-bottom: 0;
 }
 .tests__subtitle {
-  width: 360px;
-  height: 80px;
-  background: #c4c4c4;
+  background: transparent;
   font-size: 30px;
   line-height: 35px;
-  color: #fff;
-  padding: 23px 40px;
-  margin-bottom: 38px;
+  color: #000;
+  margin-bottom: 31px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -218,7 +218,7 @@ h6 {
 }
 .swiper-button-prev {
   position: absolute;
-  top: 210px;
+  top: 165px;
   left: -90px;
   font-size: 0;
   border: 0;
@@ -234,7 +234,7 @@ h6 {
 }
 .swiper-button-next {
   position: absolute;
-  top: 210px;
+  top: 165px;
   right: -90px;
   font-size: 0;
   border: 0;
@@ -253,6 +253,8 @@ h6 {
   height: 200px;
   margin-right: 30px;
   list-style: none;
+  position: relative;
+  box-shadow: 5px 4px 40px rgba(0, 0, 0, 0.25);
 }
 .test-preview:last-child {
   margin-right: 0;
@@ -260,19 +262,27 @@ h6 {
 .test-preview__logo {
   width: 100%;
   max-width: 360px;
-  height: 160px;
+  height: 200px;
   display: block;
-  background: no-repeat center center;
+  background: url('../img/test-logo.jpg') no-repeat center center;
   background-size: cover;
+  cursor: url(../img/cursor.svg), pointer;
+}
+.test-preview__logo:hover + .test-preview__content {
+  background: rgba(229, 229, 229, 0.7);
+  height: 60px;
 }
 .test-preview__content {
+  position: absolute;
+  left: 0;
+  bottom: 0;
   display: flex;
   width: 360px;
   height: 40px;
   justify-content: space-between;
   align-items: center;
   padding: 0 14px 0 22px;
-  background: #FF7575;
+  background: rgba(255, 117, 117, 0.7);
 }
 .test-preview__name {
   max-width: 225px;
@@ -364,7 +374,7 @@ h6 {
   text-decoration: none;
   background: transparent;
   border: 0;
-  cursor: pointer;
+  cursor: url(../img/cursor.svg), pointer;
 }
 .footer__about:hover,
 .footer__service:hover {
