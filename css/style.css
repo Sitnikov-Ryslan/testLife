@@ -48,7 +48,8 @@ p {
 }
 .view {
   height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 .header {
   width: 100%;
