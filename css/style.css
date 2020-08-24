@@ -191,6 +191,7 @@ p {
   margin: 0;
   background: url("../img/close.svg") no-repeat center center;
   transition: transform 0.2s linear;
+  cursor: pointer;
 }
 .development__close:hover {
   transform: rotate(90deg);
