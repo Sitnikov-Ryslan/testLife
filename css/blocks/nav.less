@@ -1,14 +1,10 @@
 // main: ../style.less
 
 .nav {
-    display: none;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     height: 80px;
-
-    &.show {
-        display: flex;
-    }
 }
 
 .nav__link {
@@ -20,7 +16,6 @@
     text-align: center;
     color: @white;
     text-decoration: none;
-    cursor: pointer;
 
     &:hover {
         border: 3px solid @red;

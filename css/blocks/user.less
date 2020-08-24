@@ -1,0 +1,89 @@
+// main: ../style.less
+
+.user {
+    width: 685px;
+    height: auto;
+    overflow: hidden;
+}
+
+.user__title {
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 59px;
+    color: @black;
+    margin-bottom: 61px;
+}
+
+.user__info {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 200px;
+    background: url('../img/avatar.jpg') no-repeat 0 0;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 35px;
+    color: @black;
+    margin-bottom: 40px;
+}
+
+.user__name {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user__likes {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 35px;
+    background: url('../img/like-icon-sm.svg') no-repeat 0 39%;
+}
+
+.user__redaction {
+    width: 50px;
+    height: 50px;
+    border: 0;
+    padding: 0;
+    border-radius: 50%;
+    background: url('../img/pencil-icon.svg') no-repeat center center, @gray-light;
+    margin-bottom: 137px;
+    cursor: pointer;
+    overflow: hidden;
+
+    &:hover {
+        background: url('../img/pencil-icon.svg') no-repeat center center, @gray;
+    }
+}
+
+.user__stat {
+    width: 360px;
+    height: 205px;
+    overflow: hidden;
+}
+
+.user__stat-title {
+    width: 100%;
+    height: 40px;
+    background: @gray-lighter;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    padding-top: 10px;
+    margin-bottom: 11px;
+    color: @black;
+}
+
+.user__stat-number {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 35px;
+    color: @black;
+    margin-bottom: 26px;
+}
