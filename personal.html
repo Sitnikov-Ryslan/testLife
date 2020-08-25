@@ -16,9 +16,9 @@
                 </div>
                 <div class="center">
                     <nav class="nav">
-                        <a href="#" class="nav__link">Мои тесты</a>
-                        <a href="#" class="nav__link">Избранные</a>
-                        <a href="#" class="nav__link visually-hidden">История</a>
+                        <button class="nav__btn nav__btn_person-tests" type="button">Мои тесты</button>
+                        <button class="nav__btn nav__btn_chosen-tests" type="button">Избранные</button>
+                        <button class="nav__btn visually-hidden" type="button">История</button>
                     </nav>
                 </div>
                 <button class="header__user" type="button">
@@ -27,7 +27,7 @@
             </div>
         </header>
 
-        <main class="person hidden">
+        <main class="person">
             <div class="center">
                 <section class="user">
                     <h1 class="user__title">Личный кабинет</h1>
@@ -35,7 +35,7 @@
                         <div class="user__name">MisterMaster007</div>
                         <div class="user__likes">273</div>
                     </div>
-                    <button class="user__redaction" type="button">
+                    <button class="user__redaction" type="button"><!-- На страницу "в разработке" -->
                         <span class="visually-hidden">Redaction</span>
                     </button>
                     <div class="user__stat">
@@ -84,7 +84,7 @@
                     <li class="person-tests__item">
                         <button class="person-tests__add">Add test</button>
                     </li>
-                    <li class="person-tests__item">
+                    <li class="person-tests__item" data-test_id="1">
                         <h2 class="person-tests__category">Интеллект</h2>
                         <a class="person-tests__logo" href="#"></a>
                         <div class="person-tests__content">
@@ -98,7 +98,7 @@
                         </div>
                         <button class="person-tests__redact">Redact</button>
                     </li>
-                    <li class="person-tests__item">
+                    <li class="person-tests__item" data-test_id="2">
                         <h2 class="person-tests__category">Интеллект</h2>
                         <a class="person-tests__logo" href="#"></a>
                         <div class="person-tests__content">
@@ -112,7 +112,7 @@
                         </div>
                         <button class="person-tests__redact">Redact</button>
                     </li>
-                    <li class="person-tests__item">
+                    <li class="person-tests__item" data-test_id="3">
                         <h2 class="person-tests__category">Интеллект</h2>
                         <a class="person-tests__logo" href="#"></a>
                         <div class="person-tests__content">
@@ -126,7 +126,7 @@
                         </div>
                         <button class="person-tests__redact">Redact</button>
                     </li>
-                    <li class="person-tests__item">
+                    <li class="person-tests__item" data-test_id="4">
                         <h2 class="person-tests__category">Интеллект</h2>
                         <a class="person-tests__logo" href="#"></a>
                         <div class="person-tests__content">
@@ -140,7 +140,7 @@
                         </div>
                         <button class="person-tests__redact">Redact</button>
                     </li>
-                    <li class="person-tests__item">
+                    <li class="person-tests__item" data-test_id="5">
                         <h2 class="person-tests__category">Интеллект</h2>
                         <a class="person-tests__logo" href="#"></a>
                         <div class="person-tests__content">
@@ -154,7 +154,7 @@
                         </div>
                         <button class="person-tests__redact">Redact</button>
                     </li>
-                    <li class="person-tests__item">
+                    <li class="person-tests__item" data-test_id="6">
                         <h2 class="person-tests__category">Интеллект</h2>
                         <a class="person-tests__logo" href="#"></a>
                         <div class="person-tests__content">
@@ -168,7 +168,7 @@
                         </div>
                         <button class="person-tests__redact">Redact</button>
                     </li>
-                    <li class="person-tests__item">
+                    <li class="person-tests__item" data-test_id="7">
                         <h2 class="person-tests__category">Интеллект</h2>
                         <a class="person-tests__logo" href="#"></a>
                         <div class="person-tests__content">
@@ -182,7 +182,7 @@
                         </div>
                         <button class="person-tests__redact">Redact</button>
                     </li>
-                    <li class="person-tests__item">
+                    <li class="person-tests__item" data-test_id="8">
                         <h2 class="person-tests__category">Интеллект</h2>
                         <a class="person-tests__logo" href="#"></a>
                         <div class="person-tests__content">
@@ -200,7 +200,7 @@
             </div>
         </section>
 
-        <section class="chosen-tests">
+        <section class="chosen-tests hidden">
             <div class="center">
                 <div class="chosen-tests__title">
                     <h1 class="chosen-tests__title-text">Избранные</h1>
@@ -211,7 +211,7 @@
                     </div>
                 </div>
                 <ul class="chosen-tests__list">
-                    <li class="chosen-tests__item">
+                    <li class="chosen-tests__item" data-test_id="9">
                         <h2 class="chosen-tests__category">Интеллект</h2>
                         <a class="chosen-tests__logo" href="#"></a>
                         <div class="chosen-tests__content">
@@ -224,7 +224,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="chosen-tests__item">
+                    <li class="chosen-tests__item" data-test_id="10">
                         <h2 class="chosen-tests__category">Интеллект</h2>
                         <a class="chosen-tests__logo" href="#"></a>
                         <div class="chosen-tests__content">
@@ -237,7 +237,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="chosen-tests__item">
+                    <li class="chosen-tests__item" data-test_id="11">
                         <h2 class="chosen-tests__category">Интеллект</h2>
                         <a class="chosen-tests__logo" href="#"></a>
                         <div class="chosen-tests__content">
@@ -250,7 +250,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="chosen-tests__item">
+                    <li class="chosen-tests__item" data-test_id="12">
                         <h2 class="chosen-tests__category">Интеллект</h2>
                         <a class="chosen-tests__logo" href="#"></a>
                         <div class="chosen-tests__content">
@@ -263,7 +263,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="chosen-tests__item">
+                    <li class="chosen-tests__item" data-test_id="13">
                         <h2 class="chosen-tests__category">Интеллект</h2>
                         <a class="chosen-tests__logo" href="#"></a>
                         <div class="chosen-tests__content">
@@ -276,7 +276,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="chosen-tests__item">
+                    <li class="chosen-tests__item" data-test_id="14">
                         <h2 class="chosen-tests__category">Интеллект</h2>
                         <a class="chosen-tests__logo" href="#"></a>
                         <div class="chosen-tests__content">
@@ -289,7 +289,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="chosen-tests__item">
+                    <li class="chosen-tests__item" data-test_id="15">
                         <h2 class="chosen-tests__category">Интеллект</h2>
                         <a class="chosen-tests__logo" href="#"></a>
                         <div class="chosen-tests__content">
@@ -302,7 +302,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="chosen-tests__item">
+                    <li class="chosen-tests__item" data-test_id="16">
                         <h2 class="chosen-tests__category">Интеллект</h2>
                         <a class="chosen-tests__logo" href="#"></a>
                         <div class="chosen-tests__content">
@@ -315,7 +315,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="chosen-tests__item">
+                    <li class="chosen-tests__item" data-test_id="17">
                         <h2 class="chosen-tests__category">Интеллект</h2>
                         <a class="chosen-tests__logo" href="#"></a>
                         <div class="chosen-tests__content">

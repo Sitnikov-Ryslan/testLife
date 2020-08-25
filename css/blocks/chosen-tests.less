@@ -65,6 +65,10 @@
     overflow: hidden;
     background: url('../img/basket.svg') no-repeat center center;
     cursor: pointer;
+
+    &.active {
+        background: url('../img/basket-active.svg') no-repeat center center;
+    }
 }
 
 .chosen-tests__title {
@@ -95,18 +99,9 @@
     &:nth-child(3n) {
         margin-right: 0;
     }
-}
 
-.chosen-tests__add {
-    width: 360px;
-    height: 230px;
-    background: url('../img/test-add-icon.svg') no-repeat center center, @gray-light;
-    font-size: 0;
-    border: 0;
-    cursor: pointer;
-
-    &:hover {
-        background: url('../img/test-add-icon.svg') no-repeat center center, @gray;
+    &.active .chosen-tests__logo {
+        background: rgba(86, 86, 86, 0.6);
     }
 }
 
@@ -184,10 +179,6 @@
     margin: 0 0 0 8px;
     padding: 0;
     border: 0;
-    background: url('../img/heart.svg') no-repeat center center;
-    cursor: pointer;
-    
-    &.pressed {
-        background: url("../img/heartDark.svg") no-repeat center center;
-    }
+    background: url("../img/heartDark.svg") no-repeat center center;
+    cursor: auto;
 }

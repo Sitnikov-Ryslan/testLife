@@ -1,330 +1,261 @@
-// Swiper
+//  Toggle pages
+const personTestsBtn = document.querySelector('.nav__btn_person-tests');
+const chosenTestsBtn = document.querySelector('.nav__btn_chosen-tests');
+const personBtn = document.querySelector('.header__user');
+const personPage = document.querySelector('.person');
+const personTestsPage = document.querySelector('.person-tests');
+const chosenTestsPage = document.querySelector('.chosen-tests');
+const footerSoc = document.querySelector('.footer-social');
 
-let swipers = document.querySelectorAll('.swiper-container');
 
-swipers.forEach(function(elem) {
-    let mySwiper = new Swiper(elem, {
-        
-        speed: 400,
-        spaceBetween: 30,
-        slidesPerView: 3,
-        autoHeight: true,
+let showPersonTests = function() {
+    personPage.classList.add('hidden');
+    chosenTestsPage.classList.add('hidden');
     
-        navigation: {
-            nextEl: elem.parentNode.querySelector('.swiper-button-next'),
-            prevEl: elem.parentNode.querySelector('.swiper-button-prev'),
-          },
-    })
-})
+    personTestsPage.classList.remove('hidden');
+    footerSoc.classList.remove('hidden');
+};
 
-// Fetch 
+let showPerson = function() {
+    footerSoc.classList.add('hidden');
+    personTestsPage.classList.add('hidden');
+    chosenTestsPage.classList.add('hidden');
+    
+    personPage.classList.remove('hidden');
+};
 
-let regForm = document.querySelector('.registration');
-let autForm = document.querySelector('.authorization');
+let showChosenTests = function() {
+    footerSoc.classList.add('hidden');
+    personTestsPage.classList.add('hidden');
+    personPage.classList.add('hidden');
+    
+    chosenTestsPage.classList.remove('hidden');
+};
 
-let sendRequest = function(e, form) {
-    e.preventDefault();
+personTestsBtn.addEventListener('click', showPersonTests);
 
-    let URL = form.action;
-    let method = form.method;
+chosenTestsBtn.addEventListener('click', showChosenTests);
 
+personBtn.addEventListener('click', showPerson);
+
+// Fetch on personPage
+const redactUser = document.querySelector('.user__redaction');
+
+let getResponseRedact = function(URL) {
+    
     let response = fetch(URL, {
-        method: method,
-        body: new FormData(form)
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify()
     })
         .then(response => {
             if (response.ok) {
-                if (response.status === 201 || response.status === 204) {
-                    location.assign = 'http://l91287uv.beget.tech/home';
-                }
-            }})
-            .then(error => {
-                console.log(error); /* undefined */
-                
-                // form.classList.add('hidden');
-                // let msgBlock = document.querySelector('.modal__error');
-                // msgBlock.classList.remove('hidden');
-                // let msg = document.querySelector('.modal__message');
-                // msg.textContent = error.message;
-                // let closeBtn = document.querySelector('.modal__error-close');
-                // closeBtn.addEventListener('click', function(evt) {
-                //     evt.preventDefault();
-                //     msgBlock.classList.add('hidden');
-                //     form.classList.remove('hidden');
-                // })
-            })
-}
-
-
-regForm.addEventListener('submit', (evt) => sendRequest(evt, regForm));
-autForm.addEventListener('submit', (evt) => sendRequest(evt, autForm));
-
-// Fixed Header
-
-const header = document.querySelector('.header');
-const testsHeight =  document.querySelector('.tests').offsetTop;
-const nav = document.querySelector('.nav');
-
-const body = document.querySelector('body');
-const regBtn = document.querySelector('.header__user');
-const modal = document.querySelector('.modal');
-const modalForm = document.querySelector('.modal__window');
-
-const likes = document.querySelectorAll('.test-preview__btn');
-
-let fixedHeader = function() {
-    let scrollOffset = window.pageYOffset;
-    if (scrollOffset >= testsHeight) {
-        nav.classList.add('show');
-        header.classList.add('fixed');
-    } else {
-        nav.classList.remove('show');
-        header.classList.remove('fixed');
-    }
-} 
-
-fixedHeader();
-window.addEventListener('scroll', fixedHeader);
-
-// Show modal
-
-regBtn.addEventListener('click', function(evt) {
-    evt.preventDefault();
-    body.classList.add('no-scroll');
-    modal.classList.add('show');
-
-    let stopProp = function(evt) {
-        evt.stopPropagation();
-    }
-
-    let closeModal = function(evt) {
-        evt.preventDefault();
-        body.classList.remove('no-scroll');
-        modal.classList.remove('show');
-        modal.removeEventListener('click', closeModal);
-        modalForm.removeEventListener('click', stopProp)
-    }
-
-    modal.addEventListener('click', closeModal)
-    modalForm.addEventListener('click', stopProp)
-})
-
-// Toggle hearts
-
-let postData = function(URL, item, amount) {
-        let data = {};
-        data = item.closest('.test-preview').dataset.test_id;
-        
-        let response = fetch(URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            mode: 'cors',
-            body: JSON.stringify(
-                {'test_id': data})
+                response.json();
+                window.location.href = 'URL страницы "в разработке"';
+            }
         })
-            .then(response => {
-                amount = response.json()
-            })
-            .catch(error => console.log(error))
+        .catch(error => console.log(error))
 }
 
-likes.forEach(function(elem) {
-    elem.addEventListener('click', (event) => {
-        event.preventDefault();
-        elem.classList.toggle('pressed');
-        let press = elem.classList.contains('pressed');
-        let quantity = elem.closest('.test-preview__quantity');
-
-        if (press) {
-            postData('http://l91287uv.beget.tech/like/add', elem, quantity);
-        } else {
-            postData('http://l91287uv.beget.tech/like/delete', elem, quantity);
-        }
-    })
-})
-
-// Toggle forms
-
-const accountToggleBtn = document.querySelector('.authorization__account');
-const loginToggleBtn = document.querySelector('.registration__login');
-const accForm = document.querySelector('.registration');
-const logForm = document.querySelector('.authorization');
-const modalTitle = document.querySelector('.modal__title');
-const modalError = document.querySelectorAll('.modal__error');
-
-accountToggleBtn.addEventListener('click', function(evt) {
-	evt.preventDefault();
-	accForm.classList.remove('hidden');
-    logForm.classList.add('hidden');
-    modalTitle.textContent = 'Регистрация';
+redactUser.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    getResponseRedact('serverURL');
 });
 
-loginToggleBtn.addEventListener('click', function(evt) {
-	evt.preventDefault();
-	logForm.classList.remove('hidden');
-    accForm.classList.add('hidden');
-    modalTitle.textContent = 'Авторизация';
-});
+// Fetch on personTestsPage
+const createTestBtn = document.querySelector('.person-tests__add');
 
-
-// Validate passwords
-
-let validatePasswords = function(elem) {
-    let form = elem.parentNode;
-    let passwords = form.querySelectorAll('input[type=password]');
-    let submitBtn = form.querySelector('button[type=submit]');
-    let errorMsg = form.querySelector('div');
-
-    if (passwords[0].value !== "" && passwords[1].value !== "") {
-        if (passwords[0].value == passwords[1].value) {
-            submitBtn.disabled = false;
-            errorMsg.classList.add('hidden');
-        } else {
-            submitBtn.disabled = true;
-            errorMsg.textContent = 'Ошибка: Пароли не совпадают';
-            errorMsg.classList.remove('hidden');
-        }
-    } 
-}
-
-// Filled forms inputs
-
-const loginNameInput = document.querySelector('.authorization__input_name');
-const loginMailInput = document.querySelector('.authorization__input_email');
-const loginPassInput = document.querySelector('.authorization__input_pass');
-const loginPassRepeatInput = document.querySelector('.authorization__input_pass-repeat');
-
-loginNameInput.addEventListener('change', function() {
-	if (loginNameInput.value !== '') {
-        loginNameInput.classList.add('filled');
-	} else {
-		loginNameInput.classList.remove('filled');
-	};
-});
-
-loginMailInput.addEventListener('change', function() {
-	if (loginMailInput.value !== '') {
-	loginMailInput.classList.add('filled');
-	} else {
-		loginMailInput.classList.remove('filled');
-	};
-});
-
-loginPassInput.addEventListener('change', function() {
-	if (loginPassInput.value !== '') {
-    loginPassInput.classList.add('filled');
-    validatePasswords(loginPassInput);
-	} else {
-		loginPassInput.classList.remove('filled');
-	};
-});
-
-loginPassRepeatInput.addEventListener('change', function() {
-	if (loginPassRepeatInput.value !== '') {
-    loginPassRepeatInput.classList.add('filled');
-    validatePasswords(loginPassRepeatInput);
-	} else {
-		loginPassRepeatInput.classList.remove('filled');
-	};
-});
-
-const accountNameInput = document.querySelector('.registration__input_name');
-const accountMailInput = document.querySelector('.registration__input_email');
-const accountPassInput = document.querySelector('.registration__input_pass');
-const accountPassRepeatInput = document.querySelector('.registration__input_pass-repeat');
-
-accountNameInput.addEventListener('change', function() {
-	if (accountNameInput.value !== '') {
-        accountNameInput.classList.add('filled');
-	} else {
-		accountNameInput.classList.remove('filled');
-	};
-});
-
-accountMailInput.addEventListener('change', function() {
-	if (accountMailInput.value !== '') {
-	accountMailInput.classList.add('filled');
-	} else {
-		accountMailInput.classList.remove('filled');
-	};
-});
-
-accountPassInput.addEventListener('change', function() {
-	if (accountPassInput.value !== '') {
-    accountPassInput.classList.add('filled');
-    validatePasswords(accountPassInput);
-	} else {
-		accountPassInput.classList.remove('filled');
-	};
-});
-
-accountPassRepeatInput.addEventListener('change', function() {
-	if (accountPassRepeatInput.value !== '') {
-    accountPassRepeatInput.classList.add('filled');
-    validatePasswords(accountPassRepeatInput);
-	} else {
-		accountPassRepeatInput.classList.remove('filled');
-	};
-});
-
-// Email fetch
-
-const forms = document.querySelectorAll('form');
-
-let fetchMail = function(elem, message, block) {
-    let data = {};
-    data = elem.value;
+let getResponseCreate = function(URL) {
     
-    let response = fetch('http://l91287uv.beget.tech/email/exist', {
+    let response = fetch(URL, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify()
+    })
+        .then(response => {
+            if (response.ok) {
+                response.json();
+                window.location.href = 'URL страницы "в разработке"';
+            }
+        })
+        .catch(error => console.log(error))
+}
+
+createTestBtn.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    getResponseCreate('serverURL');
+});
+
+let redirectOnTest = document.querySelectorAll('.person-tests__logo');
+
+let postResponseTest = function(URL, item) {
+    let data = [];
+    let testId = item.closest('.person-tests__item').dataset.test_id;
+    data.push('test_id: ', testId);
+    
+    let response = fetch(URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        mode: 'cors',
-        body: JSON.stringify(
-            {'email': data})
+        body: JSON.stringify(data)
     })
         .then(response => {
-            response.text();
-            message.classList.add('hidden');
+            if (response.ok) {
+            response.json();
+            window.location.href = 'URL страницы теста';
+            }
         })
-        .catch(error => {
-            message.classList.remove('hidden');
-            message.textcontent = error.message;
-        })
+            .catch(error => console.log(error))
 }
 
-forms.forEach(function(form) {
-    let input = form.querySelector('input[type = email]');
-    let msg = form.querySelector('div');
-
-    input.addEventListener('change', (evt) => {
+redirectOnTest.forEach((elem) => {
+    elem.addEventListener('click', (evt) => {
         evt.preventDefault();
-        fetchMail(input, msg, form);
+        postResponseTest('URLстраницыТеста', elem);
     });
 });
 
-// Footer info
+let redirectOnRedactTest = document.querySelectorAll('.person-tests__redact');
 
-let footerInfoAbout = document.querySelector('.footer__info-about');
-let footerInfoService = document.querySelector('.footer__info-service');
-let footerAbout = document.querySelector('.footer__about');
-let footerService = document.querySelector('.footer__service');
+let postResponseRedact = function(URL, item) {
+    let data = [];
+    let testId = item.closest('.person-tests__item').dataset.test_id;
+    data.push('test_id: ', testId);
+    
+    let response = fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (response.ok) {
+            response.json();
+            window.location.href = 'URL страницы РЕДАКТИРОВАНИЯ теста';
+            }
+        })
+            .catch(error => console.log(error))
+}
 
-footerAbout.addEventListener('click', () => {
-    footerInfoAbout.classList.toggle('hidden');
-    let showService = footerInfoService.classList.contains('hidden');
-    if (!showService) {
-        footerInfoService.classList.add('hidden');
-    };
+redirectOnRedactTest.forEach((elem) => {
+    elem.addEventListener('click', (evt) => {
+        evt.preventDefault();
+        postResponseRedact('serverURL', elem);
+    });
 });
 
-footerService.addEventListener('click', () => {
-    footerInfoService.classList.toggle('hidden');
-    let showService = footerInfoAbout.classList.contains('hidden');
-    if (!showService) {
-        footerInfoAbout.classList.add('hidden');
-    };
+// Scroll+fetch on personTestsPage
+
+let lastItem = personTestsPage.querySelector('.person-tests__item:last-child');
+
+
+let postResponseScroll = function(URL, item) {
+    let testId = item.dataset.test_id;
+    let data = ['last_test_id: ', testId];
+
+    let response = fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (response.ok) {
+                personTestsPage.append(response.json());
+                lastItem = personTestsPage.querySelector('.person-tests__item:last-child');  
+            }
+        })
+            .catch(error => console.log(error))
+}
+
+personTestsPage.addEventListener('scroll', function() {
+    let pageScroll = personTestsPage.scrollTop;
+    let itemScroll = lastItem.clientHeight - 100;
+    if (pageScroll > itemScroll) {
+        postResponseScroll('someURL', lastItem);
+    }
+});
+
+// Chosen-tests 
+
+const searchTestBtn = document.querySelector('.chosen-tests__search');
+
+let getResponseSearch = function(URL) {
+    
+    let response = fetch(URL, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify()
+    })
+        .then(response => {
+            if (response.ok) {
+                response.json();
+                window.location.href = 'URL страницы "в разработке"';
+            }
+        })
+        .catch(error => console.log(error))
+}
+
+searchTestBtn.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    getResponseSearch('serverURL');
+});
+
+const basketBtn = document.querySelector('.chosen-tests__basket');
+const deleteBtn = document.querySelector('.chosen-tests__delete');
+
+let activationBasket = function() {
+    basketBtn.classList.toggle('active');
+    deleteBtn.classList.toggle('visually-hidden');
+}
+
+basketBtn.addEventListener('click', () => {
+    activationBasket();
+
+    let checkingBasket = basketBtn.classList.contains('active');
+    let chosenItems = chosenTestsPage.querySelectorAll('.chosen-tests__item');
+
+    let choseElem = function(e) {
+        e.classList.toggle('active');
+    }
+
+    let deleteElems = function() {
+        chosenItems.forEach(function(item) {
+            if (item.classList.contains('active')) {
+                item.remove();
+                // POST запрос
+            }
+        })
+    }
+
+    if (checkingBasket) {
+        chosenItems.forEach(function(elem) {
+            elem.addEventListener('click', (evt) => {
+                evt.preventDefault();
+                choseElem(elem);
+            });
+        });
+        
+        deleteBtn.addEventListener('click', deleteElems);
+
+    } else {
+        deleteBtn.removeEventListener('click', deleteElems);
+        chosenItems.forEach((elem) => {
+            elem.classList.remove('active');
+            
+            elem.removeEventListener('click', (evt) => {
+                evt.preventDefault();
+                choseElem(elem);
+            });
+        }); 
+    }
 });

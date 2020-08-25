@@ -7,7 +7,7 @@
     height: 80px;
 }
 
-.nav__link {
+.nav__btn {
     font-weight: bold;
     font-size: 30px;
     line-height: 35px;
@@ -16,12 +16,14 @@
     text-align: center;
     color: @white;
     text-decoration: none;
+    background: @black;
+    border: 0;
 
     &:hover {
         border: 3px solid @red;
     }
 
-    &:active {
+    &:focus {
         color: @red;
     }
 }
