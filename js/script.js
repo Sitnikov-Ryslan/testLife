@@ -150,12 +150,50 @@ redirectOnRedactTest.forEach((elem) => {
     });
 });
 
+// Likes on personTestsPage
+
+let likes = personTestsPage.querySelectorAll('.person-tests__btn');
+
+let postData = function(URL, item, amount) {
+    let data = {};
+    data = item.closest('.person-tests__item').dataset.test_id;
+    
+    let response = fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        mode: 'cors',
+        body: JSON.stringify(
+            {'test_id': data})
+    })
+        .then(response => {
+            amount = response.json()
+        })
+        .catch(error => console.log(error))
+}
+
+likes.forEach(function(elem) {
+elem.addEventListener('click', (event) => {
+    event.preventDefault();
+    elem.classList.toggle('pressed');
+    let press = elem.classList.contains('pressed');
+    let quantity = elem.closest('.test-preview__quantity');
+
+    if (press) {
+        postData('http://l91287uv.beget.tech/like/add', elem, quantity);
+    } else {
+        postData('http://l91287uv.beget.tech/like/delete', elem, quantity);
+    }
+})
+})
+
 // Scroll+fetch on personTestsPage
 
 let lastItem = personTestsPage.querySelector('.person-tests__item:last-child');
 
 
-let postResponseScroll = function(URL, item) {
+let postResponsePersonScroll = function(URL, item) {
     let testId = item.dataset.test_id;
     let data = ['last_test_id: ', testId];
 
@@ -179,7 +217,7 @@ personTestsPage.addEventListener('scroll', function() {
     let pageScroll = personTestsPage.scrollTop;
     let itemScroll = lastItem.clientHeight - 100;
     if (pageScroll > itemScroll) {
-        postResponseScroll('someURL', lastItem);
+        postResponsePersonScroll('someURL', lastItem);
     }
 });
 
@@ -210,47 +248,144 @@ searchTestBtn.addEventListener('click', (evt) => {
     getResponseSearch('serverURL');
 });
 
+let postResponseDelete = function(URL, elem) {
+    let data = [];
+    elemId = elem.dataset.test_id;
+    data.push('test_id: ', elemId);
+
+    let response = fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        mode: 'cors',
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .catch(error => console.log(error))
+}
+
+
 const basketBtn = document.querySelector('.chosen-tests__basket');
 const deleteBtn = document.querySelector('.chosen-tests__delete');
 
 let activationBasket = function() {
     basketBtn.classList.toggle('active');
     deleteBtn.classList.toggle('visually-hidden');
-}
+    if (!basketBtn.classList.contains('active')) {
+        chosenTests.forEach(function(elem) {
+            elem.classList.remove('active');
+        });
+    };
+};
 
 basketBtn.addEventListener('click', () => {
     activationBasket();
+});
 
-    let checkingBasket = basketBtn.classList.contains('active');
-    let chosenItems = chosenTestsPage.querySelectorAll('.chosen-tests__item');
+let deleteElems = function() {
+    chosenTests.forEach(function(item) {
+        if (item.classList.contains('active')) {   
+            postResponseDelete('http://l91287uv.beget.tech/like/delete', item);
+            item.remove();
+            chosenTests = chosenTestsPage.querySelectorAll('.chosen-tests__item');
+            // Вроде надо навешать листнеров(и удалить старые)
+            // chosenTests.forEach(function(elem) {
+            //     elem.addEventListener('click', (evt) => {
+            //         if (basketBtn.classList.contains('active')) {
+            //             evt.preventDefault();
+            //             elem.classList.add('active');
+            //             deleteBtn.addEventListener('click', deleteElems);
+            //         } else {
+            //             postResponseChose('serverURL', elem);
+            //             deleteBtn.removeEventListener('click', deleteElems);
+            //         }
+            //     });
+            // });
+        }
+    })
+}
 
-    let choseElem = (el) => (ev) => {
-        ev.preventDefault();
-        el.classList.toggle('active');
-    }
+let chosenTests = chosenTestsPage.querySelectorAll('.chosen-tests__item');
 
-    let deleteElems = function() {
-        chosenItems.forEach(function(item) {
-            if (item.classList.contains('active')) {
-                item.remove();
-                // POST запрос
+let postResponseChose = function(URL, item) {
+    let data = [];
+    let testId = item.dataset.test_id;
+    data.push('test_id: ', testId);
+        
+    let response = fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (response.ok) {
+            response.json();
+            window.location.href = 'URL страницы теста';
             }
         })
-    }
+        .catch(error => console.log(error))
+}
 
-    if (checkingBasket) {
-        chosenItems.forEach(function(elem) {
-            elem.addEventListener('click', choseElem(elem, event));
-        });
-        
-        deleteBtn.addEventListener('click', deleteElems);
+chosenTests.forEach(function(elem) {
+    elem.addEventListener('click', (evt) => {
+        if (basketBtn.classList.contains('active')) {
+            evt.preventDefault();
+            elem.classList.add('active');
+            deleteBtn.addEventListener('click', deleteElems);
+        } else {
+            postResponseChose('serverURL', elem);
+            deleteBtn.removeEventListener('click', deleteElems);
+        }
+    });
+});
 
-    } else {
-        deleteBtn.removeEventListener('click', deleteElems);
-        chosenItems.forEach(function(elem) {
-            elem.classList.remove('active');
-            
-            elem.removeEventListener('click', choseElem(elem, event));
-        }); 
+// Scroll+fetch on chosenPage
+
+let lastChosen = chosenTestsPage.querySelector('.chosen-tests__item:last-child');
+
+let postResponseChosenScroll = function(URL, item) {
+    let testId = item.dataset.test_id;
+    let data = ['last_test_id: ', testId];
+
+    let response = fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (response.ok) {
+                chosenTestsPage.append(response.json());
+                chosenTests = chosenTestsPage.querySelectorAll('.chosen-tests__item');
+                // Вроде как тоже надо новых листнеров
+                // chosenTests.forEach(function(elem) {
+                //     elem.addEventListener('click', (evt) => {
+                //         if (basketBtn.classList.contains('active')) {
+                //             evt.preventDefault();
+                //             elem.classList.add('active');
+                //             deleteBtn.addEventListener('click', deleteElems);
+                //         } else {
+                //             postResponseChose('serverURL', elem);
+                //             deleteBtn.removeEventListener('click', deleteElems);
+                //         }
+                //     });
+                // });
+
+                lastChosen = chosenTestsPage.querySelector('.person-tests__item:last-child');  
+            }
+        })
+            .catch(error => console.log(error))
+}
+
+chosenTestsPage.addEventListener('scroll', function() {
+    let pageScroll = chosenTestsPage.scrollTop;
+    let itemScroll = lastChosen.clientHeight - 200;
+    
+    if (pageScroll > itemScroll) {
+        postResponseScroll('someURL', lastItem);
     }
 });
