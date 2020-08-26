@@ -188,38 +188,39 @@ elem.addEventListener('click', (event) => {
 })
 })
 
+// Скролла не будет
 // Scroll+fetch on personTestsPage
 
-let lastItem = personTestsPage.querySelector('.person-tests__item:last-child');
+// let lastItem = personTestsPage.querySelector('.person-tests__item:last-child');
 
 
-let postResponsePersonScroll = function(URL, item) {
-    let testId = item.dataset.test_id;
-    let data = ['last_test_id: ', testId];
+// let postResponsePersonScroll = function(URL, item) {
+//     let testId = item.dataset.test_id;
+//     let data = ['last_test_id: ', testId];
 
-    let response = fetch(URL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-        .then(response => {
-            if (response.ok) {
-                personTestsPage.append(response.json());
-                lastItem = personTestsPage.querySelector('.person-tests__item:last-child');  
-            }
-        })
-            .catch(error => console.log(error))
-}
+//     let response = fetch(URL, {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(data)
+//     })
+//         .then(response => {
+//             if (response.ok) {
+//                 personTestsPage.append(response.json());
+//                 lastItem = personTestsPage.querySelector('.person-tests__item:last-child');  
+//             }
+//         })
+//             .catch(error => console.log(error))
+// }
 
-personTestsPage.addEventListener('scroll', function() {
-    let pageScroll = personTestsPage.scrollTop;
-    let itemScroll = lastItem.clientHeight - 100;
-    if (pageScroll > itemScroll) {
-        postResponsePersonScroll('someURL', lastItem);
-    }
-});
+// personTestsPage.addEventListener('scroll', function() {
+//     let pageScroll = personTestsPage.scrollTop;
+//     let itemScroll = lastItem.clientHeight - 100;
+//     if (pageScroll > itemScroll) {
+//         postResponsePersonScroll('someURL', lastItem);
+//     }
+// });
 
 // Chosen-tests 
 
@@ -288,7 +289,7 @@ let deleteElems = function() {
         if (item.classList.contains('active')) {   
             postResponseDelete('http://l91287uv.beget.tech/like/delete', item);
             item.remove();
-            chosenTests = chosenTestsPage.querySelectorAll('.chosen-tests__item');
+            // chosenTests = chosenTestsPage.querySelectorAll('.chosen-tests__item');
             // Вроде надо навешать листнеров(и удалить старые)
             // chosenTests.forEach(function(elem) {
             //     elem.addEventListener('click', (evt) => {
@@ -342,50 +343,51 @@ chosenTests.forEach(function(elem) {
     });
 });
 
+// Скролла не будет
 // Scroll+fetch on chosenPage
 
-let lastChosen = chosenTestsPage.querySelector('.chosen-tests__item:last-child');
+// let lastChosen = chosenTestsPage.querySelector('.chosen-tests__item:last-child');
 
-let postResponseChosenScroll = function(URL, item) {
-    let testId = item.dataset.test_id;
-    let data = ['last_test_id: ', testId];
+// let postResponseChosenScroll = function(URL, item) {
+//     let testId = item.dataset.test_id;
+//     let data = ['last_test_id: ', testId];
 
-    let response = fetch(URL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-        .then(response => {
-            if (response.ok) {
-                chosenTestsPage.append(response.json());
-                chosenTests = chosenTestsPage.querySelectorAll('.chosen-tests__item');
-                // Вроде как тоже надо новых листнеров
-                // chosenTests.forEach(function(elem) {
-                //     elem.addEventListener('click', (evt) => {
-                //         if (basketBtn.classList.contains('active')) {
-                //             evt.preventDefault();
-                //             elem.classList.add('active');
-                //             deleteBtn.addEventListener('click', deleteElems);
-                //         } else {
-                //             postResponseChose('serverURL', elem);
-                //             deleteBtn.removeEventListener('click', deleteElems);
-                //         }
-                //     });
-                // });
+//     let response = fetch(URL, {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(data)
+//     })
+//         .then(response => {
+//             if (response.ok) {
+//                 chosenTestsPage.append(response.json());
+//                 chosenTests = chosenTestsPage.querySelectorAll('.chosen-tests__item');
+//                 // Вроде как тоже надо новых листнеров
+//                 // chosenTests.forEach(function(elem) {
+//                 //     elem.addEventListener('click', (evt) => {
+//                 //         if (basketBtn.classList.contains('active')) {
+//                 //             evt.preventDefault();
+//                 //             elem.classList.add('active');
+//                 //             deleteBtn.addEventListener('click', deleteElems);
+//                 //         } else {
+//                 //             postResponseChose('serverURL', elem);
+//                 //             deleteBtn.removeEventListener('click', deleteElems);
+//                 //         }
+//                 //     });
+//                 // });
 
-                lastChosen = chosenTestsPage.querySelector('.person-tests__item:last-child');  
-            }
-        })
-            .catch(error => console.log(error))
-}
+//                 lastChosen = chosenTestsPage.querySelector('.person-tests__item:last-child');  
+//             }
+//         })
+//             .catch(error => console.log(error))
+// }
 
-chosenTestsPage.addEventListener('scroll', function() {
-    let pageScroll = chosenTestsPage.scrollTop;
-    let itemScroll = lastChosen.clientHeight - 200;
+// chosenTestsPage.addEventListener('scroll', function() {
+//     let pageScroll = chosenTestsPage.scrollTop;
+//     let itemScroll = lastChosen.clientHeight - 200;
     
-    if (pageScroll > itemScroll) {
-        postResponseScroll('someURL', lastItem);
-    }
-});
+//     if (pageScroll > itemScroll) {
+//         postResponseScroll('someURL', lastItem);
+//     }
+// });
