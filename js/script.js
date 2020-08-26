@@ -224,8 +224,9 @@ basketBtn.addEventListener('click', () => {
     let checkingBasket = basketBtn.classList.contains('active');
     let chosenItems = chosenTestsPage.querySelectorAll('.chosen-tests__item');
 
-    let choseElem = function(e) {
-        e.classList.toggle('active');
+    let choseElem = (el) => (ev) => {
+        ev.preventDefault();
+        el.classList.toggle('active');
     }
 
     let deleteElems = function() {
@@ -239,23 +240,17 @@ basketBtn.addEventListener('click', () => {
 
     if (checkingBasket) {
         chosenItems.forEach(function(elem) {
-            elem.addEventListener('click', (evt) => {
-                evt.preventDefault();
-                choseElem(elem);
-            });
+            elem.addEventListener('click', choseElem(elem, event));
         });
         
         deleteBtn.addEventListener('click', deleteElems);
 
     } else {
         deleteBtn.removeEventListener('click', deleteElems);
-        chosenItems.forEach((elem) => {
+        chosenItems.forEach(function(elem) {
             elem.classList.remove('active');
             
-            elem.removeEventListener('click', (evt) => {
-                evt.preventDefault();
-                choseElem(elem);
-            });
+            elem.removeEventListener('click', choseElem(elem, event));
         }); 
     }
 });
