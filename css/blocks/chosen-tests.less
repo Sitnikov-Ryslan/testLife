@@ -100,9 +100,9 @@
         margin-right: 0;
     }
 
-    &.active .chosen-tests__logo {
-        background: rgba(86, 86, 86, 0.6);
-    }
+    // &.active .chosen-tests__logo {
+    //     background: rgba(86, 86, 86, 0.6);
+    // }
 }
 
 .chosen-tests__category {
@@ -179,6 +179,10 @@
     margin: 0 0 0 8px;
     padding: 0;
     border: 0;
-    background: url("../img/heartDark.svg") no-repeat center center;
-    cursor: auto;
+    background: url("../img/heart.svg") no-repeat center center;
+    cursor: pointer;
+
+    &.pressed {
+        background: url("../img/heartDark.svg") no-repeat center center;
+    }
 }

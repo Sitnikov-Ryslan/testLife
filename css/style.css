@@ -499,9 +499,6 @@ p {
 .chosen-tests__item:nth-child(3n) {
   margin-right: 0;
 }
-.chosen-tests__item.active .chosen-tests__logo {
-  background: rgba(86, 86, 86, 0.6);
-}
 .chosen-tests__category {
   width: 100%;
   height: 30px;
@@ -569,8 +566,11 @@ p {
   margin: 0 0 0 8px;
   padding: 0;
   border: 0;
+  background: url("../img/heart.svg") no-repeat center center;
+  cursor: pointer;
+}
+.chosen-tests__btn.pressed {
   background: url("../img/heartDark.svg") no-repeat center center;
-  cursor: auto;
 }
 .footer-social {
   width: 100%;

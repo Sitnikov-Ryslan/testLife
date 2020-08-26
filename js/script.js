@@ -152,11 +152,11 @@ redirectOnRedactTest.forEach((elem) => {
 
 // Likes on personTestsPage
 
-let likes = personTestsPage.querySelectorAll('.person-tests__btn');
+let likes = document.querySelectorAll('.like-btn');
 
 let postData = function(URL, item, amount) {
     let data = {};
-    data = item.closest('.person-tests__item').dataset.test_id;
+    data = item.closest('li').dataset.test_id;
     
     let response = fetch(URL, {
         method: 'POST',
@@ -178,12 +178,19 @@ elem.addEventListener('click', (event) => {
     event.preventDefault();
     elem.classList.toggle('pressed');
     let press = elem.classList.contains('pressed');
-    let quantity = elem.closest('.test-preview__quantity');
+    let quantity = elem.closest('.quantity');
 
     if (press) {
         postData('http://l91287uv.beget.tech/like/add', elem, quantity);
     } else {
         postData('http://l91287uv.beget.tech/like/delete', elem, quantity);
+        let block = elem.closest('li');
+        let blockId = block.dataset.test_id;
+        let blockBro = chosenTestsPage.querySelector(`li[data-test_id="${blockId}"]`);
+        
+        if (blockBro !== null) {
+            blockBro.remove();
+        }
     }
 })
 })
@@ -249,63 +256,63 @@ searchTestBtn.addEventListener('click', (evt) => {
     getResponseSearch('serverURL');
 });
 
-let postResponseDelete = function(URL, elem) {
-    let data = [];
-    elemId = elem.dataset.test_id;
-    data.push('test_id: ', elemId);
+// let postResponseDelete = function(URL, elem) {
+//     let data = [];
+//     elemId = elem.dataset.test_id;
+//     data.push('test_id: ', elemId);
 
-    let response = fetch(URL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        mode: 'cors',
-        body: JSON.stringify(data)
-    })
-        .then(response => response.json())
-        .catch(error => console.log(error))
-}
+//     let response = fetch(URL, {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         mode: 'cors',
+//         body: JSON.stringify(data)
+//     })
+//         .then(response => response.json())
+//         .catch(error => console.log(error))
+// }
 
 
-const basketBtn = document.querySelector('.chosen-tests__basket');
-const deleteBtn = document.querySelector('.chosen-tests__delete');
+// const basketBtn = document.querySelector('.chosen-tests__basket');
+// const deleteBtn = document.querySelector('.chosen-tests__delete');
 
-let activationBasket = function() {
-    basketBtn.classList.toggle('active');
-    deleteBtn.classList.toggle('visually-hidden');
-    if (!basketBtn.classList.contains('active')) {
-        chosenTests.forEach(function(elem) {
-            elem.classList.remove('active');
-        });
-    };
-};
+// let activationBasket = function() {
+//     basketBtn.classList.toggle('active');
+//     deleteBtn.classList.toggle('visually-hidden');
+//     if (!basketBtn.classList.contains('active')) {
+//         chosenTests.forEach(function(elem) {
+//             elem.classList.remove('active');
+//         });
+//     };
+// };
 
-basketBtn.addEventListener('click', () => {
-    activationBasket();
-});
+// basketBtn.addEventListener('click', () => {
+//     activationBasket();
+// });
 
-let deleteElems = function() {
-    chosenTests.forEach(function(item) {
-        if (item.classList.contains('active')) {   
-            postResponseDelete('http://l91287uv.beget.tech/like/delete', item);
-            item.remove();
-            // chosenTests = chosenTestsPage.querySelectorAll('.chosen-tests__item');
-            // Вроде надо навешать листнеров(и удалить старые)
-            // chosenTests.forEach(function(elem) {
-            //     elem.addEventListener('click', (evt) => {
-            //         if (basketBtn.classList.contains('active')) {
-            //             evt.preventDefault();
-            //             elem.classList.add('active');
-            //             deleteBtn.addEventListener('click', deleteElems);
-            //         } else {
-            //             postResponseChose('serverURL', elem);
-            //             deleteBtn.removeEventListener('click', deleteElems);
-            //         }
-            //     });
-            // });
-        }
-    })
-}
+// let deleteElems = function() {
+//     chosenTests.forEach(function(item) {
+//         if (item.classList.contains('active')) {   
+//             postResponseDelete('http://l91287uv.beget.tech/like/delete', item);
+//             item.remove();
+//             // chosenTests = chosenTestsPage.querySelectorAll('.chosen-tests__item');
+//             // Вроде надо навешать листнеров(и удалить старые)
+//             // chosenTests.forEach(function(elem) {
+//             //     elem.addEventListener('click', (evt) => {
+//             //         if (basketBtn.classList.contains('active')) {
+//             //             evt.preventDefault();
+//             //             elem.classList.add('active');
+//             //             deleteBtn.addEventListener('click', deleteElems);
+//             //         } else {
+//             //             postResponseChose('serverURL', elem);
+//             //             deleteBtn.removeEventListener('click', deleteElems);
+//             //         }
+//             //     });
+//             // });
+//         }
+//     })
+// }
 
 let chosenTests = chosenTestsPage.querySelectorAll('.chosen-tests__item');
 
@@ -332,15 +339,19 @@ let postResponseChose = function(URL, item) {
 
 chosenTests.forEach(function(elem) {
     elem.addEventListener('click', (evt) => {
-        if (basketBtn.classList.contains('active')) {
-            evt.preventDefault();
-            elem.classList.add('active');
-            deleteBtn.addEventListener('click', deleteElems);
-        } else {
-            postResponseChose('serverURL', elem);
-            deleteBtn.removeEventListener('click', deleteElems);
-        }
+        evt.preventDefault();
+        postResponseChose('serverURL', elem);
     });
+    // elem.addEventListener('click', (evt) => {
+        // if (basketBtn.classList.contains('active')) {
+        //     evt.preventDefault();
+        //     elem.classList.add('active');
+        //     deleteBtn.addEventListener('click', deleteElems);
+        // } else {
+        //     postResponseChose('serverURL', elem);
+        //     deleteBtn.removeEventListener('click', deleteElems);
+        // }
+    // });
 });
 
 // Скролла не будет
