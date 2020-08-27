@@ -198,12 +198,29 @@ p {
   padding: 0;
   border-radius: 50%;
   background: url('../img/pencil-icon.svg') no-repeat center center, #c4c4c4;
+  margin-right: 10px;
   margin-bottom: 137px;
   cursor: pointer;
   overflow: hidden;
 }
 .user__redaction:hover {
   background: url('../img/pencil-icon.svg') no-repeat center center, #777;
+}
+.user__exit {
+  width: 50px;
+  height: 50px;
+  border: 0;
+  padding: 0;
+  border-radius: 50%;
+  background: url('../img/logout.svg') no-repeat 65% center, #c4c4c4;
+  background-size: 25px 25px;
+  margin-bottom: 137px;
+  cursor: pointer;
+  overflow: hidden;
+}
+.user__exit:hover {
+  background: url('../img/logout.svg') no-repeat 65% center, #777;
+  background-size: 25px 25px;
 }
 .user__stat {
   width: 360px;
@@ -395,8 +412,9 @@ p {
   background: url('../img/heart.svg') no-repeat center center;
   cursor: pointer;
 }
-.person-tests__btn.pressed {
-  background: url("../img/heartDark.svg") no-repeat center center;
+.person-tests__btn:disabled {
+  opacity: 0.5;
+  cursor: auto;
 }
 .person-tests__redact {
   position: absolute;

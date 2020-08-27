@@ -127,9 +127,14 @@
     background: url('../img/heart.svg') no-repeat center center;
     cursor: pointer;
     
-    &.pressed {
-        background: url("../img/heartDark.svg") no-repeat center center;
+    &:disabled {
+        opacity: 0.5;
+        cursor: auto;
     }
+
+    // &.pressed {
+    //     background: url("../img/heartDark.svg") no-repeat center center;
+    // }
 }
 
 .person-tests__redact {

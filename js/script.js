@@ -64,6 +64,31 @@ redactUser.addEventListener('click', (evt) => {
     getResponseRedact('serverURL');
 });
 
+const exitUser = document.querySelector('.user__exit');
+
+let getResponseExit = function(URL) {
+    
+    let response = fetch(URL, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify()
+    })
+        .then(response => {
+            if (response.ok) {
+                response.json();
+                window.location.href = 'URL главной страницы ';
+            }
+        })
+        .catch(error => console.log(error))
+}
+
+exitUser.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    getResponseExit('serverURL');
+});
+
 // Fetch on personTestsPage
 const createTestBtn = document.querySelector('.person-tests__add');
 
@@ -152,7 +177,7 @@ redirectOnRedactTest.forEach((elem) => {
 
 // Likes on personTestsPage
 
-let likes = document.querySelectorAll('.like-btn');
+let likes = document.querySelectorAll('.chosen-tests__btn');
 
 let postData = function(URL, item, amount) {
     let data = {};
@@ -184,13 +209,14 @@ elem.addEventListener('click', (event) => {
         postData('http://l91287uv.beget.tech/like/add', elem, quantity);
     } else {
         postData('http://l91287uv.beget.tech/like/delete', elem, quantity);
-        let block = elem.closest('li');
-        let blockId = block.dataset.test_id;
-        let blockBro = chosenTestsPage.querySelector(`li[data-test_id="${blockId}"]`);
+        let block = elem.closest('.chosen-tests__item');
+        block.remove();
+        // let blockId = block.dataset.test_id;
+        // let blockBro = chosenTestsPage.querySelector(`li[data-test_id="${blockId}"]`);
         
-        if (blockBro !== null) {
-            blockBro.remove();
-        }
+        // if (blockBro !== null) {
+        //     blockBro.remove();
+        // }
     }
 })
 })
