@@ -77,6 +77,31 @@ p {
 .header__main-page-link:hover {
   color: #000;
 }
+.header__nav {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 80px;
+}
+.header__nav-btn {
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 35px;
+  width: 360px;
+  padding: 7px 0;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  background: #000;
+  border: 0;
+  margin: 0 20px;
+}
+.header__nav-btn:hover {
+  border: 3px solid #FF7575;
+}
+.header__nav-btn:focus {
+  color: #FF7575;
+}
 .header__user {
   width: 80px;
   height: 80px;
@@ -92,8 +117,11 @@ p {
 }
 .header__user:after {
   position: absolute;
-  top: 25%;
-  left: 25%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
   content: "";
   width: 40px;
   height: 40px;
@@ -123,40 +151,16 @@ p {
   display: flex;
   align-items: center;
 }
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 80px;
-}
-.nav__btn {
-  font-weight: bold;
-  font-size: 30px;
-  line-height: 35px;
-  width: 360px;
-  padding: 7px 0;
-  text-align: center;
-  color: #fff;
-  text-decoration: none;
-  background: #000;
-  border: 0;
-}
-.nav__btn:hover {
-  border: 3px solid #FF7575;
-}
-.nav__btn:focus {
-  color: #FF7575;
-}
 .person {
   width: 100%;
-  height: 100vh;
-  padding: 78px 0 160px 0;
+  height: 91vh;
+  padding-top: 78px;
   background: #fff;
+  overflow-y: auto;
 }
 .user {
   width: 685px;
   height: auto;
-  overflow: hidden;
 }
 .user__title {
   font-size: 50px;
@@ -169,15 +173,23 @@ p {
   width: 100%;
   height: 150px;
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: space-around;
   padding-left: 200px;
-  background: url('../img/avatar.jpg') no-repeat 0 0;
   font-weight: bold;
   font-size: 30px;
   line-height: 35px;
   color: #000;
   margin-bottom: 40px;
+}
+.user__avatar {
+  position: absolute;
+  max-width: 150px;
+  height: auto;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
 }
 .user__name {
   width: 100%;
@@ -207,6 +219,7 @@ p {
   background: url('../img/pencil-icon.svg') no-repeat center center, #777;
 }
 .user__exit {
+  display: inline-block;
   width: 50px;
   height: 50px;
   border: 0;
@@ -214,7 +227,6 @@ p {
   border-radius: 50%;
   background: url('../img/logout.svg') no-repeat 65% center, #c4c4c4;
   background-size: 25px 25px;
-  margin-bottom: 137px;
   cursor: pointer;
   overflow: hidden;
 }
@@ -250,8 +262,7 @@ p {
 }
 .history-sidebar {
   width: 457px;
-  height: 705px;
-  overflow: hidden;
+  height: auto;
 }
 .history-sidebar__title {
   width: 100%;
@@ -267,16 +278,26 @@ p {
 }
 .history-sidebar__list {
   width: 100%;
-  height: 595px;
+  height: auto;
   margin: 0;
-  padding-right: 15px;
+  padding: 0;
   overflow-x: hidden;
-  overflow-y: auto;
 }
 .history-sidebar__item {
   text-align: right;
   margin-bottom: 45px;
-  list-style-image: url('../img/history-list-marker.svg');
+  list-style: none;
+  position: relative;
+}
+.history-sidebar__item:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  content: "";
+  background: #c4c4c4;
 }
 .history-sidebar__item-name {
   width: 100%;
@@ -622,5 +643,14 @@ p {
   display: none;
 }
 .visually-hidden {
-  visibility: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }

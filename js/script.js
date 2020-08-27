@@ -64,30 +64,30 @@ redactUser.addEventListener('click', (evt) => {
     getResponseRedact('serverURL');
 });
 
-const exitUser = document.querySelector('.user__exit');
+// const exitUser = document.querySelector('.user__exit');
 
-let getResponseExit = function(URL) {
+// let getResponseExit = function(URL) {
     
-    let response = fetch(URL, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify()
-    })
-        .then(response => {
-            if (response.ok) {
-                response.json();
-                window.location.href = 'URL главной страницы ';
-            }
-        })
-        .catch(error => console.log(error))
-}
+//     let response = fetch(URL, {
+//         method: 'GET',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify()
+//     })
+//         .then(response => {
+//             if (response.ok) {
+//                 response.json();
+//                 window.location.href = 'URL главной страницы ';
+//             }
+//         })
+//         .catch(error => console.log(error))
+// }
 
-exitUser.addEventListener('click', (evt) => {
-    evt.preventDefault();
-    getResponseExit('serverURL');
-});
+// exitUser.addEventListener('click', (evt) => {
+//     evt.preventDefault();
+//     getResponseExit('serverURL');
+// });
 
 // Fetch on personTestsPage
 const createTestBtn = document.querySelector('.person-tests__add');
@@ -257,30 +257,30 @@ elem.addEventListener('click', (event) => {
 
 // Chosen-tests 
 
-const searchTestBtn = document.querySelector('.chosen-tests__search');
+// const searchTestBtn = document.querySelector('.chosen-tests__search');
 
-let getResponseSearch = function(URL) {
+// let getResponseSearch = function(URL) {
     
-    let response = fetch(URL, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify()
-    })
-        .then(response => {
-            if (response.ok) {
-                response.json();
-                window.location.href = 'URL страницы "в разработке"';
-            }
-        })
-        .catch(error => console.log(error))
-}
+//     let response = fetch(URL, {
+//         method: 'GET',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify()
+//     })
+//         .then(response => {
+//             if (response.ok) {
+//                 response.json();
+//                 window.location.href = 'URL страницы "в разработке"';
+//             }
+//         })
+//         .catch(error => console.log(error))
+// }
 
-searchTestBtn.addEventListener('click', (evt) => {
-    evt.preventDefault();
-    getResponseSearch('serverURL');
-});
+// searchTestBtn.addEventListener('click', (evt) => {
+//     evt.preventDefault();
+//     getResponseSearch('serverURL');
+// });
 
 // let postResponseDelete = function(URL, elem) {
 //     let data = [];

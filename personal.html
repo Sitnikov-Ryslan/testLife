@@ -15,11 +15,10 @@
                     <a class="header__main-page-link" href="../MainPage/index.html">test life</a>
                 </div>
                 <div class="center">
-                    <nav class="nav">
-                        <button class="nav__btn nav__btn_person-tests" type="button">Мои тесты</button>
-                        <button class="nav__btn nav__btn_chosen-tests" type="button">Избранные</button>
-                        <button class="nav__btn visually-hidden" type="button">История</button>
-                    </nav>
+                    <div class="header__nav">
+                        <button class="header__nav-btn nav__btn_person-tests" type="button">Мои тесты</button>
+                        <button class="header__nav-btn nav__btn_chosen-tests" type="button">Избранные</button>
+                    </div>
                 </div>
                 <button class="header__user" type="button">
                     <span class="visually-hidden">User</span>
@@ -32,15 +31,16 @@
                 <section class="user">
                     <h1 class="user__title">Личный кабинет</h1>
                     <div class="user__info">
+                        <img src="img/avatar.jpg" alt="Аватарка" class="user__avatar">
                         <div class="user__name">MisterMaster007</div>
                         <div class="user__likes">273</div>
                     </div>
-                    <button class="user__redaction" type="button"><!-- На страницу "в разработке" -->
+                    <button class="user__redaction" type="button">
                         <span class="visually-hidden">Redaction</span>
                     </button>
-                    <button class="user__exit" type="button"><!-- На главную страницу -->
+                    <a class="user__exit" href="../MainPage/index.html"><!-- На главную страницу -->
                         <span class="visually-hidden">Exit</span>
-                    </button>
+                    </a>
                     <div class="user__stat">
                         <div class="user__stat-title">Решено вами тестов</div>
                         <div class="user__stat-number">189</div>
@@ -207,12 +207,7 @@
             <div class="center">
                 <div class="chosen-tests__title">
                     <h1 class="chosen-tests__title-text">Избранные</h1>
-                    <button class="chosen-tests__search" type="button">Найти</button>
-                    <!-- <div class="chosen-tests__icons">
-                        <button class="chosen-tests__delete visually-hidden" type="button">Удалить</button>
-                        <button class="chosen-tests__search" type="button">Найти</button>
-                        <button class="chosen-tests__basket" type="button">Корзина</button>
-                    </div> -->
+                    <a class="chosen-tests__search" href="#">Найти</a>
                 </div>
                 <ul class="chosen-tests__list">
                     <li class="chosen-tests__item" data-test_id="9">

@@ -3,7 +3,6 @@
 .user {
     width: 685px;
     height: auto;
-    overflow: hidden;
 }
 
 .user__title {
@@ -18,15 +17,24 @@
     width: 100%;
     height: 150px;
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: space-around;
     padding-left: 200px;
-    background: url('../img/avatar.jpg') no-repeat 0 0;
     font-weight: bold;
     font-size: 30px;
     line-height: 35px;
     color: @black;
     margin-bottom: 40px;
+}
+
+.user__avatar {
+    position: absolute;
+    max-width: 150px;
+    height: auto;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
 }
 
 .user__name {
@@ -61,6 +69,7 @@
 }
 
 .user__exit {
+    display: inline-block;
     width: 50px;
     height: 50px;
     border: 0;
@@ -68,7 +77,6 @@
     border-radius: 50%;
     background: url('../img/logout.svg') no-repeat 65% center, @gray-light;
     background-size: 25px 25px;
-    margin-bottom: 137px;
     cursor: pointer;
     overflow: hidden;
 
