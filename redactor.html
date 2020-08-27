@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redactor Page</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="view">
+        <header class="header">
+            <div class="container">
+                <div class="header__logo">
+                    <a class="header__main-page-link" href="../MainPage/index.html">test life</a>
+                </div>
+                <div class="center">
+                    <nav class="nav">
+                        <a href="#" class="nav__link">Топ тестов</a>
+                        <a href="#" class="nav__link">Найти тест</a>
+                        <a href="#" class="nav__link">Мини-игры</a>
+                    </nav>
+                </div>
+                <button class="header__user" type="button">
+                    <span class="visually-hidden">User</span>
+                </button>
+            </div>
+        </header>
+
+        <form class="redactor">
+            <div class="redactor__header">
+                <div class="container">
+                    <input class="redactor__test-name" type="text" name="test-name" placeholder="Название теста" minlength="5" maxlength="100" required>
+                    <h1 class="redactor__title">Редактор тестов</h1>
+                </div>
+            </div>
+            <div class="redactor-content">
+                <div class="container">
+                    <button type="button" class="redactor-content__close">
+                        <span class="visually-hidden">close</span>
+                    </button>
+                    <button class="redactor-content__begin" type="button">
+                        <span class="visually-hidden">Создать тест</span>
+                    </button>
+                    <fieldset class="redactor-content__info">
+                        <textarea class="redactor-content__test-info" name="test-info" placeholder="Описание теста" minlength="10" maxlength="500" required></textarea>
+                        <label class="redactor-content__author">
+                            <span class="redactor-content__author-text">Автор теста:</span>
+                            <input class="redactor-content__author-input" type="text" name="test-author" minlength="5" maxlength="40" required>
+                        </label>
+                    </fieldset>
+                    <fieldset class="redactor-content__question hidden">
+                        <button class="redactor-content__question-back" type="button">
+                            <span class="visually-hidden">Comeback</span>
+                        </button>
+                        <textarea class="redactor-content__question-text" name="question" placeholder="Вопрос" minlength="5" maxlength="150" required></textarea>
+                        <ul class="answer-list">
+                            <li class="answer-list__item">
+                                <label>
+                                    <input class="answer-list__radio" name="question1" type="radio" required>
+                                    <input class="answer-list__input" name="1" type="text" placeholder="Ответ" minlength="5" maxlength="50" required>
+                                    <span></span>
+                                </label>
+                            </li>
+                            <li class="answer-list__item">
+                                <label>
+                                    <input class="answer-list__radio" name="question1" type="radio">
+                                    <input class="answer-list__input" name="2" type="text" placeholder="Ответ" minlength="5" maxlength="50" required>
+                                    <span></span>
+                                </label>
+                            </li>
+                            <li class="answer-list__item">
+                                <label>
+                                    <input class="answer-list__radio" name="question1" type="radio">
+                                    <input class="answer-list__input" name="3" type="text" placeholder="Ответ" minlength="5" maxlength="50">
+                                    <span></span>
+                                </label>
+                            </li>
+                            <li class="answer-list__item">
+                                <label>
+                                    <input class="answer-list__radio" name="question1" type="radio">
+                                    <input class="answer-list__input" name="4" type="text" placeholder="Ответ" minlength="5" maxlength="50">
+                                    <span></span>
+                                </label>
+                            </li>
+                            <li class="answer-list__item">
+                                <button class="answer-list__item-add">
+                                    <span class="visually-hidden">Добавить ответ</span>
+                                </button>
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <button class="redactor-content__submit hidden" type="submit">Сохранить</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
