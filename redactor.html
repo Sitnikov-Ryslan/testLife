@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redactor Page</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="view">
+        <header class="header">
+            <div class="container">
+                <div class="header__logo">
+                    <a class="header__main-page-link" href="../MainPage/index.html">test life</a>
+                </div>
+                <div class="center">
+                    <nav class="nav">
+                        <a href="#" class="nav__link">Топ тестов</a>
+                        <a href="#" class="nav__link">Найти тест</a>
+                        <a href="#" class="nav__link">Мини-игры</a>
+                    </nav>
+                </div>
+                <button class="header__user" type="button">
+                    <span class="visually-hidden">User</span>
+                </button>
+            </div>
+        </header>
+
+        <form class="redactor">
+            <div class="redactor__header">
+                <div class="container">
+                    <input class="redactor__test-name" type="text" name="test-name" placeholder="Название теста" minlength="5" maxlength="100" required>
+                    <h1 class="redactor__title">Редактор тестов</h1>
+                </div>
+            </div>
+            <div class="redactor-content">
+                <div class="container">
+                    <button type="button" class="redactor-content__close">
+                        <span class="visually-hidden">close</span>
+                    </button>
+                    <button class="redactor-content__add-question" type="button">Добавить вопрос</button>
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <fieldset class="redactor-content__info">
+                                    <input type="file" name="avatar" id="avatar" accept="image/*" class="redactor-content__avatar">
+                                    <label for="avatar" class="redactor-content__avatar-label">
+                                        <span class="visually-hidden">Добавить фото</span>
+                                    </label>
+                                    <textarea class="redactor-content__test-info" name="test-info" placeholder="Описание теста" minlength="10" maxlength="500" required></textarea>
+                                </fieldset>
+                            </div>
+                            <div class="swiper-slide">
+                                <fieldset class="redactor-content__question">
+                                    <textarea class="redactor-content__question-text" name="question" placeholder="Вопрос" minlength="5" maxlength="150" required></textarea>
+                                    <ul class="answer-list">
+                                        <li class="answer-list__item">
+                                            <button type="button" class="answer-list__item-del">
+                                                <span class="visually-hidden">Del</span>
+                                            </button>
+                                            <label>
+                                                <input class="answer-list__radio" name="1" type="radio" required>
+                                                <input class="answer-list__input" name="1" type="text" placeholder="Ответ" minlength="5" maxlength="50" required>
+                                                <span></span>
+                                            </label>
+                                        </li>
+                                        <li class="answer-list__item">
+                                            <button type="button" class="answer-list__item-del">
+                                                <span class="visually-hidden">Del</span>
+                                            </button>
+                                            <label>
+                                                <input class="answer-list__radio" name="1" type="radio">
+                                                <input class="answer-list__input" name="2" type="text" placeholder="Ответ" minlength="5" maxlength="50" required>
+                                                <span></span>
+                                            </label>
+                                        </li>
+                                        <li class="answer-list__item">
+                                            <button type="button" class="answer-list__item-del">
+                                                <span class="visually-hidden">Del</span>
+                                            </button>
+                                            <label>
+                                                <input class="answer-list__radio" name="1" type="radio">
+                                                <input class="answer-list__input" name="3" type="text" placeholder="Ответ" minlength="5" maxlength="50">
+                                                <span></span>
+                                            </label>
+                                        </li>
+                                        <li class="answer-list__item">
+                                            <button type="button" class="answer-list__item-del">
+                                                <span class="visually-hidden">Del</span>
+                                            </button>
+                                            <label>
+                                                <input class="answer-list__radio" name="1" type="radio">
+                                                <input class="answer-list__input" name="4" type="text" placeholder="Ответ" minlength="5" maxlength="50">
+                                                <span></span>
+                                            </label>
+                                        </li>
+                                        <li class="answer-list__item">
+                                            <button class="answer-list__item-add" type="button">
+                                                <span class="visually-hidden">Добавить ответ</span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="swiper-button-next" type="button">Next</button>
+                    <button class="swiper-button-prev" type="button">Prev</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="modal hidden">
+            <div class="modal__window">
+                <button class="modal__return" type="button">
+                    <span class="visually-hidden">Return</span>
+                </button>
+                <h2 class="modal__title">Выходите?</h2>
+                <button class="modal__submit" type="submit">Сохранить и выйти</button>
+                <a href="#" class="modal__link">Удалить и выйти</a>
+            </div>
+        </div>
+    </div>
+<script src="js/swiper.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

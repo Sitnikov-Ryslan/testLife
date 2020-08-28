@@ -1,7 +1,6 @@
 // main: ../style.less
-
 .modal {
-    display: none;
+    display: flex;
     align-items: center;
     width: 100%;
     height: 100%;
@@ -10,69 +9,71 @@
     top: 0;
     left: 0;
     z-index: 1000;
-
-    &.show {
-        display: flex;
-    }
 }
 
 .modal__window {
-    display: block;
     width: 555px;
-    height: auto;
+    height: 600px;
     background: @white;
+    text-align: center;
+    padding: 103px 103px 160px 92px;
+    top: 0;
+    left: 0;
+    z-index: 15;
     position: relative;
     margin: auto;
 }
 
+.modal__return {
+    width: 65px;
+    height: 65px;
+    border: 0;
+    border-radius: 50%;
+    background: url('../img/arrow-back.svg') no-repeat center center, @gray-light;
+    position: absolute;
+    top: 35px;
+    left: 41px;
+    padding: 0;
+    cursor: pointer;
+}
+
 .modal__title {
-    width: 100%;
-    height: 80px;
-    background: @black;
-    text-align: center;
-    padding: 22px 0;
+    font-style: normal;
     font-weight: bold;
     font-size: 30px;
     line-height: 35px;
+    color: @black;
+    margin-bottom: 121px;
+}
+
+.modal__submit {
+    width: 360px;
+    height: 80px;
+    background: @red;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 29px;
+    text-align: center;
     color: @white;
+    border: 0;
+    margin-bottom: 21px;
+    cursor: pointer;
 }
 
-.modal__close {
-    position: absolute;
-	top: 20px;
-	right: 30px;
-	width: 34px;
-	height: 34px;
-	padding: 0;
-	background: url('../img/close.svg');
-	border: 0;
-	outline: none;
-	cursor: pointer;
-	transition: transform 0.2s linear;
-	
-	&:hover {
-		transform: rotate(90deg);
-	}
-}
-
-.modal__error {
-    height: 100%;
-    width: 100%;
-    background: @white;
-    padding: 25px 42px 47px;
-    position: relative;
-}
-
-.modal__error-close {
-    position: absolute;
-	top: 15px;
-	right: 20px;
-	width: 24px;
-    height: 24px;
-    font-size: 0;
-	padding: 0;
-	background: url('../img/close.svg');
-	border: 0;
-	outline: none;
-	cursor: pointer;
+.modal__link {
+    display: block;
+    width: 360px;
+    height: 80px;
+    background: @gray-light;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 29px;
+    text-align: center;
+    color: @white;
+    text-decoration: none;
+    padding-top: 25px;
 }

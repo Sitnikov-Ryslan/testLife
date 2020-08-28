@@ -1,0 +1,99 @@
+// main: ../style.less
+
+.answer-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height: auto;
+    list-style: none;
+    margin: 0 0 0 135px;
+    padding: 0;
+}
+
+.answer-list__item {
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    position: relative;
+
+    & label {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+
+        & span {
+            width: 0;
+            height: 0;
+            font-size: 0;
+
+            &:before {
+                display: inline-block;
+                position: absolute;
+                top: 50%;
+                left: -55px;
+                content: "";
+                width: 27px;
+                height: 28px;
+                background: url('../img/answer-marker.svg') no-repeat center center;
+                transform: translateY(-50%);
+            }
+        }
+    }
+}
+
+.answer-list__radio {
+    display: none;
+
+    &:checked ~ span:before {
+        background: url('../img/checked-answer.svg') no-repeat center center; 
+    }
+}
+
+.answer-list__item-del {
+    position: absolute;
+    left: -120px;
+    width: 35px;
+    height: 35px;
+    border: 0;
+    cursor: pointer;
+    background: url('../img/close-icon.svg') no-repeat center center;
+}
+
+.answer-list__input {
+    display: block;
+    padding: 0 0 0 13px;
+    width: 810px;
+    height: 50px;
+    border: 2px solid @gray-dark;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    color: @black;
+
+    &::placeholder {
+        font-family: 'Roboto', sans-serif;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 28px;
+        color: @gray-dark;
+    }
+}
+
+.answer-list__item-add {
+    width: 27px;
+    height: 28px;
+    overflow: hidden;
+    border: 0;
+    padding: 0;
+    border-radius: 50%;
+    background: url('../img/add-item.svg') no-repeat center center, @gray-light;
+    cursor: pointer;
+
+    &:hover {
+        background: url('../img/add-item.svg') no-repeat center center, @gray;
+    }
+}

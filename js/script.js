@@ -1,97 +1,30 @@
 // Swiper
 
-let swipers = document.querySelectorAll('.swiper-container');
-
-swipers.forEach(function(elem) {
-    let mySwiper = new Swiper(elem, {
-        
-        speed: 400,
-        spaceBetween: 30,
-        slidesPerView: 3,
-        autoHeight: true,
+let mySwiper = new Swiper('.swiper-container', {
     
-        navigation: {
-            nextEl: elem.parentNode.querySelector('.swiper-button-next'),
-            prevEl: elem.parentNode.querySelector('.swiper-button-prev'),
-          },
-    })
+    speed: 400,
+    spaceBetween: 0,
+    slidesPerView: 1,
+    autoHeight: false,
+    height: 972,
+
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+        },
 })
 
-// Fetch 
-
-let regForm = document.querySelector('.registration');
-let autForm = document.querySelector('.authorization');
-
-let sendRequest = function(e, form) {
-    e.preventDefault();
-
-    let URL = form.action;
-    let method = form.method;
-
-    let response = fetch(URL, {
-        method: method,
-        body: new FormData(form)
-    })
-        .then(response => {
-            if (response.ok) {
-                if (response.status === 201 || response.status === 204) {
-                    location.assign = 'http://l91287uv.beget.tech/home';
-                }
-            }})
-            .then(error => {
-                console.log(error); /* undefined */
-                
-                // form.classList.add('hidden');
-                // let msgBlock = document.querySelector('.modal__error');
-                // msgBlock.classList.remove('hidden');
-                // let msg = document.querySelector('.modal__message');
-                // msg.textContent = error.message;
-                // let closeBtn = document.querySelector('.modal__error-close');
-                // closeBtn.addEventListener('click', function(evt) {
-                //     evt.preventDefault();
-                //     msgBlock.classList.add('hidden');
-                //     form.classList.remove('hidden');
-                // })
-            })
-}
-
-
-regForm.addEventListener('submit', (evt) => sendRequest(evt, regForm));
-autForm.addEventListener('submit', (evt) => sendRequest(evt, autForm));
-
-// Fixed Header
-
-const header = document.querySelector('.header');
-const testsHeight =  document.querySelector('.tests').offsetTop;
-const nav = document.querySelector('.nav');
-
+// Modal
 const body = document.querySelector('body');
-const regBtn = document.querySelector('.header__user');
+const closeBtn = document.querySelector('.redactor-content__close');
 const modal = document.querySelector('.modal');
 const modalForm = document.querySelector('.modal__window');
+const returnBtn = document.querySelector('.modal__return');
 
-const likes = document.querySelectorAll('.test-preview__btn');
-
-let fixedHeader = function() {
-    let scrollOffset = window.pageYOffset;
-    if (scrollOffset >= testsHeight) {
-        nav.classList.add('show');
-        header.classList.add('fixed');
-    } else {
-        nav.classList.remove('show');
-        header.classList.remove('fixed');
-    }
-} 
-
-fixedHeader();
-window.addEventListener('scroll', fixedHeader);
-
-// Show modal
-
-regBtn.addEventListener('click', function(evt) {
+closeBtn.addEventListener('click', function(evt) {
     evt.preventDefault();
     body.classList.add('no-scroll');
-    modal.classList.add('show');
+    modal.classList.remove('hidden');
 
     let stopProp = function(evt) {
         evt.stopPropagation();
@@ -100,231 +33,133 @@ regBtn.addEventListener('click', function(evt) {
     let closeModal = function(evt) {
         evt.preventDefault();
         body.classList.remove('no-scroll');
-        modal.classList.remove('show');
+        modal.classList.add('hidden');
         modal.removeEventListener('click', closeModal);
         modalForm.removeEventListener('click', stopProp)
     }
 
+    returnBtn.addEventListener('click', closeModal)
     modal.addEventListener('click', closeModal)
     modalForm.addEventListener('click', stopProp)
 })
 
-// Toggle hearts
+// Show avatar
 
-let postData = function(URL, item, amount) {
-        let data = {};
-        data = item.closest('.test-preview').dataset.test_id;
-        
-        let response = fetch(URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            mode: 'cors',
-            body: JSON.stringify(
-                {'test_id': data})
-        })
-            .then(response => {
-                amount = response.json()
-            })
-            .catch(error => console.log(error))
-}
+let inputAva = document.querySelector('.redactor-content__avatar');
+inputAva.addEventListener('change', function() {
+    if (this.files[0]) {
+        let fileReader = new FileReader();
+        fileReader.addEventListener('load', function() {
+            let imageAva = document.querySelector('.redactor-content__avatar-label');
+            imageAva.style.background = `url("${fileReader.result}")`;
+        });
+        fileReader.readAsDataURL(this.files[0]);
+    };
+});
 
-likes.forEach(function(elem) {
-    elem.addEventListener('click', (event) => {
-        event.preventDefault();
-        elem.classList.toggle('pressed');
-        let press = elem.classList.contains('pressed');
-        let quantity = elem.closest('.test-preview__quantity');
+// Add new answer
 
-        if (press) {
-            postData('http://l91287uv.beget.tech/like/add', elem, quantity);
-        } else {
-            postData('http://l91287uv.beget.tech/like/delete', elem, quantity);
-        }
+let lastQuestion = document.querySelector('.swiper-slide:last-child');
+let addAnswerBtn = lastQuestion.querySelector('.answer-list__item-add');
+
+let activationAddAnswer = function() {
+    addAnswerBtn.addEventListener('click', /* (evt) => */() => {
+    /* evt.preventDefault(); */
+    let redactorQuestion = addAnswerBtn.closest('.redactor-content__question');
+    let prevBlock = redactorQuestion.querySelector('.answer-list__item:nth-last-child(2)');
+    let lastName = prevBlock.querySelector('.answer-list__input').name;
+    let newName = Number(lastName) + 1;
+    let parent = addAnswerBtn.closest('.answer-list__item');
+
+    parent.insertAdjacentHTML('beforebegin', `<li class="answer-list__item">
+    <label>
+        <button type="button" class="answer-list__item-del">
+            <span class="visually-hidden">Del</span>
+        </button>
+        <input class="answer-list__radio" name="question1" type="radio">
+        <input class="answer-list__input" name="${newName}" type="text" placeholder="Ответ" minlength="5" maxlength="50">
+        <span></span>
+    </label>
+    </li>`);
     })
-})
-
-// Toggle forms
-
-const accountToggleBtn = document.querySelector('.authorization__account');
-const loginToggleBtn = document.querySelector('.registration__login');
-const accForm = document.querySelector('.registration');
-const logForm = document.querySelector('.authorization');
-const modalTitle = document.querySelector('.modal__title');
-const modalError = document.querySelectorAll('.modal__error');
-
-accountToggleBtn.addEventListener('click', function(evt) {
-	evt.preventDefault();
-	accForm.classList.remove('hidden');
-    logForm.classList.add('hidden');
-    modalTitle.textContent = 'Регистрация';
-});
-
-loginToggleBtn.addEventListener('click', function(evt) {
-	evt.preventDefault();
-	logForm.classList.remove('hidden');
-    accForm.classList.add('hidden');
-    modalTitle.textContent = 'Авторизация';
-});
-
-
-// Validate passwords
-
-let validatePasswords = function(elem) {
-    let form = elem.parentNode;
-    let passwords = form.querySelectorAll('input[type=password]');
-    let submitBtn = form.querySelector('button[type=submit]');
-    let errorMsg = form.querySelector('div');
-
-    if (passwords[0].value !== "" && passwords[1].value !== "") {
-        if (passwords[0].value == passwords[1].value) {
-            submitBtn.disabled = false;
-            errorMsg.classList.add('hidden');
-        } else {
-            submitBtn.disabled = true;
-            errorMsg.textContent = 'Ошибка: Пароли не совпадают';
-            errorMsg.classList.remove('hidden');
-        }
-    } 
 }
 
-// Filled forms inputs
+activationAddAnswer();
 
-const loginNameInput = document.querySelector('.authorization__input_name');
-const loginMailInput = document.querySelector('.authorization__input_email');
-const loginPassInput = document.querySelector('.authorization__input_pass');
-const loginPassRepeatInput = document.querySelector('.authorization__input_pass-repeat');
+//  Delete answer
 
-loginNameInput.addEventListener('change', function() {
-	if (loginNameInput.value !== '') {
-        loginNameInput.classList.add('filled');
-	} else {
-		loginNameInput.classList.remove('filled');
-	};
-});
+let delAnswerBtns = document.querySelectorAll('.answer-list__item-del');
 
-loginMailInput.addEventListener('change', function() {
-	if (loginMailInput.value !== '') {
-	loginMailInput.classList.add('filled');
-	} else {
-		loginMailInput.classList.remove('filled');
-	};
-});
-
-loginPassInput.addEventListener('change', function() {
-	if (loginPassInput.value !== '') {
-    loginPassInput.classList.add('filled');
-    validatePasswords(loginPassInput);
-	} else {
-		loginPassInput.classList.remove('filled');
-	};
-});
-
-loginPassRepeatInput.addEventListener('change', function() {
-	if (loginPassRepeatInput.value !== '') {
-    loginPassRepeatInput.classList.add('filled');
-    validatePasswords(loginPassRepeatInput);
-	} else {
-		loginPassRepeatInput.classList.remove('filled');
-	};
-});
-
-const accountNameInput = document.querySelector('.registration__input_name');
-const accountMailInput = document.querySelector('.registration__input_email');
-const accountPassInput = document.querySelector('.registration__input_pass');
-const accountPassRepeatInput = document.querySelector('.registration__input_pass-repeat');
-
-accountNameInput.addEventListener('change', function() {
-	if (accountNameInput.value !== '') {
-        accountNameInput.classList.add('filled');
-	} else {
-		accountNameInput.classList.remove('filled');
-	};
-});
-
-accountMailInput.addEventListener('change', function() {
-	if (accountMailInput.value !== '') {
-	accountMailInput.classList.add('filled');
-	} else {
-		accountMailInput.classList.remove('filled');
-	};
-});
-
-accountPassInput.addEventListener('change', function() {
-	if (accountPassInput.value !== '') {
-    accountPassInput.classList.add('filled');
-    validatePasswords(accountPassInput);
-	} else {
-		accountPassInput.classList.remove('filled');
-	};
-});
-
-accountPassRepeatInput.addEventListener('change', function() {
-	if (accountPassRepeatInput.value !== '') {
-    accountPassRepeatInput.classList.add('filled');
-    validatePasswords(accountPassRepeatInput);
-	} else {
-		accountPassRepeatInput.classList.remove('filled');
-	};
-});
-
-// Email fetch
-
-const forms = document.querySelectorAll('form');
-
-let fetchMail = function(elem, message, block) {
-    let data = {};
-    data = elem.value;
-    
-    let response = fetch('http://l91287uv.beget.tech/email/exist', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        mode: 'cors',
-        body: JSON.stringify(
-            {'email': data})
-    })
-        .then(response => {
-            response.text();
-            message.classList.add('hidden');
-        })
-        .catch(error => {
-            message.classList.remove('hidden');
-            message.textcontent = error.message;
-        })
-}
-
-forms.forEach(function(form) {
-    let input = form.querySelector('input[type = email]');
-    let msg = form.querySelector('div');
-
-    input.addEventListener('change', (evt) => {
-        evt.preventDefault();
-        fetchMail(input, msg, form);
+delAnswerBtns.forEach(function(elem) {
+    elem.addEventListener('click', () => {
+        let parent = elem.closest('.answer-list__item');
+        parent.remove();
     });
 });
 
-// Footer info
+//  Add new question
 
-let footerInfoAbout = document.querySelector('.footer__info-about');
-let footerInfoService = document.querySelector('.footer__info-service');
-let footerAbout = document.querySelector('.footer__about');
-let footerService = document.querySelector('.footer__service');
+const addQuestionBtn = document.querySelector('.redactor-content__add-question');
 
-footerAbout.addEventListener('click', () => {
-    footerInfoAbout.classList.toggle('hidden');
-    let showService = footerInfoService.classList.contains('hidden');
-    if (!showService) {
-        footerInfoService.classList.add('hidden');
-    };
-});
-
-footerService.addEventListener('click', () => {
-    footerInfoService.classList.toggle('hidden');
-    let showService = footerInfoAbout.classList.contains('hidden');
-    if (!showService) {
-        footerInfoAbout.classList.add('hidden');
-    };
+addQuestionBtn.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    let lastBlock = document.querySelector('.swiper-slide:last-child');
+    let lastName = lastBlock.querySelector('.answer-list__radio').name;
+    let newName = Number(lastName) + 1;
+     
+    mySwiper.appendSlide(`<div class="swiper-slide">
+    <fieldset class="redactor-content__question">
+    <textarea class="redactor-content__question-text" name="question" placeholder="Вопрос" minlength="5" maxlength="150" required></textarea>
+    <ul class="answer-list">
+        <li class="answer-list__item">
+            <button type="button" class="answer-list__item-del">
+                <span class="visually-hidden">Del</span>
+            </button>    
+            <label>
+                <input class="answer-list__radio" name="${newName}" type="radio" required>
+                <input class="answer-list__input" name="1" type="text" placeholder="Ответ" minlength="5" maxlength="50" required>
+                <span></span>
+            </label>
+        </li>
+        <li class="answer-list__item">
+            <button type="button" class="answer-list__item-del">
+                <span class="visually-hidden">Del</span>
+            </button>
+            <label>
+                <input class="answer-list__radio" name="${newName}" type="radio">
+                <input class="answer-list__input" name="2" type="text" placeholder="Ответ" minlength="5" maxlength="50" required>
+                <span></span>
+            </label>
+        </li>
+        <li class="answer-list__item">
+            <button type="button" class="answer-list__item-del">
+                <span class="visually-hidden">Del</span>
+            </button>
+            <label>
+                <input class="answer-list__radio" name="${newName}" type="radio">
+                <input class="answer-list__input" name="3" type="text" placeholder="Ответ" minlength="5" maxlength="50">
+                <span></span>
+            </label>
+        </li>
+        <li class="answer-list__item">
+            <button type="button" class="answer-list__item-del">
+                <span class="visually-hidden">Del</span>
+            </button>
+            <label>
+                <input class="answer-list__radio" name="${newName}" type="radio">
+                <input class="answer-list__input" name="4" type="text" placeholder="Ответ" minlength="5" maxlength="50">
+                <span></span>
+            </label>
+        </li>
+        <li class="answer-list__item">
+            <button class="answer-list__item-add" type="button">
+                <span class="visually-hidden">Добавить ответ</span>
+            </button>
+        </li>
+    </ul>
+</fieldset>
+</div>`);
+    lastQuestion = document.querySelector('.swiper-slide:last-child');
+    addAnswerBtn = lastQuestion.querySelector('.answer-list__item-add');
+    activationAddAnswer();
 });
