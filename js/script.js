@@ -86,6 +86,17 @@ let activationAddAnswer = function() {
 
 activationAddAnswer();
 
+//  Delete answer
+
+let delAnswerBtns = document.querySelectorAll('.answer-list__item-del');
+
+delAnswerBtns.forEach(function(elem) {
+    elem.addEventListener('click', () => {
+        let parent = elem.closest('.answer-list__item');
+        parent.remove();
+    });
+});
+
 //  Add new question
 
 const addQuestionBtn = document.querySelector('.redactor-content__add-question');
