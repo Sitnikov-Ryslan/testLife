@@ -52,6 +52,7 @@ inputAva.addEventListener('change', function() {
         fileReader.addEventListener('load', function() {
             let imageAva = document.querySelector('.redactor-content__avatar-label');
             imageAva.style.background = `url("${fileReader.result}")`;
+            imageAva.style.backgroundSize = 'cover';
         });
         fileReader.readAsDataURL(this.files[0]);
     };

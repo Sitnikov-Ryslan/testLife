@@ -44,10 +44,17 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <fieldset class="redactor-content__info">
-                                    <input type="file" name="avatar" id="avatar" accept="image/*" class="redactor-content__avatar">
-                                    <label for="avatar" class="redactor-content__avatar-label">
-                                        <span class="visually-hidden">Добавить фото</span>
-                                    </label>
+                                    <div class="redactor-content__info-head">
+                                        <input type="file" name="avatar" id="avatar" accept="image/*" class="redactor-content__avatar">
+                                        <label for="avatar" class="redactor-content__avatar-label">
+                                            <span class="visually-hidden">Добавить фото</span>
+                                        </label>
+                                        <select class="redactor-content__category" name="category" id="category" size="1" required>
+                                            <option value="История">История</option>
+                                            <option value="IT">IT</option>
+                                            <option value="Психология">Психология</option>
+                                        </select>
+                                    </div>
                                     <textarea class="redactor-content__test-info" name="test-info" placeholder="Описание теста" minlength="10" maxlength="500" required></textarea>
                                 </fieldset>
                             </div>
