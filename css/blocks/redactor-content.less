@@ -2,11 +2,13 @@
 
 .redactor-content {
     width: 100%;
-    height: 100%;
+    height: auto;
     background: @white;
 
     & .container {
         position: relative;
+        padding-top: 59px;
+        height: auto;
         // padding: 59px 0 86px 75px;
         // display: flex;
         // flex-direction: column;
@@ -31,23 +33,64 @@
     }
 }
 
-.redactor-content__begin {
+.redactor-content__add-question {
     position: absolute;
-    top: 334px;
-    right: 10px;
-    width: 80px;
-    height: 80px;
+    top: 21px;
+    right: 90px;
+    width: 280px;
+    height: 45px;
     border: 0;
-    background: url("../img/arrow-next.svg") no-repeat center center;
+    border-radius: 45px;
+    background: @gray;
     cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 28px;
+    color: @white;
+    z-index: 10;
 }
 
 .redactor-content__info {
+    max-width: 65%;
+    height: auto;
     border: 0;
     margin: 0;
-    padding: 59px 0 86px 75px;
+    padding: 59px 0 0 125px;
     display: flex;
     flex-direction: column;
+}
+
+.redactor-content__avatar {
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+
+    &:focus + label {
+        outline: auto;
+    }
+}
+
+.redactor-content__avatar-label {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    border: 0;
+    border-radius: 50%;
+    background: url('../img/add-item.svg') no-repeat center center, @gray-light;
+    background-size: 80%;
+    cursor: pointer;
+    margin-bottom: 30px;
+
+    &:hover {
+        background: url('../img/add-item.svg') no-repeat center center, @gray;
+        background-size: 80%;
+    }
 }
 
 .redactor-content__test-info {
@@ -76,42 +119,12 @@
     }
 }
 
-.redactor-content__author-text {
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 28px;
-    color: @black;
-    margin-right: 11px;
-}
-
-.redactor-content__author-input {
-    width: 729px;
-    height: 50px;
-    padding-left: 15px;
-    border: 3px solid @gray-dark;
-    background: @white;
-    font-family: 'Roboto', sans-serif;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 28px;
-    color: @gray-dark;
-}
-
 .redactor-content__question {
+    max-width: 69%;
+    height: auto;
     margin: 0 auto;
     border: 0;
     padding: 40px 0 0 0;
-}
-
-.redactor-content__question-back {
-    position: absolute;
-    top: 334px;
-    left: 10px;
-    width: 80px;
-    height: 80px;
-    border: 0;
-    background: url("../img/arrow-prev.svg") no-repeat center center;
-    cursor: pointer;
 }
 
 .redactor-content__question-text {

@@ -16,6 +16,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 24px;
+    position: relative;
 
     & label {
         display: inline-flex;
@@ -49,6 +50,16 @@
     &:checked ~ span:before {
         background: url('../img/checked-answer.svg') no-repeat center center; 
     }
+}
+
+.answer-list__item-del {
+    position: absolute;
+    left: -120px;
+    width: 35px;
+    height: 35px;
+    border: 0;
+    cursor: pointer;
+    background: url('../img/close-icon.svg') no-repeat center center;
 }
 
 .answer-list__input {
